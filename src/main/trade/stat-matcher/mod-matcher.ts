@@ -269,12 +269,7 @@ function _matchModToStat(
       if (BLOCKED_STAT_IDS.has(entry.id)) continue
       if (preferIndexableSupport ? !INDEXABLE_SUPPORT_RE.test(entry.id) : INDEXABLE_SUPPORT_RE.test(entry.id)) continue
       if (entry.text.includes('(Local)')) continue
-      const statPlain = entry.text
-        .replace(/#/g, '')
-        .replace(/\d+/g, '')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .toLowerCase()
+      const statPlain = entry.text.replace(/#/g, '').replace(/\d+/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
       const variantPlain = variant.replace(/\d+/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
       if (variantPlain.length <= 10) continue
       // The chunk this fallback lets the clipboard hide is always an unscalable
