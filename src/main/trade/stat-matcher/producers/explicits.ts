@@ -19,6 +19,12 @@ import { accumulatePseudo, PSEUDO_CONTRIBUTIONS, type PseudoContribution } from 
 // Pin min=max=value for any mod whose cleaned text starts with "+N to Level of".
 export const GEM_LEVEL_MOD = /^\+\d+ to Level of /i
 
+/** Elder / influence hybrids: "Socketed Gems are Supported by Level N X" is a
+ *  fixed unscalable level that shares an advanced-mod block with a rolled
+ *  "% increased …" companion. The support line must keep Level N as its search
+ *  value — never inherit the companion's (min-max) bracket or T1 widening. */
+export const SOCKETED_SUPPORT_LEVEL_MOD = /^Socketed Gems are Supported by Level \d+/i
+
 // Tinctures: disambiguate duplicate stat texts (e.g. "#% increased effect" has two stat IDs)
 const TINCTURE_STAT_REMAP: Record<string, string> = {
   'explicit.stat_2448920197': 'explicit.stat_3529940209', // "#% increased effect" -> tincture-specific variant
@@ -296,16 +302,26 @@ export function processExplicits(ctx: MatchContext): StatFilter[] {
             : null
           if (normRange && normRange.min === normRange.max) isFixedValue = true
           if (!range && advMod.ranges.length === 0) isFixedValue = true
-          if (advMod.tier > 0) matchedTier = advMod.tier
-          if (normRange && normRange.min !== normRange.max) matchedRange = { min: normRange.min, max: normRange.max }
+          // Elder hybrid support lines: the shared AdvancedMod only carries the
+          // companion "% increased" (min-max) ranges. Level N must stay a fixed
+          // search value — never inherit sibling brackets / T1 widening (that made
+          // Burning support search min=31 from T1 31-35, Concentrated Level 16
+          // search min=14 via 90% floor). Also ignore a coincidental value match
+          // (Level 16 + 16% Area Damage sharing the same AdvancedMod.ranges entry).
+          if (SOCKETED_SUPPORT_LEVEL_MOD.test(cleaned)) {
+            isFixedValue = true
+          } else {
+            if (advMod.tier > 0) matchedTier = advMod.tier
+            if (normRange && normRange.min !== normRange.max) matchedRange = { min: normRange.min, max: normRange.max }
+            // Capture the full per-stat ranges and mod name for tier-ladder resolution.
+            advModRanges = advMod.ranges
+            advModName = advMod.name
+            advModMult = advMod.magnitudeMultiplier
+          }
           if (normRange && itemInfo?.rarity === 'Unique' && matched.value != null) {
             perfectRoll =
               normRange.min === normRange.max ? matched.value > normRange.max : matched.value >= normRange.max
           }
-          // Capture the full per-stat ranges and mod name for tier-ladder resolution.
-          advModRanges = advMod.ranges
-          advModName = advMod.name
-          advModMult = advMod.magnitudeMultiplier
         }
       }
       // For negative values: "reduced" mods use min (trade API expects min for beneficial reduction),
@@ -398,6 +414,12 @@ export function processExplicits(ctx: MatchContext): StatFilter[] {
       // with strictly-better pricier listings. Placed after T1 widening so T1 logic
       // cannot undo the exact pin.
       if (GEM_LEVEL_MOD.test(cleaned) && matched.value != null) {
+        minValue = matched.value
+        maxValue = matched.value
+      }
+      // Same pin for "Socketed Gems are Supported by Level N …" (Elder hybrids etc.).
+      // Support level is discrete/fixed; T1 companion widening must not rewrite it.
+      if (SOCKETED_SUPPORT_LEVEL_MOD.test(cleaned) && matched.value != null) {
         minValue = matched.value
         maxValue = matched.value
       }

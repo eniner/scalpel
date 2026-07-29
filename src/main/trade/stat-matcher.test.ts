@@ -4527,9 +4527,8 @@ describe('tier-aware default enablement (e2e via matchItemMods)', () => {
 
 describe('parseAdvancedMods (Forbidden Shako randomSupport detection)', () => {
   // Sanity: the clipboard parser must set randomSupport=true on advanced mod blocks
-  // whose lines start with "Socketed Gems are Supported by" AND carry the
-  // "Unscalable Value" suffix. This is the upstream fingerprint that drives the
-  // indexable_support routing in matchModToStat.
+  // whose support lines carry a rolled Level N(min-max) bracket AND "Unscalable Value".
+  // Fixed Elder hybrid supports (Level N — Unscalable Value, no bracket) must NOT be flagged.
 
   it('flags Forbidden Shako support mods with randomSupport=true', async () => {
     const { parseItemText } = await import('./clipboard')
@@ -4558,6 +4557,118 @@ Socketed Gems are Supported by Level 35(25-35) Bloodthirst(Greater Multiple Proj
     const attrMod = item?.advancedMods?.find((am) => am.lines.some((l) => /to all Attributes/.test(l)))
     expect(attrMod).toBeDefined()
     expect(attrMod?.randomSupport).toBeUndefined()
+  })
+
+  it('does not flag Elder hybrid fixed support levels as randomSupport', async () => {
+    const { parseItemText } = await import('./clipboard')
+    const text = `Item Class: Helmets
+Rarity: Rare
+Skull Crown
+Conqueror's Helmet
+--------
+Item Level: 85
+--------
+{ Prefix Modifier "The Elder's" (Tier: 1) }
+Socketed Gems are Supported by Level 20 Burning Damage — Unscalable Value
+35(31-35)% increased Burning Damage
+{ Suffix Modifier "of the Elder" (Tier: 4) }
+Socketed Gems are Supported by Level 16 Concentrated Effect — Unscalable Value
+15(12-14)% increased Area Damage
+`
+    const item = parseItemText(text)
+    expect(item).not.toBeNull()
+    const supportMods =
+      item?.advancedMods?.filter((am) => am.lines.some((l) => /Socketed Gems are Supported by/i.test(l))) ?? []
+    expect(supportMods.length).toBe(2)
+    expect(supportMods.every((m) => !m.randomSupport)).toBe(true)
+  })
+})
+
+describe('Elder hybrid socketed-support search values', () => {
+  // Companion "% increased" brackets must not rewrite the support Level N search min.
+  it('pins Burning / Concentrated support chips to Level N, not companion T# ranges', () => {
+    const BURN_SUPPORT = {
+      id: 'explicit.stat_elder_burn_support',
+      text: 'Socketed Gems are Supported by Level # Burning Damage',
+      type: 'explicit',
+    }
+    const BURN_INC = {
+      id: 'explicit.stat_elder_burn_inc',
+      text: '#% increased Burning Damage',
+      type: 'explicit',
+    }
+    const CONC_SUPPORT = {
+      id: 'explicit.stat_elder_conc_support',
+      text: 'Socketed Gems are Supported by Level # Concentrated Effect',
+      type: 'explicit',
+    }
+    const AREA_INC = {
+      id: 'explicit.stat_elder_area_inc',
+      text: '#% increased Area Damage',
+      type: 'explicit',
+    }
+    _setStatEntriesForTests([BURN_SUPPORT, BURN_INC, CONC_SUPPORT, AREA_INC])
+
+    const adv: AdvancedMod[] = [
+      {
+        type: 'prefix',
+        name: "The Elder's",
+        tier: 1,
+        tags: [],
+        lines: [
+          'Socketed Gems are Supported by Level 20 Burning Damage — Unscalable Value',
+          '35(31-35)% increased Burning Damage',
+        ],
+        ranges: [{ value: 35, min: 31, max: 35 }],
+      },
+      {
+        type: 'suffix',
+        name: 'of the Elder',
+        tier: 4,
+        tags: [],
+        lines: [
+          'Socketed Gems are Supported by Level 16 Concentrated Effect — Unscalable Value',
+          '15(12-14)% increased Area Damage',
+        ],
+        ranges: [{ value: 15, min: 12, max: 14 }],
+      },
+    ]
+
+    const filters = matchItemMods(
+      [
+        'Socketed Gems are Supported by Level 20 Burning Damage',
+        '35% increased Burning Damage',
+        'Socketed Gems are Supported by Level 16 Concentrated Effect',
+        '15% increased Area Damage',
+      ],
+      [],
+      undefined,
+      makeItemInfo({
+        rarity: 'Rare',
+        itemClass: 'Helmets',
+        baseType: "Conqueror's Helmet",
+        itemLevel: 85,
+      }),
+      adv,
+    )
+
+    const burn = filters.find((f) => f.id === BURN_SUPPORT.id)
+    expect(burn).toBeDefined()
+    expect(burn?.value).toBe(20)
+    expect(burn?.min).toBe(20)
+    expect(burn?.max).toBe(20)
+    expect(burn?.tierLadder).toBeUndefined()
+
+    const conc = filters.find((f) => f.id === CONC_SUPPORT.id)
+    expect(conc).toBeDefined()
+    expect(conc?.value).toBe(16)
+    expect(conc?.min).toBe(16)
+    expect(conc?.max).toBe(16)
+    expect(conc?.tierLadder).toBeUndefined()
+
+    // Companion % lines stay present but off by default (hybrid companion rule).
+    expect(filters.find((f) => f.id === BURN_INC.id)?.enabled).toBe(false)
+    expect(filters.find((f) => f.id === AREA_INC.id)?.enabled).toBe(false)
   })
 })
 

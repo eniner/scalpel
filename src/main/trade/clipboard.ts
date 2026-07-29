@@ -1012,11 +1012,11 @@ function parseAdvancedMods(text: string): AdvancedMod[] {
       currentMod.lines.push(line)
 
       // Forbidden Shako-style rolling supports: when a "Socketed Gems are Supported by"
-      // line carries the "Unscalable Value" suffix, the trade API stores it under the
-      // explicit.indexable_support_* family rather than the regular explicit.stat_*
-      // family. Both share identical display text in the stat dictionary, so without
-      // this signal the matcher coin-flips between them.
-      if (/^Socketed Gems are Supported by Level/i.test(line) && /\bUnscalable Value\b/i.test(line)) {
+      // line carries a rolled Level N(min-max) bracket AND "Unscalable Value", the trade
+      // API stores it under explicit.indexable_support_* rather than explicit.stat_*.
+      // Elder hybrids also say "Unscalable Value" but have a fixed Level N with no
+      // bracket — those must stay on the craftable stat_* ids.
+      if (/^Socketed Gems are Supported by Level \d+\(/i.test(line) && /\bUnscalable Value\b/i.test(line)) {
         currentMod.randomSupport = true
       }
 
