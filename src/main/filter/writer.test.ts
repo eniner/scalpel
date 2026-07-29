@@ -189,12 +189,7 @@ describe('addBaseTypeToTier / insertSectionRule', () => {
   it('adds a BaseType onto an existing tier', () => {
     const dir = mkdtempSync(join(tmpdir(), 'wadd-'))
     const p = join(dir, 'o.filter')
-    const content = [
-      'Show # $type->currency $tier->s',
-      '\tBaseType == "Divine Orb"',
-      '\tSetFontSize 45',
-      '',
-    ].join('\n')
+    const content = ['Show # $type->currency $tier->s', '\tBaseType == "Divine Orb"', '\tSetFontSize 45', ''].join('\n')
     writeFileSync(p, content, 'utf-8')
     const file = parseFilterFile(p, readFileSync(p, 'utf-8'))
     addBaseTypeToTier(file, 0, 'Mirror of Kalandra')

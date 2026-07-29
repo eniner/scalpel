@@ -55,18 +55,12 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
     })
   }, [blockIndex])
 
-  const text = useMemo(
-    () => (block ? actionOf(block, 'SetTextColor', ['200', '200', '200', '255']) : null),
-    [block],
-  )
+  const text = useMemo(() => (block ? actionOf(block, 'SetTextColor', ['200', '200', '200', '255']) : null), [block])
   const border = useMemo(
     () => (block ? actionOf(block, 'SetBorderColor', ['100', '100', '100', '255']) : null),
     [block],
   )
-  const bg = useMemo(
-    () => (block ? actionOf(block, 'SetBackgroundColor', ['0', '0', '0', '180']) : null),
-    [block],
-  )
+  const bg = useMemo(() => (block ? actionOf(block, 'SetBackgroundColor', ['0', '0', '0', '180']) : null), [block])
   const font = useMemo(() => (block ? actionOf(block, 'SetFontSize', ['32']) : null), [block])
   const alert = useMemo(() => {
     if (!block) return null
@@ -99,9 +93,7 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
   }
 
   if (!block) {
-    return (
-      <div style={{ padding: 12, color: '#9a9aab', fontSize: 12 }}>{error ?? 'Loading style…'}</div>
-    )
+    return <div style={{ padding: 12, color: '#9a9aab', fontSize: 12 }}>{error ?? 'Loading style…'}</div>
   }
 
   return (
@@ -133,11 +125,7 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
         {border && (
           <div>
             <div style={{ fontSize: 10, color: '#9a9aab', marginBottom: 4 }}>Border</div>
-            <ColorActionEditor
-              action={border}
-              onChange={(a) => setBlock(upsertAction(block, a))}
-              unset={borderUnset}
-            />
+            <ColorActionEditor action={border} onChange={(a) => setBlock(upsertAction(block, a))} unset={borderUnset} />
           </div>
         )}
         {bg && (
@@ -156,7 +144,12 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
           max={45}
           value={Number(font?.values[0] ?? 32)}
           onChange={(e) =>
-            setBlock(upsertAction(block, { type: 'SetFontSize', values: [String(Math.max(18, Math.min(45, Number(e.target.value) || 32)))] }))
+            setBlock(
+              upsertAction(block, {
+                type: 'SetFontSize',
+                values: [String(Math.max(18, Math.min(45, Number(e.target.value) || 32)))],
+              }),
+            )
           }
           style={{
             background: '#12131a',
@@ -256,7 +249,12 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
                 }),
               )
             }
-            style={{ background: '#12131a', color: '#f0e6d2', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 4 }}
+            style={{
+              background: '#12131a',
+              color: '#f0e6d2',
+              border: '1px solid rgba(255,255,255,0.14)',
+              borderRadius: 4,
+            }}
           >
             {MINIMAP_SIZES.map((s) => (
               <option key={s.id} value={s.id}>
@@ -275,7 +273,12 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
                 }),
               )
             }
-            style={{ background: '#12131a', color: '#f0e6d2', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 4 }}
+            style={{
+              background: '#12131a',
+              color: '#f0e6d2',
+              border: '1px solid rgba(255,255,255,0.14)',
+              borderRadius: 4,
+            }}
           >
             {MINIMAP_COLORS.map((c) => (
               <option key={c} value={c}>
@@ -294,7 +297,12 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
                 }),
               )
             }
-            style={{ background: '#12131a', color: '#f0e6d2', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 4 }}
+            style={{
+              background: '#12131a',
+              color: '#f0e6d2',
+              border: '1px solid rgba(255,255,255,0.14)',
+              borderRadius: 4,
+            }}
           >
             {MINIMAP_SHAPES.map((s) => (
               <option key={s.id} value={s.id}>
@@ -325,7 +333,13 @@ export function TierStyleEditor({ blockIndex, tierLabel, onClose, onSaved }: Pro
         <button type="button" onClick={onClose} style={{ fontSize: 12 }}>
           Cancel
         </button>
-        <button type="button" className="primary" disabled={saving} onClick={() => void save()} style={{ fontSize: 12 }}>
+        <button
+          type="button"
+          className="primary"
+          disabled={saving}
+          onClick={() => void save()}
+          style={{ fontSize: 12 }}
+        >
           {saving ? 'Saving…' : 'Save style'}
         </button>
       </div>

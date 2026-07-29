@@ -49,32 +49,12 @@ const TYPE_TITLES: Record<string, string> = {
   ut: 'UT',
 }
 
-const TIER_ORDER = [
-  's',
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  't1',
-  't2',
-  't3',
-  't4',
-  't5',
-  't6',
-  't7',
-  't8',
-  't9',
-  't10',
-]
+const TIER_ORDER = ['s', 'a', 'b', 'c', 'd', 'e', 'f', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10']
 
 function titleForTypePath(typePath: string): string {
   if (TYPE_TITLES[typePath]) return TYPE_TITLES[typePath]
   const leaf = typePath.split('->').pop() ?? typePath
-  return leaf
-    .replace(/[-_]+/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase())
+  return leaf.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
 function labelForTier(tier: string): string {

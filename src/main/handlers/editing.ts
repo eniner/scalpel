@@ -101,41 +101,33 @@ export function register(store: Store<AppSettings>): void {
     return { ok: true as const, path: currentFilter.path, sections: buildFilterSections(currentFilter) }
   })
 
-  ipcMain.handle(
-    'set-section-tier-visibility',
-    (_event, blockIndex: number, visibility: FilterBlock['visibility']) => {
-      const currentFilter = getCurrentFilter()
-      if (!currentFilter) return { ok: false, error: 'No filter loaded' }
-      const oldBlock = currentFilter.blocks[blockIndex]
-      if (!oldBlock) return { ok: false, error: 'Block not found' }
-      if (oldBlock.visibility === visibility) return { ok: true }
-      try {
-        const updatedBlock: FilterBlock = { ...oldBlock, visibility }
-        const tier = oldBlock.tierTag?.tier ?? `block #${blockIndex + 1}`
-        captureSnapshot(
-          currentFilter.path,
-          'block-edit',
-          `${oldBlock.visibility} → ${visibility} (${tier})`,
-          undefined,
-        )
-        if (oldBlock.tierTag) {
-          record({
-            type: 'set-visibility',
-            target: { typePath: oldBlock.tierTag.typePath, tier: oldBlock.tierTag.tier },
-            payload: { visibility },
-            timestamp: Date.now(),
-          })
-        }
-        writeBlockEdit(currentFilter, blockIndex, updatedBlock)
-        const path = getProfileBackedSetting(store, 'filterPath')
-        if (path) loadFilter(path)
-        reloadFilterInGame()
-        return { ok: true }
-      } catch (err) {
-        return { ok: false, error: String(err) }
+  ipcMain.handle('set-section-tier-visibility', (_event, blockIndex: number, visibility: FilterBlock['visibility']) => {
+    const currentFilter = getCurrentFilter()
+    if (!currentFilter) return { ok: false, error: 'No filter loaded' }
+    const oldBlock = currentFilter.blocks[blockIndex]
+    if (!oldBlock) return { ok: false, error: 'Block not found' }
+    if (oldBlock.visibility === visibility) return { ok: true }
+    try {
+      const updatedBlock: FilterBlock = { ...oldBlock, visibility }
+      const tier = oldBlock.tierTag?.tier ?? `block #${blockIndex + 1}`
+      captureSnapshot(currentFilter.path, 'block-edit', `${oldBlock.visibility} → ${visibility} (${tier})`, undefined)
+      if (oldBlock.tierTag) {
+        record({
+          type: 'set-visibility',
+          target: { typePath: oldBlock.tierTag.typePath, tier: oldBlock.tierTag.tier },
+          payload: { visibility },
+          timestamp: Date.now(),
+        })
       }
-    },
-  )
+      writeBlockEdit(currentFilter, blockIndex, updatedBlock)
+      const path = getProfileBackedSetting(store, 'filterPath')
+      if (path) loadFilter(path)
+      reloadFilterInGame()
+      return { ok: true }
+    } catch (err) {
+      return { ok: false, error: String(err) }
+    }
+  })
 
   ipcMain.handle('get-filter-block', (_event, blockIndex: number) => {
     const path = getProfileBackedSetting(store, 'filterPath') as string | undefined

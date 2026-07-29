@@ -7,7 +7,9 @@ export { filterBladeUrl, poeItemFilterUrl }
 /** OnlineFilters file basename is GGG's item-filter id (no extension). */
 export function poeFilterIdFromOnlinePath(onlinePath: string | null | undefined): string | null {
   if (!onlinePath) return null
-  const id = basename(onlinePath).replace(/\.filter$/i, '').trim()
+  const id = basename(onlinePath)
+    .replace(/\.filter$/i, '')
+    .trim()
   return id || null
 }
 
@@ -123,10 +125,7 @@ export interface LinkFilterBladeResult {
  * `-local` path Scalpel should use. Does not write files — the IPC handler
  * performs importOnlineFilter / conflict checks.
  */
-export function resolveFilterBladeLink(
-  filterDir: string,
-  preferName?: string | null,
-): LinkFilterBladeResult {
+export function resolveFilterBladeLink(filterDir: string, preferName?: string | null): LinkFilterBladeResult {
   const candidates = listFilterBladeCandidates(filterDir)
   if (candidates.length === 0) {
     return {

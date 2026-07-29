@@ -6,11 +6,7 @@ interface Props {
   filterPath?: string | null
 }
 
-async function playDropAlert(
-  drop: LootSimDrop,
-  volume: number,
-  filterDir: string | null,
-): Promise<void> {
+async function playDropAlert(drop: LootSimDrop, volume: number, filterDir: string | null): Promise<void> {
   if (drop.alert.kind === 'none' || !drop.alert.value) return
   try {
     if (drop.alert.kind === 'builtin') {
@@ -138,11 +134,7 @@ export function LootSimulator({ filterPath }: Props): JSX.Element {
   }
 
   if (!filterPath) {
-    return (
-      <p style={{ margin: 0, fontSize: 12, color: '#9a9aab' }}>
-        Select a local filter to run the loot simulator.
-      </p>
-    )
+    return <p style={{ margin: 0, fontSize: 12, color: '#9a9aab' }}>Select a local filter to run the loot simulator.</p>
   }
 
   const rendered = drops.filter((d) => showHidden || !d.hidden)
@@ -161,18 +153,26 @@ export function LootSimulator({ filterPath }: Props): JSX.Element {
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: '#f0e6d2' }}>Loot simulator</div>
-        <button type="button" className="primary" disabled={busy || pool.length === 0} onClick={() => void runSim()} style={{ fontSize: 12 }}>
+        <button
+          type="button"
+          className="primary"
+          disabled={busy || pool.length === 0}
+          onClick={() => void runSim()}
+          style={{ fontSize: 12 }}
+        >
           {busy ? 'Dropping…' : 'Simulate drops'}
         </button>
       </div>
 
       <p style={{ margin: 0, fontSize: 11, color: '#9a9aab', lineHeight: 1.4 }}>
-        Rolls items from a filter section against your active local filter — shows Fontin labels and plays alert
-        sounds like a pack drop.
+        Rolls items from a filter section against your active local filter — shows Fontin labels and plays alert sounds
+        like a pack drop.
       </p>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'end' }}>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11, color: '#9a9aab', minWidth: 160 }}>
+        <label
+          style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 11, color: '#9a9aab', minWidth: 160 }}
+        >
           Section pool
           <select
             value={active?.typePath ?? ''}
@@ -216,12 +216,16 @@ export function LootSimulator({ filterPath }: Props): JSX.Element {
           </select>
         </label>
 
-        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#f0e6d2', paddingBottom: 6 }}>
+        <label
+          style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#f0e6d2', paddingBottom: 6 }}
+        >
           <input type="checkbox" checked={playSounds} onChange={(e) => setPlaySounds(e.target.checked)} />
           Play sounds
         </label>
 
-        <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#f0e6d2', paddingBottom: 6 }}>
+        <label
+          style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#f0e6d2', paddingBottom: 6 }}
+        >
           <input type="checkbox" checked={showHidden} onChange={(e) => setShowHidden(e.target.checked)} />
           Show hidden
         </label>

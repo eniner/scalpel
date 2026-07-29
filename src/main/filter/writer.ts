@@ -161,14 +161,22 @@ export function insertSectionRule(
   const indent = detectIndent(filterFile.rawLines)
   const eol = filterFile.eol ?? '\n'
   const styleSrc =
-    opts.copyStyleFromIndex != null ? filterFile.blocks[opts.copyStyleFromIndex] : filterFile.blocks[opts.beforeBlockIndex]
+    opts.copyStyleFromIndex != null
+      ? filterFile.blocks[opts.copyStyleFromIndex]
+      : filterFile.blocks[opts.beforeBlockIndex]
 
   const classCond = styleSrc?.conditions.find((c) => c.type === 'Class')
   const actions = (styleSrc?.actions ?? [])
     .filter((a) =>
-      ['SetTextColor', 'SetBorderColor', 'SetBackgroundColor', 'SetFontSize', 'PlayAlertSound', 'PlayEffect', 'MinimapIcon'].includes(
-        a.type,
-      ),
+      [
+        'SetTextColor',
+        'SetBorderColor',
+        'SetBackgroundColor',
+        'SetFontSize',
+        'PlayAlertSound',
+        'PlayEffect',
+        'MinimapIcon',
+      ].includes(a.type),
     )
     .map((a) => ({ ...a, values: [...a.values] }))
 

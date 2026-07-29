@@ -297,9 +297,7 @@ export function register(store: Store<AppSettings>): void {
       needsSync: boolean
     } => {
       const dir =
-        (filterDir && filterDir.trim()) ||
-        (getProfileBackedSetting(store, 'filterDir') as string) ||
-        defaultFilterDir()
+        (filterDir && filterDir.trim()) || (getProfileBackedSetting(store, 'filterDir') as string) || defaultFilterDir()
       const resolved = resolveFilterBladeLink(dir)
       return {
         filterDir: dir,

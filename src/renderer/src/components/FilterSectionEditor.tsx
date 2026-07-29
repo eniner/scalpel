@@ -353,7 +353,9 @@ export function FilterSectionEditor({ filterPath }: Props): JSX.Element {
                   {open && (
                     <div style={{ marginTop: 8, paddingTop: 8, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
                       {tier.baseTypes.length === 0 ? (
-                        <div style={{ fontSize: 11, color: '#9a9aab' }}>No BaseType list — drop items here or Add rule.</div>
+                        <div style={{ fontSize: 11, color: '#9a9aab' }}>
+                          No BaseType list — drop items here or Add rule.
+                        </div>
                       ) : (
                         tier.baseTypes.map((base) => (
                           <div
@@ -378,7 +380,9 @@ export function FilterSectionEditor({ filterPath }: Props): JSX.Element {
                             <button
                               type="button"
                               disabled={busy || idx === 0}
-                              onClick={() => void moveBase(base, tier.blockIndex, tiers[idx - 1]?.blockIndex ?? tier.blockIndex)}
+                              onClick={() =>
+                                void moveBase(base, tier.blockIndex, tiers[idx - 1]?.blockIndex ?? tier.blockIndex)
+                              }
                               style={{ padding: '2px 8px', fontSize: 11 }}
                             >
                               ↑
@@ -386,7 +390,9 @@ export function FilterSectionEditor({ filterPath }: Props): JSX.Element {
                             <button
                               type="button"
                               disabled={busy || idx >= tiers.length - 1}
-                              onClick={() => void moveBase(base, tier.blockIndex, tiers[idx + 1]?.blockIndex ?? tier.blockIndex)}
+                              onClick={() =>
+                                void moveBase(base, tier.blockIndex, tiers[idx + 1]?.blockIndex ?? tier.blockIndex)
+                              }
                               style={{ padding: '2px 8px', fontSize: 11 }}
                             >
                               ↓
@@ -402,7 +408,12 @@ export function FilterSectionEditor({ filterPath }: Props): JSX.Element {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <button type="button" disabled={busy || !active} onClick={() => setAddOpen((v) => !v)} style={{ fontSize: 12 }}>
+            <button
+              type="button"
+              disabled={busy || !active}
+              onClick={() => setAddOpen((v) => !v)}
+              style={{ fontSize: 12 }}
+            >
               {addOpen ? 'Cancel' : 'Add rule'}
             </button>
           </div>
@@ -494,7 +505,13 @@ export function FilterSectionEditor({ filterPath }: Props): JSX.Element {
                 />
               )}
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <button type="button" className="primary" disabled={busy} onClick={() => void submitAddRule()} style={{ fontSize: 12 }}>
+                <button
+                  type="button"
+                  className="primary"
+                  disabled={busy}
+                  onClick={() => void submitAddRule()}
+                  style={{ fontSize: 12 }}
+                >
                   {busy ? 'Adding…' : 'Add'}
                 </button>
               </div>

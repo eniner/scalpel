@@ -1,10 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { GameVariant, RuntimeSettings } from '@shared/types'
-import {
-  filterBladeUrl as filterBladeUrlFor,
-  poeItemFilterLadderUrl,
-  poeItemFilterUrl,
-} from '@shared/endpoints'
+import { filterBladeUrl as filterBladeUrlFor, poeItemFilterLadderUrl, poeItemFilterUrl } from '@shared/endpoints'
 
 interface Props {
   settings: RuntimeSettings
@@ -21,7 +17,10 @@ function onlineNameFromLocalPath(filterPath: string): string | null {
 }
 
 function poeFilterIdFromPath(onlinePath: string): string | null {
-  const id = onlinePath.replace(/^.*[\\/]/, '').replace(/\.filter$/i, '').trim()
+  const id = onlinePath
+    .replace(/^.*[\\/]/, '')
+    .replace(/\.filter$/i, '')
+    .trim()
   return id || null
 }
 
@@ -83,8 +82,7 @@ export function FilterBladeBridge({
   }
 
   const openFilterBlade = async (): Promise<void> => {
-    const url =
-      (window.api.filterBladeUrl && (await window.api.filterBladeUrl())) || filterBladeUrlFor(gameVariant)
+    const url = (window.api.filterBladeUrl && (await window.api.filterBladeUrl())) || filterBladeUrlFor(gameVariant)
     void window.api.openExternal(url)
   }
 
@@ -158,9 +156,7 @@ export function FilterBladeBridge({
 
       <div className="flex flex-wrap gap-2 mt-1">
         <button type="button" className="primary px-2.5 py-1 text-[11px]" onClick={openPoeFilterPage}>
-          {selectedFilterId
-            ? `Open “${selected?.name ?? 'filter'}” on PoE`
-            : 'Browse PoE filter ladder'}
+          {selectedFilterId ? `Open “${selected?.name ?? 'filter'}” on PoE` : 'Browse PoE filter ladder'}
         </button>
         <button type="button" className="px-2.5 py-1 text-[11px]" onClick={() => void openFilterBlade()}>
           Open FilterBlade
@@ -206,9 +202,7 @@ export function FilterBladeBridge({
         </label>
       )}
 
-      {candidates.length === 1 && (
-        <p className="text-[10px] text-text-dim m-0">Found online: {candidates[0].name}</p>
-      )}
+      {candidates.length === 1 && <p className="text-[10px] text-text-dim m-0">Found online: {candidates[0].name}</p>}
       {candidates.length === 0 && (
         <p className="text-[10px] text-text-dim m-0">
           No OnlineFilters yet — Follow a shared filter on pathofexile.com (or Sync from FilterBlade) and select it
