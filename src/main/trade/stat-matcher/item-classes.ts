@@ -75,6 +75,11 @@ export const QUALIFIER_BY_ITEM_CLASS: Record<string, string> = {
   'Life Flasks': 'Flask',
   'Mana Flasks': 'Flask',
   Jewels: 'Jewel',
+  'Abyss Jewels': 'Jewel',
+  // PoE1 staff-block twin is tagged "(Staves)" on the trade API; prefer it for
+  // staves so unique staff searches don't land on the untagged jewel id.
+  Staves: 'Staves',
+  Warstaves: 'Staves',
   // A corrupted shield's "+#% Chance to Block" implicit is published only as
   // "+#% Chance to Block (Shields)" -- unlike the staff block implicit there is
   // no unqualified twin for the explicit-stat fallback to land on, so without

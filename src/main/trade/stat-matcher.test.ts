@@ -3156,6 +3156,64 @@ describe('matchItemMods', () => {
     })
   })
 
+  describe('PoE1 staff-block attack (jewels vs Staves)', () => {
+    // Live trade API: jewels use untagged stat_1778298516; staves use
+    // stat_1001829678 tagged "(Staves)". A former STAT_ID_REMAPS blanket always
+    // forced jewels→staves and empty-resulted Cobalt Jewel searches.
+    const STAFF_BLOCK_STATS = [
+      {
+        id: 'explicit.stat_1778298516',
+        text: '+#% Chance to Block Attack Damage while wielding a Staff',
+        type: 'explicit',
+      },
+      {
+        id: 'explicit.stat_1001829678',
+        text: '+#% Chance to Block Attack Damage while wielding a Staff (Staves)',
+        type: 'explicit',
+      },
+    ]
+
+    it('Cobalt Jewel keeps the untagged jewels trade id', () => {
+      _setStatEntriesForTests(STAFF_BLOCK_STATS)
+      const filters = matchItemMods(
+        ['+3% Chance to Block Attack Damage while wielding a Staff'],
+        [],
+        undefined,
+        makeItemInfo({ rarity: 'Magic', itemClass: 'Jewels', baseType: 'Cobalt Jewel' }),
+      )
+      const block = filters.find((f) => f.id === 'explicit.stat_1778298516')
+      expect(block).toBeDefined()
+      expect(block?.value).toBe(3)
+      expect(filters.find((f) => f.id === 'explicit.stat_1001829678')).toBeUndefined()
+    })
+
+    it('staff weapon prefers the (Staves) trade id', () => {
+      _setStatEntriesForTests(STAFF_BLOCK_STATS)
+      const filters = matchItemMods(
+        ['+18% Chance to Block Attack Damage while wielding a Staff'],
+        [],
+        undefined,
+        makeItemInfo({ rarity: 'Unique', itemClass: 'Staves', baseType: 'Judgement Staff' }),
+      )
+      const block = filters.find((f) => f.id === 'explicit.stat_1001829678')
+      expect(block).toBeDefined()
+      expect(block?.value).toBe(18)
+      expect(filters.find((f) => f.id === 'explicit.stat_1778298516')).toBeUndefined()
+    })
+
+    it('still picks jewels id when the staves entry is listed first', () => {
+      _setStatEntriesForTests([...STAFF_BLOCK_STATS].reverse())
+      const filters = matchItemMods(
+        ['+3% Chance to Block Attack Damage while wielding a Staff'],
+        [],
+        undefined,
+        makeItemInfo({ rarity: 'Magic', itemClass: 'Jewels', baseType: 'Cobalt Jewel' }),
+      )
+      expect(filters.find((f) => f.id === 'explicit.stat_1778298516')).toBeDefined()
+      expect(filters.find((f) => f.id === 'explicit.stat_1001829678')).toBeUndefined()
+    })
+  })
+
   // The PoE2 trade API disambiguates "#% increased Duration" with a trailing
   // category qualifier: "(Charm)", "(Flask)". The clipboard text on the item is
   // the bare "X% increased Duration", so the matcher has to strip the qualifier

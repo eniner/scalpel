@@ -5,6 +5,7 @@ import { BENEFICIAL_NEGATIVE_KEYWORDS } from '@shared/data/trade/beneficial-nega
 import { isClusterJewel } from '@shared/poe-item'
 import type { ModTier } from '@shared/data/tiers/types'
 import type { StatFilter } from '../../trade'
+import { resolveStaffBlockAttackStatId } from '../../stat-exceptions'
 import { findAdvMod } from '../adv-mods'
 import { computeValueBounds } from '../bounds'
 import { isDefenseMod, isLocalMod, isLowPriority } from '../classification'
@@ -254,6 +255,11 @@ export function processExplicits(ctx: MatchContext): StatFilter[] {
       if (matched.statId === 'explicit.stat_2582079000' && itemInfo?.itemClass !== 'Belts') {
         matched.statId = 'explicit.stat_554899692'
       }
+
+      // PoE1 staff-block: jewels use untagged stat_1778298516; staves use
+      // stat_1001829678 "(Staves)". Pin by item class so jewel searches aren't
+      // forced onto the staves id (and unique staves still get the Staves twin).
+      matched.statId = resolveStaffBlockAttackStatId(matched.statId, itemInfo?.itemClass)
 
       // Determine if this value is fixed or rolled, and capture tier/range for display
       // Fixed values (min === max in tier range, or no range) use exact match

@@ -169,7 +169,13 @@ function _matchModToStat(
           // Only the requested category's qualified entry is a candidate; entries
           // for other categories (e.g. "(Flask)" when matching a charm) are ignored
           // so they can't pollute the plain bucket once their qualifier is stripped.
-          if (qualifier === preferQualifier && (!qualifiedMatch || entry.text.length > qualifiedMatch._textLen))
+          // Compare case-insensitively so PoE1 "(Staves)" matches prefer "Staves"
+          // and PoE2 "(Jewel)" still matches prefer "Jewel".
+          if (
+            preferQualifier &&
+            qualifier.toLowerCase() === preferQualifier.toLowerCase() &&
+            (!qualifiedMatch || entry.text.length > qualifiedMatch._textLen)
+          )
             qualifiedMatch = result
         } else {
           if (!nonLocalMatch || entry.text.length > nonLocalMatch._textLen) nonLocalMatch = result
