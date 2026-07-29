@@ -257,6 +257,11 @@ function _matchModToStat(
   //            "#% chance to gain Alchemist's Genius when you use a Flask" ("of the
   //            Essence" belt suffix has a hidden 100% chance, so the clipboard drops
   //            the leading "#% chance to ")
+  // Digits are stripped on BOTH sides: synthesis implicits like
+  // "Intimidate Enemies for 4 seconds on Hit with Attacks" hide the 100% chance
+  // but keep a fixed "4" in display text, while the trade stat keeps both
+  // "#% chance to" and that same "4". Stripping only the clipboard left the
+  // hardcoded duration digit on the stat side and broke endsWith.
   for (const variant of textVariants) {
     let bestMatch: { statId: string; value: number | null; aggregated?: boolean; _textLen: number } | null = null
     for (const entry of statEntries) {
@@ -264,7 +269,12 @@ function _matchModToStat(
       if (BLOCKED_STAT_IDS.has(entry.id)) continue
       if (preferIndexableSupport ? !INDEXABLE_SUPPORT_RE.test(entry.id) : INDEXABLE_SUPPORT_RE.test(entry.id)) continue
       if (entry.text.includes('(Local)')) continue
-      const statPlain = entry.text.replace(/#/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
+      const statPlain = entry.text
+        .replace(/#/g, '')
+        .replace(/\d+/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase()
       const variantPlain = variant.replace(/\d+/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
       if (variantPlain.length <= 10) continue
       // The chunk this fallback lets the clipboard hide is always an unscalable

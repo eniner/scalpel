@@ -3906,6 +3906,24 @@ describe('matchModToStat (Unscalable Value prefix/suffix fallback)', () => {
     expect(result?.value).toBeNull()
   })
 
+  it('matches synthesis Intimidate-on-hit when the trade text keeps a fixed duration digit', () => {
+    // Clipboard: "Intimidate Enemies for 4 seconds on Hit with Attacks"
+    // Trade:     "#% chance to Intimidate Enemies for 4 seconds on Hit with Attacks"
+    // Digits must be stripped on both sides or the leftover "4" on the stat
+    // breaks endsWith and the synthesised implicit chip never appears.
+    _setStatEntriesForTests([
+      {
+        id: 'implicit.stat_3438201750',
+        text: '#% chance to Intimidate Enemies for 4 seconds on Hit with Attacks',
+        type: 'implicit',
+      },
+    ])
+    const result = matchModToStat('Intimidate Enemies for 4 seconds on Hit with Attacks', false, 'implicit')
+    expect(result).not.toBeNull()
+    expect(result?.statId).toBe('implicit.stat_3438201750')
+    expect(result?.value).toBeNull()
+  })
+
   it('still matches when clipboard text is the leading portion of the stat (existing prefix case)', () => {
     _setStatEntriesForTests([
       { id: 'explicit.stat_xxx', text: 'Bladefall deals extra Damage by #% of their value', type: 'explicit' },
