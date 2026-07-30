@@ -318,6 +318,7 @@ app.whenReady().then(() => {
     openSettings: 'setup',
     openDust: 'dust',
     openDivCards: 'divcards',
+    openScarabs: 'scarabs',
     openRegex: 'regex',
   }
   const pasteRegexToSearch = (regex: string): void => {
