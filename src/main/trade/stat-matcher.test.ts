@@ -3856,6 +3856,38 @@ describe('matchModToStat (PoE2 stat text without leading sign)', () => {
     const result = matchModToStat('Adds +5 to +15 Cold Damage')
     expect(result).not.toBeNull()
     expect(result?.value).toBe(10)
+    expect(result?.aggregated).toBe(true)
+  })
+
+  // Kitava's Thirst (and its foulborn Life twin) publish TWO `#` placeholders:
+  // chance% and spend threshold. Averaging them produced Exact Values=125 and
+  // zero trade hits. Prefer the first `#` (chance); do not mark aggregated.
+  it('uses the first # for Kitava-style chance+threshold mods (not the average)', () => {
+    _setStatEntriesForTests([
+      {
+        id: 'explicit.stat_2513998383',
+        text: '#% chance to Trigger Socketed Spells when you Spend at least # Life on an\nUpfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown',
+        type: 'explicit',
+      },
+      {
+        id: 'explicit.stat_723388324',
+        text: '#% chance to Trigger Socketed Spells when you Spend at least # Mana on an\nUpfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown',
+        type: 'explicit',
+      },
+    ])
+    const life = matchModToStat(
+      '50% chance to Trigger Socketed Spells when you Spend at least 200 Life on an Upfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown',
+    )
+    expect(life?.statId).toBe('explicit.stat_2513998383')
+    expect(life?.value).toBe(50)
+    expect(life?.aggregated).toBeUndefined()
+
+    const mana = matchModToStat(
+      '50% chance to Trigger Socketed Spells when you Spend at least 100 Mana on an Upfront Cost to Use or Trigger a Skill, with a 0.1 second Cooldown',
+    )
+    expect(mana?.statId).toBe('explicit.stat_723388324')
+    expect(mana?.value).toBe(50)
+    expect(mana?.aggregated).toBeUndefined()
   })
 
   // The trade API stores "fewer enemies to be Surrounded" as the inverse of its
