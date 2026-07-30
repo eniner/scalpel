@@ -1,6 +1,5 @@
 import type { ScarabCalcState, ScarabCatalog, ScarabCategory, ScarabDef } from './types'
 
-
 export const STORAGE_KEY = 'scarab-atlas-state'
 
 export const DEFAULT_STATE: ScarabCalcState = {
@@ -48,15 +47,8 @@ export function shortenScarabName(name: string): string {
   return name.replace(/Scarab of /i, '').replace(/ Scarab$/i, '')
 }
 
-export function getEffectiveWeight(
-  scarab: ScarabDef,
-  state: ScarabCalcState,
-  applyRemarkable = true,
-): number {
-  let weight =
-    state.weightOverrides[scarab.id] !== undefined
-      ? state.weightOverrides[scarab.id]
-      : scarab.weight
+export function getEffectiveWeight(scarab: ScarabDef, state: ScarabCalcState, applyRemarkable = true): number {
+  let weight = state.weightOverrides[scarab.id] !== undefined ? state.weightOverrides[scarab.id] : scarab.weight
   if (applyRemarkable && state.remarkableRelics && weight > 0) {
     weight = Math.pow(weight, 0.9)
   }

@@ -39,15 +39,7 @@ function categoryIconUrl(cat: ScarabCategory): string | null {
   return null
 }
 
-function ScarabIcon({
-  name,
-  url,
-  size = 20,
-}: {
-  name?: string
-  url?: string | null
-  size?: number
-}): JSX.Element {
+function ScarabIcon({ name, url, size = 20 }: { name?: string; url?: string | null; size?: number }): JSX.Element {
   const src = url !== undefined ? url : name ? scarabIconUrl(name) : null
   if (!src) {
     return (
@@ -238,8 +230,8 @@ export function ScarabAtlas(): JSX.Element {
         {tab === 'calculator' && (
           <div className="p-2 space-y-2">
             <div className="px-2 py-1.5 text-[10px] text-text-dim border border-white/10 rounded bg-black/20">
-              Optimize suggests blocks (below pool EV), atlas boosts (2×), and investments (1.5×). Marginals show ΔEV
-              vs optimal.
+              Optimize suggests blocks (below pool EV), atlas boosts (2×), and investments (1.5×). Marginals show ΔEV vs
+              optimal.
             </div>
             {sortedCategories.map(({ cat, ev, weight }, i) => {
               const blocked = state.blocked.includes(cat.id)
@@ -551,13 +543,7 @@ function WeightsTab({
                     className={`px-1.5 py-0.5 rounded border bg-black/30 text-text text-right ${
                       pOverride !== undefined ? 'border-amber-400' : 'border-white/10'
                     }`}
-                    value={
-                      pOverride !== undefined
-                        ? pOverride
-                        : market != null
-                          ? Math.round(market * 100) / 100
-                          : ''
-                    }
+                    value={pOverride !== undefined ? pOverride : market != null ? Math.round(market * 100) / 100 : ''}
                     placeholder={market != null ? String(Math.round(market * 100) / 100) : ''}
                     title={market != null ? `Market ${formatChaos(market)}` : 'No market price'}
                     onChange={(e) => {

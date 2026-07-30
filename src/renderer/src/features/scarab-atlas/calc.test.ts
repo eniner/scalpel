@@ -1,9 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  calculateOptimalStrategy,
-  calculatePoolEV,
-  getEffectiveWeight,
-} from './calc'
+import { calculateOptimalStrategy, calculatePoolEV, getEffectiveWeight } from './calc'
 import type { ScarabCalcState, ScarabCatalog } from './types'
 
 const catalog: ScarabCatalog = {
