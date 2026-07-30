@@ -96,9 +96,7 @@ export function TimelessJewels(): JSX.Element {
 
   if (error) {
     return (
-      <div className="flex-1 min-h-0 p-3 text-xs text-red-400">
-        Failed to load Timeless Jewel calculator: {error}
-      </div>
+      <div className="flex-1 min-h-0 p-3 text-xs text-red-400">Failed to load Timeless Jewel calculator: {error}</div>
     )
   }
 
@@ -115,19 +113,13 @@ export function TimelessJewels(): JSX.Element {
       <div className="shrink-0 space-y-1">
         <div className="flex items-center gap-2">
           {jewelIconUrl(state.jewelName) && (
-            <img
-              src={jewelIconUrl(state.jewelName)}
-              alt=""
-              className="w-7 h-7 object-contain"
-              draggable={false}
-            />
+            <img src={jewelIconUrl(state.jewelName)} alt="" className="w-7 h-7 object-contain" draggable={false} />
           )}
           <div className="text-[13px] font-semibold text-text">Timeless Jewels</div>
         </div>
         <p className="text-text-dim leading-snug">
-          Paste a Timeless Jewel, pick a socket on the skill tree, and list all transformed stats in
-          radius (Notables / Smalls). Engine by <span className="text-accent">Vilsol/timeless-jewels</span>{' '}
-          (GPL-3.0).
+          Paste a Timeless Jewel, pick a socket on the skill tree, and list all transformed stats in radius (Notables /
+          Smalls). Engine by <span className="text-accent">Vilsol/timeless-jewels</span> (GPL-3.0).
         </p>
       </div>
 
@@ -155,7 +147,7 @@ export function TimelessJewels(): JSX.Element {
                 ...state,
                 jewelType,
                 jewelName: name,
-                conqueror: nextConquerors.includes(state.conqueror) ? state.conqueror : nextConquerors[0] ?? '',
+                conqueror: nextConquerors.includes(state.conqueror) ? state.conqueror : (nextConquerors[0] ?? ''),
               })
             }}
           >

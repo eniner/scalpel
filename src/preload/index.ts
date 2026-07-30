@@ -261,8 +261,10 @@ export const api = {
       ipcRenderer.send('timeless-tree:set-state', state),
     requestState: (): void => ipcRenderer.send('timeless-tree:request-state'),
     onState: (cb: (state: import('@shared/timeless-tree-state').TimelessTreeState) => void): (() => void) => {
-      const handler = (_: Electron.IpcRendererEvent, next: import('@shared/timeless-tree-state').TimelessTreeState): void =>
-        cb(next)
+      const handler = (
+        _: Electron.IpcRendererEvent,
+        next: import('@shared/timeless-tree-state').TimelessTreeState,
+      ): void => cb(next)
       ipcRenderer.on('timeless-tree:state', handler)
       return () => ipcRenderer.removeListener('timeless-tree:state', handler)
     },

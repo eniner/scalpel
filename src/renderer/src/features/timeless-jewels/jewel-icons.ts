@@ -21,10 +21,7 @@ const JEWEL_TYPE_NAMES: Record<number, string> = {
   6: 'Heroic Tragedy',
 }
 
-export function jewelIconUrl(
-  jewelName: string | undefined | null,
-  jewelType?: number | null,
-): string | undefined {
+export function jewelIconUrl(jewelName: string | undefined | null, jewelType?: number | null): string | undefined {
   if (jewelName && TIMELESS_JEWEL_ICONS[jewelName]) {
     return TIMELESS_JEWEL_ICONS[jewelName]
   }

@@ -55,7 +55,9 @@ export function parseTimelessJewelClipboard(text: string): ParsedTimelessJewel |
 
   // Advanced: "Carved to glorify 5972(2000-10000) new faithful converted by High Templar Dominus(Avarius-Maxarius)"
   for (const line of lines) {
-    const adv = line.match(/(\d+)\(\d+-\d+\).*?\b(?:by (?:High Templar |Victorious |the line of )?)?(\w+)\([^)]+\)\s*$/i)
+    const adv = line.match(
+      /(\d+)\(\d+-\d+\).*?\b(?:by (?:High Templar |Victorious |the line of )?)?(\w+)\([^)]+\)\s*$/i,
+    )
     if (adv) {
       seed = parseInt(adv[1], 10)
       conqueror = adv[2]

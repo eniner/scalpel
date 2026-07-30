@@ -62,9 +62,7 @@ export function TimelessTreeApp(): JSX.Element {
       headerContent={<span className="text-xs text-text">Timeless Jewel Tree</span>}
       headerEnd={
         <div className="flex items-center gap-2" style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}>
-          {iconUrl && (
-            <img src={iconUrl} alt="" className="w-5 h-5 object-contain" draggable={false} />
-          )}
+          {iconUrl && <img src={iconUrl} alt="" className="w-5 h-5 object-contain" draggable={false} />}
           <span className="text-[11px] text-text-dim">
             {state.jewelName} · {state.conqueror} · seed {state.seed}
             {state.socketSkillId != null ? ` · socket ${state.socketSkillId}` : ' · click a socket'}

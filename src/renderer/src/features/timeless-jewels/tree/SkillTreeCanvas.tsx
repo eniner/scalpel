@@ -80,17 +80,7 @@ function drawSprite(
     context.save()
     context.translate(topLeftX, topLeftY)
     context.rotate(Math.PI)
-    context.drawImage(
-      sheet,
-      self.x,
-      self.y,
-      self.w,
-      self.h,
-      -newWidth,
-      -(newHeight / 2),
-      newWidth,
-      -newHeight,
-    )
+    context.drawImage(sheet, self.x, self.y, self.w, self.h, -newWidth, -(newHeight / 2), newWidth, -newHeight)
     context.restore()
   }
 }
@@ -157,12 +147,7 @@ function buildHoverStats(
   if (!node.isJewelSocket && hoveredNodeActive && node.skill && seed && selectedJewel && selectedConqueror) {
     const calculator = requireCalculator()
     const data = requireData()
-    const result = calculator.Calculate(
-      data.TreeToPassive[node.skill].Index,
-      seed,
-      selectedJewel,
-      selectedConqueror,
-    )
+    const result = calculator.Calculate(data.TreeToPassive[node.skill].Index, seed, selectedJewel, selectedConqueror)
 
     if (result) {
       if ('AlternatePassiveSkill' in result && result.AlternatePassiveSkill) {
@@ -335,8 +320,7 @@ function drawTree(
     }
 
     const isPlacedSocket =
-      circledNode !== undefined &&
-      (node.skill === circledNode || parseInt(nodeId, 10) === circledNode)
+      circledNode !== undefined && (node.skill === circledNode || parseInt(nodeId, 10) === circledNode)
 
     if (node.isKeystone) {
       touchDistance = 110
@@ -384,10 +368,7 @@ function drawTree(
       }
     }
 
-    if (
-      (node.skill !== undefined && highlighted.indexOf(node.skill) >= 0) ||
-      (highlightJewels && node.isJewelSocket)
-    ) {
+    if ((node.skill !== undefined && highlighted.indexOf(node.skill) >= 0) || (highlightJewels && node.isJewelSocket)) {
       context.strokeStyle = `hsl(${slowTime}, 100%, 50%)`
       context.lineWidth = 3
       context.beginPath()
@@ -730,10 +711,7 @@ export function SkillTreeCanvas({
   }
 
   return (
-    <div
-      ref={containerRef}
-      style={{ width: '100%', height: '100%', touchAction: 'none', cursor }}
-    >
+    <div ref={containerRef} style={{ width: '100%', height: '100%', touchAction: 'none', cursor }}>
       <canvas
         ref={canvasRef}
         style={{ width: '100%', height: '100%', display: 'block' }}

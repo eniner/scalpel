@@ -1,10 +1,5 @@
 import { requireCalculator, requireData } from './crystalline'
-import {
-  drawnNodes,
-  getAffectedNodes,
-  skillTree,
-  translateStat,
-} from './tree/skill-tree'
+import { drawnNodes, getAffectedNodes, skillTree, translateStat } from './tree/skill-tree'
 import type { TimelessTreeState } from './state'
 
 export type AggregatedStat = {
