@@ -78,6 +78,7 @@ import {
   getCheatSheetsOverlay,
 } from './cheat-sheets'
 import { registerWhiteboardOverlay, toggleWhiteboard } from './whiteboard'
+import { registerTimelessTreeOverlay } from './timeless-tree'
 import { togglePluginOverlay } from './plugin-overlay'
 import { registerPinnedZoneOverlay, applyPinnedZoneEnabled } from './pinned-zone'
 import { getOverlayAnchor, setMainOverlayGetter, setOnLeaveScalpel, subscribeToPoeMoves } from './windowing'
@@ -318,6 +319,7 @@ app.whenReady().then(() => {
     openSettings: 'setup',
     openDust: 'dust',
     openDivCards: 'divcards',
+    openTimeless: 'timeless',
     openRegex: 'regex',
   }
   const pasteRegexToSearch = (regex: string): void => {
@@ -463,6 +465,7 @@ app.whenReady().then(() => {
   setCheatSheetsBeforeShow(() => hideOverlay())
   applyCheatSheetHotkeys(getProfileBackedSetting(store, 'cheatSheets'))
   registerWhiteboardOverlay()
+  registerTimelessTreeOverlay()
   registerRegexRemoteOverlay({
     onAnchorChanged: (anchor) => {
       getRegexRemoteOverlay()?.send('regex-remote:mount-changed', regexRemoteFlushLeft(anchor))
