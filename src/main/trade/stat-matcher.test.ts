@@ -3016,6 +3016,56 @@ describe('matchItemMods', () => {
     })
   })
 
+  describe('minion resistance excluded from resistance pseudo', () => {
+    // Bone Ring / minion gear: "Minions have +#% to all Elemental Resistances"
+    // must not create a player Total Ele Res chip ((15+22)×3 = 111 false positive).
+    it('minion all-ele-res does not feed Total Elemental Resistance', () => {
+      _setStatEntriesForTests([
+        {
+          id: 'implicit.stat_minion_allres',
+          text: 'Minions have #% to all Elemental Resistances',
+          type: 'implicit',
+        },
+        {
+          id: 'explicit.stat_minion_allres',
+          text: 'Minions have #% to all Elemental Resistances',
+          type: 'explicit',
+        },
+        { id: 'explicit.stat_4220027924', text: '#% to Cold Resistance', type: 'explicit' },
+      ])
+      const filters = matchItemMods(
+        ['Minions have +22% to all Elemental Resistances', '+30% to Cold Resistance'],
+        ['Minions have +15% to all Elemental Resistances'],
+        undefined,
+        makeItemInfo({ rarity: 'Rare', itemClass: 'Rings', baseType: 'Bone Ring' }),
+      )
+      const pseudo = filters.find((f) => f.id === 'pseudo.pseudo_total_elemental_resistance')
+      expect(pseudo?.value).toBe(30)
+    })
+
+    it('Bone Ring with only minion resists emits no Total Elemental Resistance chip', () => {
+      _setStatEntriesForTests([
+        {
+          id: 'implicit.stat_minion_allres',
+          text: 'Minions have #% to all Elemental Resistances',
+          type: 'implicit',
+        },
+        {
+          id: 'explicit.stat_minion_allres',
+          text: 'Minions have #% to all Elemental Resistances',
+          type: 'explicit',
+        },
+      ])
+      const filters = matchItemMods(
+        ['Minions have +22% to all Elemental Resistances'],
+        ['Minions have +15% to all Elemental Resistances'],
+        undefined,
+        makeItemInfo({ rarity: 'Rare', itemClass: 'Rings', baseType: 'Bone Ring' }),
+      )
+      expect(filters.find((f) => f.id === 'pseudo.pseudo_total_elemental_resistance')).toBeUndefined()
+    })
+  })
+
   describe('fractured chip', () => {
     it('generates fractured chip for equipment in "any" state when no fractured mods', () => {
       const filters = matchItemMods(
