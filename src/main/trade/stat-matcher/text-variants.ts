@@ -113,6 +113,9 @@ function generateTextVariants(text: string): string[] {
     // Trade API stores the singular "Has # Charm Slot" / "# Charm Slot"; an item
     // with 2+ slots reads "Charm Slots", so without this it never matches.
     [/Charm Slots/gi, 'Charm Slot'],
+    // Inverse of Sockets->Socket below: trade stores "Has # Abyssal Sockets" (always
+    // plural) while a single-socket Stygian Vise clipboard reads "Has 1 Abyssal Socket".
+    [/Abyssal Socket(?!s)\b/gi, 'Abyssal Sockets'],
     // Tablet implicits ("Adds Abysses to a Map \n# use remaining") are stored
     // singular by the trade API, but a multi-use tablet's clipboard reads
     // "10 uses remaining" -- without this the plural form never matches and the

@@ -362,6 +362,30 @@ describe('matchItemMods', () => {
       expect(abyssChip).toBeDefined()
       expect(abyssChip?.value).toBe(1)
     })
+
+    it('Stygian Vise: keeps Abyssal Sockets chip and does not emit Has 1 Socket', () => {
+      // Clipboard singular "Has 1 Abyssal Socket" must not resolve to trade
+      // "Has 1 Socket" (stat_4077843608) — that id is for other bases and zeros
+      // Stygian Vise searches. Socket producer owns the abyss chip.
+      _setStatEntriesForTests([
+        { id: 'implicit.stat_4077843608', text: 'Has 1 Socket', type: 'implicit' },
+        { id: 'implicit.stat_3527617737', text: 'Has # Abyssal Sockets', type: 'implicit' },
+      ])
+      const filters = matchItemMods([], ['Has 1 Abyssal Socket'], undefined, {
+        ...makeItemInfo({
+          sockets: 'A',
+          linkedSockets: 0,
+          itemClass: 'Belts',
+          baseType: 'Stygian Vise',
+          rarity: 'Rare',
+        }),
+      })
+      expect(filters.filter((f) => f.id === 'implicit.stat_4077843608')).toHaveLength(0)
+      const abyss = filters.filter((f) => f.id === 'implicit.stat_3527617737')
+      expect(abyss).toHaveLength(1)
+      expect(abyss[0]?.value).toBe(1)
+      expect(abyss[0]?.text).toBe('Abyssal Sockets')
+    })
   })
 
   describe('misc filters', () => {
@@ -1749,6 +1773,26 @@ describe('matchItemMods', () => {
       )
       const res = filters.find((f) => f.id === 'implicit.stat_3372524247')
       expect(res?.value).toBe(12)
+    })
+  })
+
+  describe('abyssal sockets (singular clipboard vs plural trade text)', () => {
+    // PoE1 trade stores "Has # Abyssal Sockets"; Stygian Vise clipboard prints
+    // "Has 1 Abyssal Socket". Without a singular->plural variant the match used to
+    // fall through to relaxed "Has 1 Socket" and break Stygian searches.
+    it('matches Has 1 Abyssal Socket to Has # Abyssal Sockets, not Has 1 Socket', () => {
+      _setStatEntriesForTests([
+        { id: 'implicit.stat_4077843608', text: 'Has 1 Socket', type: 'implicit' },
+        { id: 'implicit.stat_3527617737', text: 'Has # Abyssal Sockets', type: 'implicit' },
+      ])
+      const result = matchModToStat('Has 1 Abyssal Socket', false, 'implicit')
+      expect(result?.statId).toBe('implicit.stat_3527617737')
+      expect(result?.value).toBe(1)
+    })
+
+    it('relaxed Has 1 Socket does not swallow Has 1 Abyssal Socket', () => {
+      _setStatEntriesForTests([{ id: 'implicit.stat_4077843608', text: 'Has 1 Socket', type: 'implicit' }])
+      expect(matchModToStat('Has 1 Abyssal Socket', false, 'implicit')).toBeNull()
     })
   })
 

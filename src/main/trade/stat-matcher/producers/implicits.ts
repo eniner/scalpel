@@ -17,6 +17,12 @@ export function processImplicits(ctx: MatchContext): StatFilter[] {
 
   for (const mod of implicits) {
     let cleaned = mod.replace(/\s*\(implicit\)\s*$/i, '').trim()
+    // Stygian Vise / abyss belts: clipboard prints "Has 1 Abyssal Socket" but the trade
+    // API indexes "Has # Abyssal Sockets". buildSocketFilters already emits the correct
+    // chip from the socket string (A). Matching this line here used to fall through to
+    // relaxed "Has 1 Socket" (implicit.stat_4077843608), which is incompatible with
+    // Stygian Vise and zeroes the search.
+    if (/^Has \d+ Abyssal Sockets?$/i.test(cleaned)) continue
     // Try implicit stats first, then fall back to explicit (non-local, then local) and remap the ID
     const matched =
       matchModToStat(cleaned, false, 'implicit', false, preferQualifier) ??
