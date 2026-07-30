@@ -708,9 +708,9 @@ export async function searchTrade(
     status: { option: isDivCard ? 'available' : tradeStatus },
   }
 
-  // Unid items have hidden mods, so any explicit/implicit/fractured/crafted/pseudo
-  // filter would never match -- the stat-filter loop below drops those when the
-  // unid chip is on. Computed up here too because an unidentified unique must skip
+  // Unid items hide rolled explicits, so the stat-filter loop below drops those
+  // when the unid chip is on (implicits/enchants/runes that stay visible still
+  // flow through). Computed up here too because an unidentified unique must skip
   // the name search (see the Unique branch).
   const unidEnabled = statFilters.some((f) => f.id === 'misc.identified' && f.enabled)
 
@@ -1079,11 +1079,14 @@ export async function searchTrade(
     'pseudo.pseudo_map_more_map_drops',
     'pseudo.pseudo_map_more_card_drops',
   ])
-  // Unid items have hidden mods, so any explicit/implicit/fractured/crafted/pseudo
-  // filter would never match -- drop those when the unid chip is on. Enchants
-  // and imbues survive identification (cluster jewel passive count etc.), so
-  // those keep flowing through. `unidEnabled` is computed once near the top.
-  const survivesUnid = (f: StatFilter): boolean => f.type === 'enchant' || f.type === 'imbued' || f.type === 'rune'
+  // Unid items hide rolled explicits/crafted/pseudos, so those must not enter the
+  // query when the unid chip is on. Mods that remain visible on unid items still
+  // match trade listings: enchants/imbues/runes, and implicits — including every
+  // map-category implicit (Elder/Shaper influence, guardian "occupied by …", and
+  // Conqueror citadel lines like Al-Hezmin/Baran/Veritania/Drox).
+  // `unidEnabled` is computed once near the top.
+  const survivesUnid = (f: StatFilter): boolean =>
+    f.type === 'enchant' || f.type === 'imbued' || f.type === 'rune' || f.type === 'implicit'
   const enabledFilters = statFilters.filter(
     (f) =>
       f.enabled &&
