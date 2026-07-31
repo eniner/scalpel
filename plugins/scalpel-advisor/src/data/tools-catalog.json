@@ -1,0 +1,68 @@
+[
+  {
+    "id": "gem-leveling",
+    "title": "Gem Leveling",
+    "actions": ["Leveling Advisor"],
+    "status": "ready"
+  },
+  {
+    "id": "gem-transfig",
+    "title": "Gem Transfig",
+    "actions": ["Transfig EV"],
+    "status": "ready"
+  },
+  {
+    "id": "beasts",
+    "title": "Beasts",
+    "actions": ["Farming EV"],
+    "status": "ready"
+  },
+  {
+    "id": "scarab-atlas",
+    "title": "Scarab Atlas",
+    "actions": ["Farming EV", "Vendor Guide"],
+    "status": "ready"
+  },
+  {
+    "id": "essences",
+    "title": "Essences",
+    "actions": ["Farming EV"],
+    "status": "ready"
+  },
+  {
+    "id": "harvest",
+    "title": "Harvest",
+    "actions": ["Farming EV", "Crop Rotation"],
+    "status": "ready"
+  },
+  {
+    "id": "currency-trends",
+    "title": "Currency Trends",
+    "actions": ["Price & Volume"],
+    "status": "ready"
+  },
+  {
+    "id": "boss-profit",
+    "title": "Boss Profitability",
+    "actions": ["Calculator"],
+    "status": "ready"
+  },
+  {
+    "id": "nightmare",
+    "title": "Nightmare Boss Rush",
+    "actions": ["Calculator"],
+    "status": "ready"
+  },
+  {
+    "id": "betrayal",
+    "title": "Betrayal EV",
+    "actions": ["Calculator"],
+    "status": "ready"
+  },
+  {
+    "id": "scrying",
+    "title": "Scrying Orb",
+    "actions": ["Market"],
+    "status": "ready"
+  }
+]

@@ -1,0 +1,3598 @@
+{
+  "baseToVaal": {
+    "Absolution": "Vaal Absolution",
+    "Absolution of Inspiring": "Vaal Absolution (Absolution of Inspiring)",
+    "Ancestral Warchief": "Vaal Ancestral Warchief",
+    "Animate Weapon": "Vaal Animate Weapon",
+    "Animate Weapon of Ranged Arms": "Vaal Animate Weapon (Animate Weapon of Ranged Arms)",
+    "Animate Weapon of Self Reflection": "Vaal Animate Weapon (Animate Weapon of Self Reflection)",
+    "Arc": "Vaal Arc",
+    "Arc of Oscillating": "Vaal Arc (Arc of Oscillating)",
+    "Arc of Surging": "Vaal Arc (Arc of Surging)",
+    "Arctic Armour": "Vaal Arctic Armour",
+    "Blade Flurry": "Vaal Blade Flurry",
+    "Blade Flurry of Incision": "Vaal Blade Flurry (Blade Flurry of Incision)",
+    "Blade Vortex": "Vaal Blade Vortex",
+    "Blade Vortex of the Scythe": "Vaal Blade Vortex (Blade Vortex of the Scythe)",
+    "Blight": "Vaal Blight",
+    "Blight of Atrophy": "Vaal Blight (Blight of Atrophy)",
+    "Blight of Contagion": "Vaal Blight (Blight of Contagion)",
+    "Breach": "Vaal Breach",
+    "Burning Arrow": "Vaal Burning Arrow",
+    "Burning Arrow of Vigour": "Vaal Burning Arrow (Burning Arrow of Vigour)",
+    "Caustic Arrow": "Vaal Caustic Arrow",
+    "Caustic Arrow of Poison": "Vaal Caustic Arrow (Caustic Arrow of Poison)",
+    "Clarity": "Vaal Clarity",
+    "Cleave": "Vaal Cleave",
+    "Cleave of Rage": "Vaal Cleave (Cleave of Rage)",
+    "Cold Snap": "Vaal Cold Snap",
+    "Cold Snap of Power": "Vaal Cold Snap (Cold Snap of Power)",
+    "Cyclone": "Vaal Cyclone",
+    "Cyclone of Tumult": "Vaal Cyclone (Cyclone of Tumult)",
+    "Detonate Dead": "Vaal Detonate Dead",
+    "Detonate Dead of Chain Reaction": "Vaal Detonate Dead (Detonate Dead of Chain Reaction)",
+    "Detonate Dead of Scavenging": "Vaal Detonate Dead (Detonate Dead of Scavenging)",
+    "Discipline": "Vaal Discipline",
+    "Dominating Blow of Inspiring": "Vaal Domination (Dominating Blow of Inspiring)",
+    "Domination": "Vaal Domination",
+    "Double Strike": "Vaal Double Strike",
+    "Double Strike of Impaling": "Vaal Double Strike (Double Strike of Impaling)",
+    "Double Strike of Momentum": "Vaal Double Strike (Double Strike of Momentum)",
+    "Earthquake": "Vaal Earthquake",
+    "Earthquake of Amplification": "Vaal Earthquake (Earthquake of Amplification)",
+    "Fireball": "Vaal Fireball",
+    "Firestorm": "Vaal Firestorm",
+    "Firestorm of Meteors": "Vaal Firestorm (Firestorm of Meteors)",
+    "Firestorm of Pelting": "Vaal Firestorm (Firestorm of Pelting)",
+    "Flameblast": "Vaal Flameblast",
+    "Flameblast of Celerity": "Vaal Flameblast (Flameblast of Celerity)",
+    "Flameblast of Contraction": "Vaal Flameblast (Flameblast of Contraction)",
+    "Flicker Strike": "Vaal Flicker Strike",
+    "Flicker Strike of Power": "Vaal Flicker Strike (Flicker Strike of Power)",
+    "Glacial Hammer": "Vaal Glacial Hammer",
+    "Glacial Hammer of Shattering": "Vaal Glacial Hammer (Glacial Hammer of Shattering)",
+    "Grace": "Vaal Grace",
+    "Ground Slam": "Vaal Ground Slam",
+    "Ground Slam of Earthshaking": "Vaal Ground Slam (Ground Slam of Earthshaking)",
+    "Haste": "Vaal Haste",
+    "Ice Nova": "Vaal Ice Nova",
+    "Ice Nova of Deep Freeze": "Vaal Ice Nova (Ice Nova of Deep Freeze)",
+    "Ice Nova of Frostbolts": "Vaal Ice Nova (Ice Nova of Frostbolts)",
+    "Ice Shot": "Vaal Ice Shot",
+    "Ice Shot of Penetration": "Vaal Ice Shot (Ice Shot of Penetration)",
+    "Immortal Call": "Vaal Immortal Call",
+    "Impurity of Fire": "Vaal Impurity of Fire",
+    "Impurity of Ice": "Vaal Impurity of Ice",
+    "Impurity of Lightning": "Vaal Impurity of Lightning",
+    "Lightning Arrow": "Vaal Lightning Arrow",
+    "Lightning Arrow of Electrocution": "Vaal Lightning Arrow (Lightning Arrow of Electrocution)",
+    "Lightning Strike": "Vaal Lightning Strike",
+    "Lightning Strike of Arcing": "Vaal Lightning Strike (Lightning Strike of Arcing)",
+    "Lightning Trap": "Vaal Lightning Trap",
+    "Lightning Trap of Sparking": "Vaal Lightning Trap (Lightning Trap of Sparking)",
+    "Lightning Warp": "Vaal Lightning Warp",
+    "Molten Shell": "Vaal Molten Shell",
+    "Molten Strike": "Vaal Molten Strike",
+    "Molten Strike of the Zenith": "Vaal Molten Strike (Molten Strike of the Zenith)",
+    "Power Siphon": "Vaal Power Siphon",
+    "Power Siphon of the Archmage": "Vaal Power Siphon (Power Siphon of the Archmage)",
+    "Rain of Arrows": "Vaal Rain of Arrows",
+    "Rain of Arrows of Artillery": "Vaal Rain of Arrows (Rain of Arrows of Artillery)",
+    "Rain of Arrows of Saturation": "Vaal Rain of Arrows (Rain of Arrows of Saturation)",
+    "Reap": "Vaal Reap",
+    "Reap of Butchery": "Vaal Reap (Reap of Butchery)",
+    "Reave": "Vaal Reave",
+    "Reave of Refraction": "Vaal Reave (Reave of Refraction)",
+    "Rejuvenation Totem": "Vaal Rejuvenation Totem",
+    "Righteous Fire": "Vaal Righteous Fire",
+    "Righteous Fire of Arcane Devotion": "Vaal Righteous Fire (Righteous Fire of Arcane Devotion)",
+    "Sacrifice Support": "Vaal Sacrifice Support",
+    "Smite": "Vaal Smite",
+    "Smite of Divine Judgement": "Vaal Smite (Smite of Divine Judgement)",
+    "Spark": "Vaal Spark",
+    "Spark of Unpredictability": "Vaal Spark (Spark of Unpredictability)",
+    "Spark of the Nova": "Vaal Spark (Spark of the Nova)",
+    "Spectral Throw": "Vaal Spectral Throw",
+    "Spectral Throw of Materialising": "Vaal Spectral Throw (Spectral Throw of Materialising)",
+    "Spectral Throw of Trarthus": "Vaal Spectral Throw (Spectral Throw of Trarthus)",
+    "Storm Call": "Vaal Storm Call",
+    "Storm Call of Trarthus": "Vaal Storm Call (Storm Call of Trarthus)",
+    "Summon Skeletons": "Vaal Summon Skeletons",
+    "Summon Skeletons of Archers": "Vaal Summon Skeletons (Summon Skeletons of Archers)",
+    "Summon Skeletons of Mages": "Vaal Summon Skeletons (Summon Skeletons of Mages)",
+    "Temptation Support": "Vaal Temptation Support",
+    "Venom Gyre": "Vaal Venom Gyre",
+    "Volcanic Fissure": "Vaal Volcanic Fissure",
+    "Volcanic Fissure of Snaking": "Vaal Volcanic Fissure (Volcanic Fissure of Snaking)"
+  },
+  "trade": {
+    "Absolution": {
+      "disc": null,
+      "type": "Absolution"
+    },
+    "Absolution of Inspiring": {
+      "disc": "alt_x",
+      "type": "Absolution"
+    },
+    "Added Chaos Damage Support": {
+      "disc": null,
+      "type": "Added Chaos Damage Support"
+    },
+    "Added Cold Damage Support": {
+      "disc": null,
+      "type": "Added Cold Damage Support"
+    },
+    "Added Fire Damage Support": {
+      "disc": null,
+      "type": "Added Fire Damage Support"
+    },
+    "Added Lightning Damage Support": {
+      "disc": null,
+      "type": "Added Lightning Damage Support"
+    },
+    "Additional Accuracy Support": {
+      "disc": null,
+      "type": "Additional Accuracy Support"
+    },
+    "Advanced Traps Support": {
+      "disc": null,
+      "type": "Advanced Traps Support"
+    },
+    "Alchemist's Mark": {
+      "disc": null,
+      "type": "Alchemist's Mark"
+    },
+    "Ambush": {
+      "disc": null,
+      "type": "Ambush"
+    },
+    "Ancestral Call Support": {
+      "disc": null,
+      "type": "Ancestral Call Support"
+    },
+    "Ancestral Cry": {
+      "disc": null,
+      "type": "Ancestral Cry"
+    },
+    "Ancestral Protector": {
+      "disc": null,
+      "type": "Ancestral Protector"
+    },
+    "Ancestral Warchief": {
+      "disc": null,
+      "type": "Ancestral Warchief"
+    },
+    "Anger": {
+      "disc": null,
+      "type": "Anger"
+    },
+    "Animate Guardian": {
+      "disc": null,
+      "type": "Animate Guardian"
+    },
+    "Animate Guardian of Smiting": {
+      "disc": "alt_x",
+      "type": "Animate Guardian"
+    },
+    "Animate Weapon": {
+      "disc": null,
+      "type": "Animate Weapon"
+    },
+    "Animate Weapon of Ranged Arms": {
+      "disc": "alt_y",
+      "type": "Animate Weapon"
+    },
+    "Animate Weapon of Self Reflection": {
+      "disc": "alt_x",
+      "type": "Animate Weapon"
+    },
+    "Annihilation Support": {
+      "disc": null,
+      "type": "Annihilation Support"
+    },
+    "Arc": {
+      "disc": null,
+      "type": "Arc"
+    },
+    "Arc of Oscillating": {
+      "disc": "alt_y",
+      "type": "Arc"
+    },
+    "Arc of Surging": {
+      "disc": "alt_x",
+      "type": "Arc"
+    },
+    "Arcane Cloak": {
+      "disc": null,
+      "type": "Arcane Cloak"
+    },
+    "Arcane Surge Support": {
+      "disc": null,
+      "type": "Arcane Surge Support"
+    },
+    "Arcanist Brand": {
+      "disc": null,
+      "type": "Arcanist Brand"
+    },
+    "Archmage Support": {
+      "disc": null,
+      "type": "Archmage Support"
+    },
+    "Arctic Armour": {
+      "disc": null,
+      "type": "Arctic Armour"
+    },
+    "Armageddon Brand": {
+      "disc": null,
+      "type": "Armageddon Brand"
+    },
+    "Armageddon Brand of Recall": {
+      "disc": "alt_y",
+      "type": "Armageddon Brand"
+    },
+    "Armageddon Brand of Volatility": {
+      "disc": "alt_x",
+      "type": "Armageddon Brand"
+    },
+    "Arrogance Support": {
+      "disc": null,
+      "type": "Arrogance Support"
+    },
+    "Arrow Nova Support": {
+      "disc": null,
+      "type": "Arrow Nova Support"
+    },
+    "Artillery Ballista": {
+      "disc": null,
+      "type": "Artillery Ballista"
+    },
+    "Artillery Ballista of Cross Strafe": {
+      "disc": "alt_x",
+      "type": "Artillery Ballista"
+    },
+    "Artillery Ballista of Focus Fire": {
+      "disc": "alt_y",
+      "type": "Artillery Ballista"
+    },
+    "Assassin's Mark": {
+      "disc": null,
+      "type": "Assassin's Mark"
+    },
+    "Autoexertion": {
+      "disc": null,
+      "type": "Autoexertion"
+    },
+    "Automation": {
+      "disc": null,
+      "type": "Automation"
+    },
+    "Awakened Added Chaos Damage Support": {
+      "disc": null,
+      "type": "Awakened Added Chaos Damage Support"
+    },
+    "Awakened Added Cold Damage Support": {
+      "disc": null,
+      "type": "Awakened Added Cold Damage Support"
+    },
+    "Awakened Added Fire Damage Support": {
+      "disc": null,
+      "type": "Awakened Added Fire Damage Support"
+    },
+    "Awakened Added Lightning Damage Support": {
+      "disc": null,
+      "type": "Awakened Added Lightning Damage Support"
+    },
+    "Awakened Ancestral Call Support": {
+      "disc": null,
+      "type": "Awakened Ancestral Call Support"
+    },
+    "Awakened Arrow Nova Support": {
+      "disc": null,
+      "type": "Awakened Arrow Nova Support"
+    },
+    "Awakened Blasphemy Support": {
+      "disc": null,
+      "type": "Awakened Blasphemy Support"
+    },
+    "Awakened Brutality Support": {
+      "disc": null,
+      "type": "Awakened Brutality Support"
+    },
+    "Awakened Burning Damage Support": {
+      "disc": null,
+      "type": "Awakened Burning Damage Support"
+    },
+    "Awakened Cast On Critical Strike Support": {
+      "disc": null,
+      "type": "Awakened Cast On Critical Strike Support"
+    },
+    "Awakened Cast While Channelling Support": {
+      "disc": null,
+      "type": "Awakened Cast While Channelling Support"
+    },
+    "Awakened Chain Support": {
+      "disc": null,
+      "type": "Awakened Chain Support"
+    },
+    "Awakened Cold Penetration Support": {
+      "disc": null,
+      "type": "Awakened Cold Penetration Support"
+    },
+    "Awakened Controlled Destruction Support": {
+      "disc": null,
+      "type": "Awakened Controlled Destruction Support"
+    },
+    "Awakened Deadly Ailments Support": {
+      "disc": null,
+      "type": "Awakened Deadly Ailments Support"
+    },
+    "Awakened Elemental Damage with Attacks Support": {
+      "disc": null,
+      "type": "Awakened Elemental Damage with Attacks Support"
+    },
+    "Awakened Elemental Focus Support": {
+      "disc": null,
+      "type": "Awakened Elemental Focus Support"
+    },
+    "Awakened Empower Support": {
+      "disc": null,
+      "type": "Awakened Empower Support"
+    },
+    "Awakened Enhance Support": {
+      "disc": null,
+      "type": "Awakened Enhance Support"
+    },
+    "Awakened Enlighten Support": {
+      "disc": null,
+      "type": "Awakened Enlighten Support"
+    },
+    "Awakened Fire Penetration Support": {
+      "disc": null,
+      "type": "Awakened Fire Penetration Support"
+    },
+    "Awakened Fork Support": {
+      "disc": null,
+      "type": "Awakened Fork Support"
+    },
+    "Awakened Generosity Support": {
+      "disc": null,
+      "type": "Awakened Generosity Support"
+    },
+    "Awakened Greater Multiple Projectiles Support": {
+      "disc": null,
+      "type": "Awakened Greater Multiple Projectiles Support"
+    },
+    "Awakened Hextouch Support": {
+      "disc": null,
+      "type": "Awakened Hextouch Support"
+    },
+    "Awakened Increased Area of Effect Support": {
+      "disc": null,
+      "type": "Awakened Increased Area of Effect Support"
+    },
+    "Awakened Lightning Penetration Support": {
+      "disc": null,
+      "type": "Awakened Lightning Penetration Support"
+    },
+    "Awakened Melee Physical Damage Support": {
+      "disc": null,
+      "type": "Awakened Melee Physical Damage Support"
+    },
+    "Awakened Melee Splash Support": {
+      "disc": null,
+      "type": "Awakened Melee Splash Support"
+    },
+    "Awakened Minion Damage Support": {
+      "disc": null,
+      "type": "Awakened Minion Damage Support"
+    },
+    "Awakened Multistrike Support": {
+      "disc": null,
+      "type": "Awakened Multistrike Support"
+    },
+    "Awakened Spell Cascade Support": {
+      "disc": null,
+      "type": "Awakened Spell Cascade Support"
+    },
+    "Awakened Spell Echo Support": {
+      "disc": null,
+      "type": "Awakened Spell Echo Support"
+    },
+    "Awakened Swift Affliction Support": {
+      "disc": null,
+      "type": "Awakened Swift Affliction Support"
+    },
+    "Awakened Unbound Ailments Support": {
+      "disc": null,
+      "type": "Awakened Unbound Ailments Support"
+    },
+    "Awakened Unleash Support": {
+      "disc": null,
+      "type": "Awakened Unleash Support"
+    },
+    "Awakened Vicious Projectiles Support": {
+      "disc": null,
+      "type": "Awakened Vicious Projectiles Support"
+    },
+    "Awakened Void Manipulation Support": {
+      "disc": null,
+      "type": "Awakened Void Manipulation Support"
+    },
+    "Ball Lightning": {
+      "disc": null,
+      "type": "Ball Lightning"
+    },
+    "Ball Lightning of Orbiting": {
+      "disc": "alt_x",
+      "type": "Ball Lightning"
+    },
+    "Ball Lightning of Static": {
+      "disc": "alt_y",
+      "type": "Ball Lightning"
+    },
+    "Ballista Totem Support": {
+      "disc": null,
+      "type": "Ballista Totem Support"
+    },
+    "Bane": {
+      "disc": null,
+      "type": "Bane"
+    },
+    "Bane of Condemnation": {
+      "disc": "alt_x",
+      "type": "Bane"
+    },
+    "Barrage": {
+      "disc": null,
+      "type": "Barrage"
+    },
+    "Barrage Support": {
+      "disc": null,
+      "type": "Barrage Support"
+    },
+    "Barrage of Volley Fire": {
+      "disc": "alt_x",
+      "type": "Barrage"
+    },
+    "Battlemage's Cry": {
+      "disc": null,
+      "type": "Battlemage's Cry"
+    },
+    "Bear Trap": {
+      "disc": null,
+      "type": "Bear Trap"
+    },
+    "Bear Trap of Skewers": {
+      "disc": "alt_x",
+      "type": "Bear Trap"
+    },
+    "Behead Support": {
+      "disc": null,
+      "type": "Behead Support"
+    },
+    "Berserk": {
+      "disc": null,
+      "type": "Berserk"
+    },
+    "Blade Blast": {
+      "disc": null,
+      "type": "Blade Blast"
+    },
+    "Blade Blast of Dagger Detonation": {
+      "disc": "alt_y",
+      "type": "Blade Blast"
+    },
+    "Blade Blast of Unloading": {
+      "disc": "alt_x",
+      "type": "Blade Blast"
+    },
+    "Blade Flurry": {
+      "disc": null,
+      "type": "Blade Flurry"
+    },
+    "Blade Flurry of Incision": {
+      "disc": "alt_x",
+      "type": "Blade Flurry"
+    },
+    "Blade Trap": {
+      "disc": null,
+      "type": "Blade Trap"
+    },
+    "Blade Trap of Greatswords": {
+      "disc": "alt_x",
+      "type": "Blade Trap"
+    },
+    "Blade Trap of Laceration": {
+      "disc": "alt_y",
+      "type": "Blade Trap"
+    },
+    "Blade Vortex": {
+      "disc": null,
+      "type": "Blade Vortex"
+    },
+    "Blade Vortex of the Scythe": {
+      "disc": "alt_x",
+      "type": "Blade Vortex"
+    },
+    "Bladefall": {
+      "disc": null,
+      "type": "Bladefall"
+    },
+    "Bladefall of Impaling": {
+      "disc": "alt_y",
+      "type": "Bladefall"
+    },
+    "Bladefall of Trarthus": {
+      "disc": "alt_z",
+      "type": "Bladefall"
+    },
+    "Bladefall of Volleys": {
+      "disc": "alt_x",
+      "type": "Bladefall"
+    },
+    "Bladestorm": {
+      "disc": null,
+      "type": "Bladestorm"
+    },
+    "Bladestorm of Uncertainty": {
+      "disc": "alt_x",
+      "type": "Bladestorm"
+    },
+    "Blasphemy Support": {
+      "disc": null,
+      "type": "Blasphemy Support"
+    },
+    "Blast Rain": {
+      "disc": null,
+      "type": "Blast Rain"
+    },
+    "Blast Rain of Trarthus": {
+      "disc": "alt_x",
+      "type": "Blast Rain"
+    },
+    "Blastchain Mine Support": {
+      "disc": null,
+      "type": "Blastchain Mine Support"
+    },
+    "Blazing Salvo": {
+      "disc": null,
+      "type": "Blazing Salvo"
+    },
+    "Blessed Call Support": {
+      "disc": null,
+      "type": "Blessed Call Support"
+    },
+    "Blight": {
+      "disc": null,
+      "type": "Blight"
+    },
+    "Blight of Atrophy": {
+      "disc": "alt_y",
+      "type": "Blight"
+    },
+    "Blight of Contagion": {
+      "disc": "alt_x",
+      "type": "Blight"
+    },
+    "Blind Support": {
+      "disc": null,
+      "type": "Blind Support"
+    },
+    "Blink Arrow": {
+      "disc": null,
+      "type": "Blink Arrow"
+    },
+    "Blink Arrow of Bombarding Clones": {
+      "disc": "alt_x",
+      "type": "Blink Arrow"
+    },
+    "Blink Arrow of Prismatic Clones": {
+      "disc": "alt_y",
+      "type": "Blink Arrow"
+    },
+    "Block Chance Reduction Support": {
+      "disc": null,
+      "type": "Block Chance Reduction Support"
+    },
+    "Blood Rage": {
+      "disc": null,
+      "type": "Blood Rage"
+    },
+    "Blood and Sand": {
+      "disc": null,
+      "type": "Blood and Sand"
+    },
+    "Bloodlust Support": {
+      "disc": null,
+      "type": "Bloodlust Support"
+    },
+    "Bloodsoaked Banner Support": {
+      "disc": null,
+      "type": "Bloodsoaked Banner Support"
+    },
+    "Bloodthirst Support": {
+      "disc": null,
+      "type": "Bloodthirst Support"
+    },
+    "Bodyswap": {
+      "disc": null,
+      "type": "Bodyswap"
+    },
+    "Bodyswap of Sacrifice": {
+      "disc": "alt_x",
+      "type": "Bodyswap"
+    },
+    "Bone Offering": {
+      "disc": null,
+      "type": "Bone Offering"
+    },
+    "Bonechill Support": {
+      "disc": null,
+      "type": "Bonechill Support"
+    },
+    "Boneshatter": {
+      "disc": null,
+      "type": "Boneshatter"
+    },
+    "Boneshatter of Carnage": {
+      "disc": "alt_y",
+      "type": "Boneshatter"
+    },
+    "Boneshatter of Complex Trauma": {
+      "disc": "alt_x",
+      "type": "Boneshatter"
+    },
+    "Bonespire Support": {
+      "disc": null,
+      "type": "Bonespire Support"
+    },
+    "Brand Recall": {
+      "disc": null,
+      "type": "Brand Recall"
+    },
+    "Brutality Support": {
+      "disc": null,
+      "type": "Brutality Support"
+    },
+    "Burning Arrow": {
+      "disc": null,
+      "type": "Burning Arrow"
+    },
+    "Burning Arrow of Vigour": {
+      "disc": "alt_x",
+      "type": "Burning Arrow"
+    },
+    "Burning Damage Support": {
+      "disc": null,
+      "type": "Burning Damage Support"
+    },
+    "Cast On Critical Strike Support": {
+      "disc": null,
+      "type": "Cast On Critical Strike Support"
+    },
+    "Cast on Death Support": {
+      "disc": null,
+      "type": "Cast on Death Support"
+    },
+    "Cast on Melee Kill Support": {
+      "disc": null,
+      "type": "Cast on Melee Kill Support"
+    },
+    "Cast on Ward Break Support": {
+      "disc": null,
+      "type": "Cast on Ward Break Support"
+    },
+    "Cast when Damage Taken Support": {
+      "disc": null,
+      "type": "Cast when Damage Taken Support"
+    },
+    "Cast when Stunned Support": {
+      "disc": null,
+      "type": "Cast when Stunned Support"
+    },
+    "Cast while Channelling Support": {
+      "disc": null,
+      "type": "Cast while Channelling Support"
+    },
+    "Caustic Arrow": {
+      "disc": null,
+      "type": "Caustic Arrow"
+    },
+    "Caustic Arrow of Poison": {
+      "disc": "alt_x",
+      "type": "Caustic Arrow"
+    },
+    "Chain Hook": {
+      "disc": null,
+      "type": "Chain Hook"
+    },
+    "Chain Hook of Angling": {
+      "disc": "alt_x",
+      "type": "Chain Hook"
+    },
+    "Chain Hook of Trarthus": {
+      "disc": "alt_y",
+      "type": "Chain Hook"
+    },
+    "Chain Support": {
+      "disc": null,
+      "type": "Chain Support"
+    },
+    "Chance to Bleed Support": {
+      "disc": null,
+      "type": "Chance to Bleed Support"
+    },
+    "Chance to Flee Support": {
+      "disc": null,
+      "type": "Chance to Flee Support"
+    },
+    "Chance to Poison Support": {
+      "disc": null,
+      "type": "Chance to Poison Support"
+    },
+    "Charged Dash": {
+      "disc": null,
+      "type": "Charged Dash"
+    },
+    "Charged Dash of Projection": {
+      "disc": "alt_x",
+      "type": "Charged Dash"
+    },
+    "Charged Mines Support": {
+      "disc": null,
+      "type": "Charged Mines Support"
+    },
+    "Charged Traps Support": {
+      "disc": null,
+      "type": "Charged Traps Support"
+    },
+    "Clarity": {
+      "disc": null,
+      "type": "Clarity"
+    },
+    "Cleave": {
+      "disc": null,
+      "type": "Cleave"
+    },
+    "Cleave of Rage": {
+      "disc": "alt_x",
+      "type": "Cleave"
+    },
+    "Close Combat Support": {
+      "disc": null,
+      "type": "Close Combat Support"
+    },
+    "Cluster Traps Support": {
+      "disc": null,
+      "type": "Cluster Traps Support"
+    },
+    "Cobra Lash": {
+      "disc": null,
+      "type": "Cobra Lash"
+    },
+    "Cold Penetration Support": {
+      "disc": null,
+      "type": "Cold Penetration Support"
+    },
+    "Cold Snap": {
+      "disc": null,
+      "type": "Cold Snap"
+    },
+    "Cold Snap of Power": {
+      "disc": "alt_x",
+      "type": "Cold Snap"
+    },
+    "Cold to Fire Support": {
+      "disc": null,
+      "type": "Cold to Fire Support"
+    },
+    "Combustion Support": {
+      "disc": null,
+      "type": "Combustion Support"
+    },
+    "Communion Support": {
+      "disc": null,
+      "type": "Communion Support"
+    },
+    "Companionship Support": {
+      "disc": null,
+      "type": "Companionship Support"
+    },
+    "Concentrated Effect Support": {
+      "disc": null,
+      "type": "Concentrated Effect Support"
+    },
+    "Conductivity": {
+      "disc": null,
+      "type": "Conductivity"
+    },
+    "Conflagration": {
+      "disc": null,
+      "type": "Conflagration"
+    },
+    "Congregation Support": {
+      "disc": null,
+      "type": "Congregation Support"
+    },
+    "Consecrated Path": {
+      "disc": null,
+      "type": "Consecrated Path"
+    },
+    "Consecrated Path of Endurance": {
+      "disc": "alt_x",
+      "type": "Consecrated Path"
+    },
+    "Contagion": {
+      "disc": null,
+      "type": "Contagion"
+    },
+    "Contagion of Subsiding": {
+      "disc": "alt_x",
+      "type": "Contagion"
+    },
+    "Contagion of Transference": {
+      "disc": "alt_y",
+      "type": "Contagion"
+    },
+    "Controlled Blaze Support": {
+      "disc": null,
+      "type": "Controlled Blaze Support"
+    },
+    "Controlled Destruction Support": {
+      "disc": null,
+      "type": "Controlled Destruction Support"
+    },
+    "Conversion Trap": {
+      "disc": null,
+      "type": "Conversion Trap"
+    },
+    "Convocation": {
+      "disc": null,
+      "type": "Convocation"
+    },
+    "Cooldown Recovery Support": {
+      "disc": null,
+      "type": "Cooldown Recovery Support"
+    },
+    "Corrupting Cry Support": {
+      "disc": null,
+      "type": "Corrupting Cry Support"
+    },
+    "Corrupting Fever": {
+      "disc": null,
+      "type": "Corrupting Fever"
+    },
+    "Crackling Lance": {
+      "disc": null,
+      "type": "Crackling Lance"
+    },
+    "Crackling Lance of Branching": {
+      "disc": "alt_x",
+      "type": "Crackling Lance"
+    },
+    "Crackling Lance of Disintegration": {
+      "disc": "alt_y",
+      "type": "Crackling Lance"
+    },
+    "Creeping Frost": {
+      "disc": null,
+      "type": "Creeping Frost"
+    },
+    "Creeping Frost of Floes": {
+      "disc": "alt_x",
+      "type": "Creeping Frost"
+    },
+    "Cremation": {
+      "disc": null,
+      "type": "Cremation"
+    },
+    "Cremation of Exhuming": {
+      "disc": "alt_x",
+      "type": "Cremation"
+    },
+    "Cremation of the Volcano": {
+      "disc": "alt_y",
+      "type": "Cremation"
+    },
+    "Critical Strike Affliction Support": {
+      "disc": null,
+      "type": "Critical Strike Affliction Support"
+    },
+    "Cruelty Support": {
+      "disc": null,
+      "type": "Cruelty Support"
+    },
+    "Crushing Fist": {
+      "disc": null,
+      "type": "Crushing Fist"
+    },
+    "Crystalfall Support": {
+      "disc": null,
+      "type": "Crystalfall Support"
+    },
+    "Cull the Weak Support": {
+      "disc": null,
+      "type": "Cull the Weak Support"
+    },
+    "Culling Strike Support": {
+      "disc": null,
+      "type": "Culling Strike Support"
+    },
+    "Cursed Ground Support": {
+      "disc": null,
+      "type": "Cursed Ground Support"
+    },
+    "Cyclone": {
+      "disc": null,
+      "type": "Cyclone"
+    },
+    "Cyclone of Tumult": {
+      "disc": "alt_x",
+      "type": "Cyclone"
+    },
+    "Damage on Full Life Support": {
+      "disc": null,
+      "type": "Damage on Full Life Support"
+    },
+    "Dark Bargain": {
+      "disc": null,
+      "type": "Dark Bargain"
+    },
+    "Dark Bargain of Trarthus": {
+      "disc": "alt_x",
+      "type": "Dark Bargain"
+    },
+    "Dash": {
+      "disc": null,
+      "type": "Dash"
+    },
+    "Deadly Ailments Support": {
+      "disc": null,
+      "type": "Deadly Ailments Support"
+    },
+    "Decay Support": {
+      "disc": null,
+      "type": "Decay Support"
+    },
+    "Decoy Totem": {
+      "disc": null,
+      "type": "Decoy Totem"
+    },
+    "Defiance Banner": {
+      "disc": null,
+      "type": "Defiance Banner"
+    },
+    "Desecrate": {
+      "disc": null,
+      "type": "Desecrate"
+    },
+    "Despair": {
+      "disc": null,
+      "type": "Despair"
+    },
+    "Destructive Link": {
+      "disc": null,
+      "type": "Destructive Link"
+    },
+    "Determination": {
+      "disc": null,
+      "type": "Determination"
+    },
+    "Detonate Dead": {
+      "disc": null,
+      "type": "Detonate Dead"
+    },
+    "Detonate Dead of Chain Reaction": {
+      "disc": "alt_y",
+      "type": "Detonate Dead"
+    },
+    "Detonate Dead of Scavenging": {
+      "disc": "alt_x",
+      "type": "Detonate Dead"
+    },
+    "Detonate Mines": {
+      "disc": null,
+      "type": "Detonate Mines"
+    },
+    "Devour Support": {
+      "disc": null,
+      "type": "Devour Support"
+    },
+    "Devouring Totem": {
+      "disc": null,
+      "type": "Devouring Totem"
+    },
+    "Discharge": {
+      "disc": null,
+      "type": "Discharge"
+    },
+    "Discharge of Misery": {
+      "disc": "alt_x",
+      "type": "Discharge"
+    },
+    "Discipline": {
+      "disc": null,
+      "type": "Discipline"
+    },
+    "Divine Blast": {
+      "disc": null,
+      "type": "Divine Blast"
+    },
+    "Divine Blast of Radiance": {
+      "disc": "alt_x",
+      "type": "Divine Blast"
+    },
+    "Divine Ire": {
+      "disc": null,
+      "type": "Divine Ire"
+    },
+    "Divine Ire of Disintegration": {
+      "disc": "alt_y",
+      "type": "Divine Ire"
+    },
+    "Divine Ire of Holy Lightning": {
+      "disc": "alt_x",
+      "type": "Divine Ire"
+    },
+    "Divine Retribution": {
+      "disc": null,
+      "type": "Divine Retribution"
+    },
+    "Divine Sentinel Support": {
+      "disc": null,
+      "type": "Divine Sentinel Support"
+    },
+    "Dominating Blow": {
+      "disc": null,
+      "type": "Dominating Blow"
+    },
+    "Dominating Blow of Inspiring": {
+      "disc": "alt_x",
+      "type": "Dominating Blow"
+    },
+    "Double Strike": {
+      "disc": null,
+      "type": "Double Strike"
+    },
+    "Double Strike of Impaling": {
+      "disc": "alt_x",
+      "type": "Double Strike"
+    },
+    "Double Strike of Momentum": {
+      "disc": "alt_y",
+      "type": "Double Strike"
+    },
+    "Dread Banner": {
+      "disc": null,
+      "type": "Dread Banner"
+    },
+    "Dual Strike": {
+      "disc": null,
+      "type": "Dual Strike"
+    },
+    "Dual Strike of Ambidexterity": {
+      "disc": "alt_x",
+      "type": "Dual Strike"
+    },
+    "Earthbreaker Support": {
+      "disc": null,
+      "type": "Earthbreaker Support"
+    },
+    "Earthquake": {
+      "disc": null,
+      "type": "Earthquake"
+    },
+    "Earthquake of Amplification": {
+      "disc": "alt_x",
+      "type": "Earthquake"
+    },
+    "Earthshatter": {
+      "disc": null,
+      "type": "Earthshatter"
+    },
+    "Earthshatter of Fragility": {
+      "disc": "alt_x",
+      "type": "Earthshatter"
+    },
+    "Earthshatter of Prominence": {
+      "disc": "alt_y",
+      "type": "Earthshatter"
+    },
+    "Eclipse Support": {
+      "disc": null,
+      "type": "Eclipse Support"
+    },
+    "Efficacy Support": {
+      "disc": null,
+      "type": "Efficacy Support"
+    },
+    "Eldritch Blasphemy Support": {
+      "disc": null,
+      "type": "Eldritch Blasphemy Support"
+    },
+    "Elemental Army Support": {
+      "disc": null,
+      "type": "Elemental Army Support"
+    },
+    "Elemental Damage with Attacks Support": {
+      "disc": null,
+      "type": "Elemental Damage with Attacks Support"
+    },
+    "Elemental Focus Support": {
+      "disc": null,
+      "type": "Elemental Focus Support"
+    },
+    "Elemental Hit": {
+      "disc": null,
+      "type": "Elemental Hit"
+    },
+    "Elemental Hit of the Spectrum": {
+      "disc": "alt_x",
+      "type": "Elemental Hit"
+    },
+    "Elemental Penetration Support": {
+      "disc": null,
+      "type": "Elemental Penetration Support"
+    },
+    "Elemental Proliferation Support": {
+      "disc": null,
+      "type": "Elemental Proliferation Support"
+    },
+    "Elemental Weakness": {
+      "disc": null,
+      "type": "Elemental Weakness"
+    },
+    "Empower Support": {
+      "disc": null,
+      "type": "Empower Support"
+    },
+    "Endurance Charge on Melee Stun Support": {
+      "disc": null,
+      "type": "Endurance Charge on Melee Stun Support"
+    },
+    "Enduring Cry": {
+      "disc": null,
+      "type": "Enduring Cry"
+    },
+    "Energy Blade": {
+      "disc": null,
+      "type": "Energy Blade"
+    },
+    "Energy Leech Support": {
+      "disc": null,
+      "type": "Energy Leech Support"
+    },
+    "Enfeeble": {
+      "disc": null,
+      "type": "Enfeeble"
+    },
+    "Enhance Support": {
+      "disc": null,
+      "type": "Enhance Support"
+    },
+    "Enlighten Support": {
+      "disc": null,
+      "type": "Enlighten Support"
+    },
+    "Ensnaring Arrow": {
+      "disc": null,
+      "type": "Ensnaring Arrow"
+    },
+    "Essence Drain": {
+      "disc": null,
+      "type": "Essence Drain"
+    },
+    "Essence Drain of Desperation": {
+      "disc": "alt_x",
+      "type": "Essence Drain"
+    },
+    "Essence Drain of Wickedness": {
+      "disc": "alt_y",
+      "type": "Essence Drain"
+    },
+    "Eternal Blessing Support": {
+      "disc": null,
+      "type": "Eternal Blessing Support"
+    },
+    "Ethereal Knives": {
+      "disc": null,
+      "type": "Ethereal Knives"
+    },
+    "Ethereal Knives of Lingering Blades": {
+      "disc": "alt_x",
+      "type": "Ethereal Knives"
+    },
+    "Ethereal Knives of the Massacre": {
+      "disc": "alt_y",
+      "type": "Ethereal Knives"
+    },
+    "Eviscerate": {
+      "disc": null,
+      "type": "Eviscerate"
+    },
+    "Excommunicate Support": {
+      "disc": null,
+      "type": "Excommunicate Support"
+    },
+    "Exemplar Support": {
+      "disc": null,
+      "type": "Exemplar Support"
+    },
+    "Expert Retaliation Support": {
+      "disc": null,
+      "type": "Expert Retaliation Support"
+    },
+    "Explosive Arrow": {
+      "disc": null,
+      "type": "Explosive Arrow"
+    },
+    "Explosive Concoction": {
+      "disc": null,
+      "type": "Explosive Concoction"
+    },
+    "Explosive Concoction of Destruction": {
+      "disc": "alt_x",
+      "type": "Explosive Concoction"
+    },
+    "Explosive Trap": {
+      "disc": null,
+      "type": "Explosive Trap"
+    },
+    "Explosive Trap of Magnitude": {
+      "disc": "alt_y",
+      "type": "Explosive Trap"
+    },
+    "Explosive Trap of Shrapnel": {
+      "disc": "alt_x",
+      "type": "Explosive Trap"
+    },
+    "Exsanguinate": {
+      "disc": null,
+      "type": "Exsanguinate"
+    },
+    "Exsanguinate of Transmission": {
+      "disc": "alt_x",
+      "type": "Exsanguinate"
+    },
+    "Eye of Winter": {
+      "disc": null,
+      "type": "Eye of Winter"
+    },
+    "Eye of Winter of Finality": {
+      "disc": "alt_x",
+      "type": "Eye of Winter"
+    },
+    "Eye of Winter of Transience": {
+      "disc": "alt_y",
+      "type": "Eye of Winter"
+    },
+    "Faster Attacks Support": {
+      "disc": null,
+      "type": "Faster Attacks Support"
+    },
+    "Faster Casting Support": {
+      "disc": null,
+      "type": "Faster Casting Support"
+    },
+    "Faster Projectiles Support": {
+      "disc": null,
+      "type": "Faster Projectiles Support"
+    },
+    "Feeding Frenzy Support": {
+      "disc": null,
+      "type": "Feeding Frenzy Support"
+    },
+    "Fire Penetration Support": {
+      "disc": null,
+      "type": "Fire Penetration Support"
+    },
+    "Fire Trap": {
+      "disc": null,
+      "type": "Fire Trap"
+    },
+    "Fire Trap of Blasting": {
+      "disc": "alt_x",
+      "type": "Fire Trap"
+    },
+    "Fireball": {
+      "disc": null,
+      "type": "Fireball"
+    },
+    "Firestorm": {
+      "disc": null,
+      "type": "Firestorm"
+    },
+    "Firestorm of Meteors": {
+      "disc": "alt_x",
+      "type": "Firestorm"
+    },
+    "Firestorm of Pelting": {
+      "disc": "alt_y",
+      "type": "Firestorm"
+    },
+    "Fissure Support": {
+      "disc": null,
+      "type": "Fissure Support"
+    },
+    "Fist of War Support": {
+      "disc": null,
+      "type": "Fist of War Support"
+    },
+    "Flame Dash": {
+      "disc": null,
+      "type": "Flame Dash"
+    },
+    "Flame Dash of Return": {
+      "disc": "alt_y",
+      "type": "Flame Dash"
+    },
+    "Flame Link": {
+      "disc": null,
+      "type": "Flame Link"
+    },
+    "Flame Surge": {
+      "disc": null,
+      "type": "Flame Surge"
+    },
+    "Flame Surge of Combusting": {
+      "disc": "alt_x",
+      "type": "Flame Surge"
+    },
+    "Flame Wall": {
+      "disc": null,
+      "type": "Flame Wall"
+    },
+    "Flameblast": {
+      "disc": null,
+      "type": "Flameblast"
+    },
+    "Flameblast of Celerity": {
+      "disc": "alt_x",
+      "type": "Flameblast"
+    },
+    "Flameblast of Contraction": {
+      "disc": "alt_y",
+      "type": "Flameblast"
+    },
+    "Flamethrower Trap": {
+      "disc": null,
+      "type": "Flamethrower Trap"
+    },
+    "Flamethrower Trap of Stability": {
+      "disc": "alt_x",
+      "type": "Flamethrower Trap"
+    },
+    "Flamewood Support": {
+      "disc": null,
+      "type": "Flamewood Support"
+    },
+    "Flammability": {
+      "disc": null,
+      "type": "Flammability"
+    },
+    "Flesh Offering": {
+      "disc": null,
+      "type": "Flesh Offering"
+    },
+    "Flesh and Stone": {
+      "disc": null,
+      "type": "Flesh and Stone"
+    },
+    "Flicker Strike": {
+      "disc": null,
+      "type": "Flicker Strike"
+    },
+    "Flicker Strike of Power": {
+      "disc": "alt_x",
+      "type": "Flicker Strike"
+    },
+    "Focused Ballista Support": {
+      "disc": null,
+      "type": "Focused Ballista Support"
+    },
+    "Focused Channelling Support": {
+      "disc": null,
+      "type": "Focused Channelling Support"
+    },
+    "Forbidden Rite": {
+      "disc": null,
+      "type": "Forbidden Rite"
+    },
+    "Forbidden Rite of Soul Sacrifice": {
+      "disc": "alt_x",
+      "type": "Forbidden Rite"
+    },
+    "Fork Support": {
+      "disc": null,
+      "type": "Fork Support"
+    },
+    "Fortify Support": {
+      "disc": null,
+      "type": "Fortify Support"
+    },
+    "Foulgrasp Support": {
+      "disc": null,
+      "type": "Foulgrasp Support"
+    },
+    "Freezing Pulse": {
+      "disc": null,
+      "type": "Freezing Pulse"
+    },
+    "Frenzy": {
+      "disc": null,
+      "type": "Frenzy"
+    },
+    "Frenzy of Onslaught": {
+      "disc": "alt_x",
+      "type": "Frenzy"
+    },
+    "Fresh Meat Support": {
+      "disc": null,
+      "type": "Fresh Meat Support"
+    },
+    "Frigid Bond Support": {
+      "disc": null,
+      "type": "Frigid Bond Support"
+    },
+    "Frost Blades": {
+      "disc": null,
+      "type": "Frost Blades"
+    },
+    "Frost Blades of Katabasis": {
+      "disc": "alt_x",
+      "type": "Frost Blades"
+    },
+    "Frost Bomb": {
+      "disc": null,
+      "type": "Frost Bomb"
+    },
+    "Frost Bomb of Forthcoming": {
+      "disc": "alt_y",
+      "type": "Frost Bomb"
+    },
+    "Frost Bomb of Instability": {
+      "disc": "alt_x",
+      "type": "Frost Bomb"
+    },
+    "Frost Shield": {
+      "disc": null,
+      "type": "Frost Shield"
+    },
+    "Frost Wall": {
+      "disc": null,
+      "type": "Frost Wall"
+    },
+    "Frostbite": {
+      "disc": null,
+      "type": "Frostbite"
+    },
+    "Frostblink": {
+      "disc": null,
+      "type": "Frostblink"
+    },
+    "Frostblink of Wintry Blast": {
+      "disc": "alt_x",
+      "type": "Frostblink"
+    },
+    "Frostbolt": {
+      "disc": null,
+      "type": "Frostbolt"
+    },
+    "Frostmage Support": {
+      "disc": null,
+      "type": "Frostmage Support"
+    },
+    "Frozen Legion": {
+      "disc": null,
+      "type": "Frozen Legion"
+    },
+    "Frozen Legion of Rallying": {
+      "disc": "alt_x",
+      "type": "Frozen Legion"
+    },
+    "Galvanic Arrow": {
+      "disc": null,
+      "type": "Galvanic Arrow"
+    },
+    "Galvanic Arrow of Energy": {
+      "disc": "alt_x",
+      "type": "Galvanic Arrow"
+    },
+    "Galvanic Arrow of Surging": {
+      "disc": "alt_y",
+      "type": "Galvanic Arrow"
+    },
+    "Galvanic Field": {
+      "disc": null,
+      "type": "Galvanic Field"
+    },
+    "Galvanic Field of Intensity": {
+      "disc": "alt_x",
+      "type": "Galvanic Field"
+    },
+    "General's Cry": {
+      "disc": null,
+      "type": "General's Cry"
+    },
+    "Generosity Support": {
+      "disc": null,
+      "type": "Generosity Support"
+    },
+    "Glacial Cascade": {
+      "disc": null,
+      "type": "Glacial Cascade"
+    },
+    "Glacial Cascade of the Fissure": {
+      "disc": "alt_x",
+      "type": "Glacial Cascade"
+    },
+    "Glacial Hammer": {
+      "disc": null,
+      "type": "Glacial Hammer"
+    },
+    "Glacial Hammer of Shattering": {
+      "disc": "alt_x",
+      "type": "Glacial Hammer"
+    },
+    "Glacial Shield Swipe": {
+      "disc": null,
+      "type": "Glacial Shield Swipe"
+    },
+    "Gluttony Support": {
+      "disc": null,
+      "type": "Gluttony Support"
+    },
+    "Grace": {
+      "disc": null,
+      "type": "Grace"
+    },
+    "Greater Ancestral Call Support": {
+      "disc": null,
+      "type": "Greater Ancestral Call Support"
+    },
+    "Greater Chain Support": {
+      "disc": null,
+      "type": "Greater Chain Support"
+    },
+    "Greater Devour Support": {
+      "disc": null,
+      "type": "Greater Devour Support"
+    },
+    "Greater Fork Support": {
+      "disc": null,
+      "type": "Greater Fork Support"
+    },
+    "Greater Kinetic Instability Support": {
+      "disc": null,
+      "type": "Greater Kinetic Instability Support"
+    },
+    "Greater Multiple Projectiles Support": {
+      "disc": null,
+      "type": "Greater Multiple Projectiles Support"
+    },
+    "Greater Multistrike Support": {
+      "disc": null,
+      "type": "Greater Multistrike Support"
+    },
+    "Greater Spell Cascade Support": {
+      "disc": null,
+      "type": "Greater Spell Cascade Support"
+    },
+    "Greater Spell Echo Support": {
+      "disc": null,
+      "type": "Greater Spell Echo Support"
+    },
+    "Greater Unleash Support": {
+      "disc": null,
+      "type": "Greater Unleash Support"
+    },
+    "Greater Volley Support": {
+      "disc": null,
+      "type": "Greater Volley Support"
+    },
+    "Ground Slam": {
+      "disc": null,
+      "type": "Ground Slam"
+    },
+    "Ground Slam of Earthshaking": {
+      "disc": "alt_x",
+      "type": "Ground Slam"
+    },
+    "Guardian's Blessing Support": {
+      "disc": null,
+      "type": "Guardian's Blessing Support"
+    },
+    "Hallow Support": {
+      "disc": null,
+      "type": "Hallow Support"
+    },
+    "Haste": {
+      "disc": null,
+      "type": "Haste"
+    },
+    "Hatred": {
+      "disc": null,
+      "type": "Hatred"
+    },
+    "Heavy Strike": {
+      "disc": null,
+      "type": "Heavy Strike"
+    },
+    "Heavy Strike of Trarthus": {
+      "disc": "alt_y",
+      "type": "Heavy Strike"
+    },
+    "Herald of Agony": {
+      "disc": null,
+      "type": "Herald of Agony"
+    },
+    "Herald of Ash": {
+      "disc": null,
+      "type": "Herald of Ash"
+    },
+    "Herald of Ice": {
+      "disc": null,
+      "type": "Herald of Ice"
+    },
+    "Herald of Purity": {
+      "disc": null,
+      "type": "Herald of Purity"
+    },
+    "Herald of Thunder": {
+      "disc": null,
+      "type": "Herald of Thunder"
+    },
+    "Hex Bloom Support": {
+      "disc": null,
+      "type": "Hex Bloom Support"
+    },
+    "Hexblast": {
+      "disc": null,
+      "type": "Hexblast"
+    },
+    "Hexblast of Contradiction": {
+      "disc": "alt_x",
+      "type": "Hexblast"
+    },
+    "Hexblast of Havoc": {
+      "disc": "alt_y",
+      "type": "Hexblast"
+    },
+    "Hexpass Support": {
+      "disc": null,
+      "type": "Hexpass Support"
+    },
+    "Hextoad Support": {
+      "disc": null,
+      "type": "Hextoad Support"
+    },
+    "Hextouch Support": {
+      "disc": null,
+      "type": "Hextouch Support"
+    },
+    "High-Impact Mine Support": {
+      "disc": null,
+      "type": "High-Impact Mine Support"
+    },
+    "Hiveborn Support": {
+      "disc": null,
+      "type": "Hiveborn Support"
+    },
+    "Holy Flame Totem": {
+      "disc": null,
+      "type": "Holy Flame Totem"
+    },
+    "Holy Flame Totem of Ire": {
+      "disc": "alt_x",
+      "type": "Holy Flame Totem"
+    },
+    "Holy Hammers": {
+      "disc": null,
+      "type": "Holy Hammers"
+    },
+    "Holy Hammers of Spirals": {
+      "disc": "alt_x",
+      "type": "Holy Hammers"
+    },
+    "Holy Strike": {
+      "disc": null,
+      "type": "Holy Strike"
+    },
+    "Holy Sweep": {
+      "disc": null,
+      "type": "Holy Sweep"
+    },
+    "Holy Sweep of Hammerfalls": {
+      "disc": "alt_x",
+      "type": "Holy Sweep"
+    },
+    "Hydrosphere": {
+      "disc": null,
+      "type": "Hydrosphere"
+    },
+    "Hypothermia Support": {
+      "disc": null,
+      "type": "Hypothermia Support"
+    },
+    "Ice Bite Support": {
+      "disc": null,
+      "type": "Ice Bite Support"
+    },
+    "Ice Crash": {
+      "disc": null,
+      "type": "Ice Crash"
+    },
+    "Ice Crash of Cadence": {
+      "disc": "alt_x",
+      "type": "Ice Crash"
+    },
+    "Ice Nova": {
+      "disc": null,
+      "type": "Ice Nova"
+    },
+    "Ice Nova of Deep Freeze": {
+      "disc": "alt_y",
+      "type": "Ice Nova"
+    },
+    "Ice Nova of Frostbolts": {
+      "disc": "alt_x",
+      "type": "Ice Nova"
+    },
+    "Ice Shot": {
+      "disc": null,
+      "type": "Ice Shot"
+    },
+    "Ice Shot of Penetration": {
+      "disc": "alt_x",
+      "type": "Ice Shot"
+    },
+    "Ice Spear": {
+      "disc": null,
+      "type": "Ice Spear"
+    },
+    "Ice Spear of Splitting": {
+      "disc": "alt_x",
+      "type": "Ice Spear"
+    },
+    "Ice Trap": {
+      "disc": null,
+      "type": "Ice Trap"
+    },
+    "Ice Trap of Hollowness": {
+      "disc": "alt_x",
+      "type": "Ice Trap"
+    },
+    "Icicle Mine": {
+      "disc": null,
+      "type": "Icicle Mine"
+    },
+    "Icicle Mine of Fanning": {
+      "disc": "alt_x",
+      "type": "Icicle Mine"
+    },
+    "Icicle Mine of Sabotage": {
+      "disc": "alt_y",
+      "type": "Icicle Mine"
+    },
+    "Ignite Proliferation Support": {
+      "disc": null,
+      "type": "Ignite Proliferation Support"
+    },
+    "Immolate Support": {
+      "disc": null,
+      "type": "Immolate Support"
+    },
+    "Immortal Call": {
+      "disc": null,
+      "type": "Immortal Call"
+    },
+    "Impale Support": {
+      "disc": null,
+      "type": "Impale Support"
+    },
+    "Impending Doom Support": {
+      "disc": null,
+      "type": "Impending Doom Support"
+    },
+    "Incinerate": {
+      "disc": null,
+      "type": "Incinerate"
+    },
+    "Incinerate of Expanse": {
+      "disc": "alt_x",
+      "type": "Incinerate"
+    },
+    "Incinerate of Venting": {
+      "disc": "alt_y",
+      "type": "Incinerate"
+    },
+    "Increased Area of Effect Support": {
+      "disc": null,
+      "type": "Increased Area of Effect Support"
+    },
+    "Increased Critical Damage Support": {
+      "disc": null,
+      "type": "Increased Critical Damage Support"
+    },
+    "Increased Critical Strikes Support": {
+      "disc": null,
+      "type": "Increased Critical Strikes Support"
+    },
+    "Infernal Blow": {
+      "disc": null,
+      "type": "Infernal Blow"
+    },
+    "Infernal Blow of Immolation": {
+      "disc": "alt_x",
+      "type": "Infernal Blow"
+    },
+    "Infernal Cry": {
+      "disc": null,
+      "type": "Infernal Cry"
+    },
+    "Infernal Legion Support": {
+      "disc": null,
+      "type": "Infernal Legion Support"
+    },
+    "Infused Channelling Support": {
+      "disc": null,
+      "type": "Infused Channelling Support"
+    },
+    "Innervate Support": {
+      "disc": null,
+      "type": "Innervate Support"
+    },
+    "Inspiration Support": {
+      "disc": null,
+      "type": "Inspiration Support"
+    },
+    "Intensify Support": {
+      "disc": null,
+      "type": "Intensify Support"
+    },
+    "Intimidating Cry": {
+      "disc": null,
+      "type": "Intimidating Cry"
+    },
+    "Intuitive Link": {
+      "disc": null,
+      "type": "Intuitive Link"
+    },
+    "Invention Support": {
+      "disc": null,
+      "type": "Invention Support"
+    },
+    "Invert the Rules Support": {
+      "disc": null,
+      "type": "Invert the Rules Support"
+    },
+    "Iron Grip Support": {
+      "disc": null,
+      "type": "Iron Grip Support"
+    },
+    "Iron Will Support": {
+      "disc": null,
+      "type": "Iron Will Support"
+    },
+    "Item Quantity Support": {
+      "disc": null,
+      "type": "Item Quantity Support"
+    },
+    "Item Rarity Support": {
+      "disc": null,
+      "type": "Item Rarity Support"
+    },
+    "Kinetic Blast": {
+      "disc": null,
+      "type": "Kinetic Blast"
+    },
+    "Kinetic Blast of Clustering": {
+      "disc": "alt_x",
+      "type": "Kinetic Blast"
+    },
+    "Kinetic Bolt": {
+      "disc": null,
+      "type": "Kinetic Bolt"
+    },
+    "Kinetic Bolt of Fragmentation": {
+      "disc": "alt_x",
+      "type": "Kinetic Bolt"
+    },
+    "Kinetic Fusillade": {
+      "disc": null,
+      "type": "Kinetic Fusillade"
+    },
+    "Kinetic Fusillade of Detonation": {
+      "disc": "alt_x",
+      "type": "Kinetic Fusillade"
+    },
+    "Kinetic Instability Support": {
+      "disc": null,
+      "type": "Kinetic Instability Support"
+    },
+    "Kinetic Rain": {
+      "disc": null,
+      "type": "Kinetic Rain"
+    },
+    "Kinetic Rain of Impact": {
+      "disc": "alt_x",
+      "type": "Kinetic Rain"
+    },
+    "Knockback Support": {
+      "disc": null,
+      "type": "Knockback Support"
+    },
+    "Lacerate": {
+      "disc": null,
+      "type": "Lacerate"
+    },
+    "Lacerate of Butchering": {
+      "disc": "alt_x",
+      "type": "Lacerate"
+    },
+    "Lacerate of Haemorrhage": {
+      "disc": "alt_y",
+      "type": "Lacerate"
+    },
+    "Lancing Steel": {
+      "disc": null,
+      "type": "Lancing Steel"
+    },
+    "Lancing Steel of Spraying": {
+      "disc": "alt_x",
+      "type": "Lancing Steel"
+    },
+    "Leap Slam": {
+      "disc": null,
+      "type": "Leap Slam"
+    },
+    "Leap Slam of Groundbreaking": {
+      "disc": "alt_x",
+      "type": "Leap Slam"
+    },
+    "Less Duration Support": {
+      "disc": null,
+      "type": "Less Duration Support"
+    },
+    "Lethal Dose Support": {
+      "disc": null,
+      "type": "Lethal Dose Support"
+    },
+    "Life Gain on Hit Support": {
+      "disc": null,
+      "type": "Life Gain on Hit Support"
+    },
+    "Life Leech Support": {
+      "disc": null,
+      "type": "Life Leech Support"
+    },
+    "Lifetap Support": {
+      "disc": null,
+      "type": "Lifetap Support"
+    },
+    "Lightning Arrow": {
+      "disc": null,
+      "type": "Lightning Arrow"
+    },
+    "Lightning Arrow of Electrocution": {
+      "disc": "alt_x",
+      "type": "Lightning Arrow"
+    },
+    "Lightning Conduit": {
+      "disc": null,
+      "type": "Lightning Conduit"
+    },
+    "Lightning Conduit of the Heavens": {
+      "disc": "alt_x",
+      "type": "Lightning Conduit"
+    },
+    "Lightning Penetration Support": {
+      "disc": null,
+      "type": "Lightning Penetration Support"
+    },
+    "Lightning Spire Trap": {
+      "disc": null,
+      "type": "Lightning Spire Trap"
+    },
+    "Lightning Spire Trap of Overloading": {
+      "disc": "alt_y",
+      "type": "Lightning Spire Trap"
+    },
+    "Lightning Spire Trap of Zapping": {
+      "disc": "alt_x",
+      "type": "Lightning Spire Trap"
+    },
+    "Lightning Strike": {
+      "disc": null,
+      "type": "Lightning Strike"
+    },
+    "Lightning Strike of Arcing": {
+      "disc": "alt_x",
+      "type": "Lightning Strike"
+    },
+    "Lightning Tendrils": {
+      "disc": null,
+      "type": "Lightning Tendrils"
+    },
+    "Lightning Tendrils of Eccentricity": {
+      "disc": "alt_x",
+      "type": "Lightning Tendrils"
+    },
+    "Lightning Tendrils of Escalation": {
+      "disc": "alt_y",
+      "type": "Lightning Tendrils"
+    },
+    "Lightning Trap": {
+      "disc": null,
+      "type": "Lightning Trap"
+    },
+    "Lightning Trap of Sparking": {
+      "disc": "alt_x",
+      "type": "Lightning Trap"
+    },
+    "Lightning Warp": {
+      "disc": null,
+      "type": "Lightning Warp"
+    },
+    "Living Lightning Support": {
+      "disc": null,
+      "type": "Living Lightning Support"
+    },
+    "Locus Mine Support": {
+      "disc": null,
+      "type": "Locus Mine Support"
+    },
+    "Machinations Support": {
+      "disc": null,
+      "type": "Machinations Support"
+    },
+    "Maim Support": {
+      "disc": null,
+      "type": "Maim Support"
+    },
+    "Malevolence": {
+      "disc": null,
+      "type": "Malevolence"
+    },
+    "Mana Leech Support": {
+      "disc": null,
+      "type": "Mana Leech Support"
+    },
+    "Mana-Infused Staff": {
+      "disc": null,
+      "type": "Mana-Infused Staff"
+    },
+    "Manabond": {
+      "disc": null,
+      "type": "Manabond"
+    },
+    "Manaforged Arrows Support": {
+      "disc": null,
+      "type": "Manaforged Arrows Support"
+    },
+    "Mark On Hit Support": {
+      "disc": null,
+      "type": "Mark On Hit Support"
+    },
+    "Meat Shield Support": {
+      "disc": null,
+      "type": "Meat Shield Support"
+    },
+    "Melee Physical Damage Support": {
+      "disc": null,
+      "type": "Melee Physical Damage Support"
+    },
+    "Melee Splash Support": {
+      "disc": null,
+      "type": "Melee Splash Support"
+    },
+    "Minefield Support": {
+      "disc": null,
+      "type": "Minefield Support"
+    },
+    "Minion Damage Support": {
+      "disc": null,
+      "type": "Minion Damage Support"
+    },
+    "Minion Life Support": {
+      "disc": null,
+      "type": "Minion Life Support"
+    },
+    "Minion Speed Support": {
+      "disc": null,
+      "type": "Minion Speed Support"
+    },
+    "Mirage Archer Support": {
+      "disc": null,
+      "type": "Mirage Archer Support"
+    },
+    "Mirror Arrow": {
+      "disc": null,
+      "type": "Mirror Arrow"
+    },
+    "Mirror Arrow of Bombarding Clones": {
+      "disc": "alt_x",
+      "type": "Mirror Arrow"
+    },
+    "Mirror Arrow of Prismatic Clones": {
+      "disc": "alt_y",
+      "type": "Mirror Arrow"
+    },
+    "Molten Shell": {
+      "disc": null,
+      "type": "Molten Shell"
+    },
+    "Molten Strike": {
+      "disc": null,
+      "type": "Molten Strike"
+    },
+    "Molten Strike of the Zenith": {
+      "disc": "alt_x",
+      "type": "Molten Strike"
+    },
+    "Momentum Support": {
+      "disc": null,
+      "type": "Momentum Support"
+    },
+    "More Duration Support": {
+      "disc": null,
+      "type": "More Duration Support"
+    },
+    "Multiple Projectiles Support": {
+      "disc": null,
+      "type": "Multiple Projectiles Support"
+    },
+    "Multiple Totems Support": {
+      "disc": null,
+      "type": "Multiple Totems Support"
+    },
+    "Multiple Traps Support": {
+      "disc": null,
+      "type": "Multiple Traps Support"
+    },
+    "Multistrike Support": {
+      "disc": null,
+      "type": "Multistrike Support"
+    },
+    "Nightblade Support": {
+      "disc": null,
+      "type": "Nightblade Support"
+    },
+    "Orb of Storms": {
+      "disc": null,
+      "type": "Orb of Storms"
+    },
+    "Orb of Storms of Squalls": {
+      "disc": "alt_x",
+      "type": "Orb of Storms"
+    },
+    "Overcharge Support": {
+      "disc": null,
+      "type": "Overcharge Support"
+    },
+    "Overexertion Support": {
+      "disc": null,
+      "type": "Overexertion Support"
+    },
+    "Overheat Support": {
+      "disc": null,
+      "type": "Overheat Support"
+    },
+    "Overloaded Intensity Support": {
+      "disc": null,
+      "type": "Overloaded Intensity Support"
+    },
+    "Pacifism Support": {
+      "disc": null,
+      "type": "Pacifism Support"
+    },
+    "Pact of Beidat": {
+      "disc": null,
+      "type": "Pact of Beidat"
+    },
+    "Pact of Ghorr": {
+      "disc": null,
+      "type": "Pact of Ghorr"
+    },
+    "Pact of K'Tash": {
+      "disc": null,
+      "type": "Pact of K'Tash"
+    },
+    "Pact of Lycia": {
+      "disc": null,
+      "type": "Pact of Lycia"
+    },
+    "Penance Brand": {
+      "disc": null,
+      "type": "Penance Brand"
+    },
+    "Penance Brand of Conduction": {
+      "disc": "alt_y",
+      "type": "Penance Brand"
+    },
+    "Penance Brand of Dissipation": {
+      "disc": "alt_x",
+      "type": "Penance Brand"
+    },
+    "Perforate": {
+      "disc": null,
+      "type": "Perforate"
+    },
+    "Perforate of Bloodshed": {
+      "disc": "alt_y",
+      "type": "Perforate"
+    },
+    "Perforate of Duality": {
+      "disc": "alt_x",
+      "type": "Perforate"
+    },
+    "Pestilent Strike": {
+      "disc": null,
+      "type": "Pestilent Strike"
+    },
+    "Petrified Blood": {
+      "disc": null,
+      "type": "Petrified Blood"
+    },
+    "Phase Run": {
+      "disc": null,
+      "type": "Phase Run"
+    },
+    "Physical to Lightning Support": {
+      "disc": null,
+      "type": "Physical to Lightning Support"
+    },
+    "Pierce Support": {
+      "disc": null,
+      "type": "Pierce Support"
+    },
+    "Pinpoint Support": {
+      "disc": null,
+      "type": "Pinpoint Support"
+    },
+    "Plague Bearer": {
+      "disc": null,
+      "type": "Plague Bearer"
+    },
+    "Poacher's Mark": {
+      "disc": null,
+      "type": "Poacher's Mark"
+    },
+    "Point Blank Support": {
+      "disc": null,
+      "type": "Point Blank Support"
+    },
+    "Poisonous Concoction": {
+      "disc": null,
+      "type": "Poisonous Concoction"
+    },
+    "Poisonous Concoction of Bouncing": {
+      "disc": "alt_x",
+      "type": "Poisonous Concoction"
+    },
+    "Portal": {
+      "disc": null,
+      "type": "Portal"
+    },
+    "Power Charge On Critical Support": {
+      "disc": null,
+      "type": "Power Charge On Critical Support"
+    },
+    "Power Siphon": {
+      "disc": null,
+      "type": "Power Siphon"
+    },
+    "Power Siphon of the Archmage": {
+      "disc": "alt_x",
+      "type": "Power Siphon"
+    },
+    "Precision": {
+      "disc": null,
+      "type": "Precision"
+    },
+    "Predator Support": {
+      "disc": null,
+      "type": "Predator Support"
+    },
+    "Pride": {
+      "disc": null,
+      "type": "Pride"
+    },
+    "Prismatic Burst Support": {
+      "disc": null,
+      "type": "Prismatic Burst Support"
+    },
+    "Protective Link": {
+      "disc": null,
+      "type": "Protective Link"
+    },
+    "Pulverise Support": {
+      "disc": null,
+      "type": "Pulverise Support"
+    },
+    "Puncture": {
+      "disc": null,
+      "type": "Puncture"
+    },
+    "Puncture of Shanking": {
+      "disc": "alt_x",
+      "type": "Puncture"
+    },
+    "Punishment": {
+      "disc": null,
+      "type": "Punishment"
+    },
+    "Purifying Flame": {
+      "disc": null,
+      "type": "Purifying Flame"
+    },
+    "Purifying Flame of Revelations": {
+      "disc": "alt_x",
+      "type": "Purifying Flame"
+    },
+    "Purity of Elements": {
+      "disc": null,
+      "type": "Purity of Elements"
+    },
+    "Purity of Fire": {
+      "disc": null,
+      "type": "Purity of Fire"
+    },
+    "Purity of Ice": {
+      "disc": null,
+      "type": "Purity of Ice"
+    },
+    "Purity of Lightning": {
+      "disc": null,
+      "type": "Purity of Lightning"
+    },
+    "Pyre Support": {
+      "disc": null,
+      "type": "Pyre Support"
+    },
+    "Pyroclast Mine": {
+      "disc": null,
+      "type": "Pyroclast Mine"
+    },
+    "Pyroclast Mine of Sabotage": {
+      "disc": "alt_x",
+      "type": "Pyroclast Mine"
+    },
+    "Quickstep": {
+      "disc": null,
+      "type": "Quickstep"
+    },
+    "Rage Support": {
+      "disc": null,
+      "type": "Rage Support"
+    },
+    "Rage Vortex": {
+      "disc": null,
+      "type": "Rage Vortex"
+    },
+    "Rage Vortex of Berserking": {
+      "disc": "alt_x",
+      "type": "Rage Vortex"
+    },
+    "Rain of Arrows": {
+      "disc": null,
+      "type": "Rain of Arrows"
+    },
+    "Rain of Arrows of Artillery": {
+      "disc": "alt_x",
+      "type": "Rain of Arrows"
+    },
+    "Rain of Arrows of Saturation": {
+      "disc": "alt_y",
+      "type": "Rain of Arrows"
+    },
+    "Raise Spectre": {
+      "disc": null,
+      "type": "Raise Spectre"
+    },
+    "Raise Spectre of Transience": {
+      "disc": "alt_x",
+      "type": "Raise Spectre"
+    },
+    "Raise Zombie": {
+      "disc": null,
+      "type": "Raise Zombie"
+    },
+    "Raise Zombie of Falling": {
+      "disc": "alt_y",
+      "type": "Raise Zombie"
+    },
+    "Raise Zombie of Slamming": {
+      "disc": "alt_x",
+      "type": "Raise Zombie"
+    },
+    "Rallying Cry": {
+      "disc": null,
+      "type": "Rallying Cry"
+    },
+    "Reap": {
+      "disc": null,
+      "type": "Reap"
+    },
+    "Reap of Butchery": {
+      "disc": "alt_x",
+      "type": "Reap"
+    },
+    "Reave": {
+      "disc": null,
+      "type": "Reave"
+    },
+    "Reave of Refraction": {
+      "disc": "alt_x",
+      "type": "Reave"
+    },
+    "Rejuvenation Totem": {
+      "disc": null,
+      "type": "Rejuvenation Totem"
+    },
+    "Returning Projectiles Support": {
+      "disc": null,
+      "type": "Returning Projectiles Support"
+    },
+    "Righteous Fire": {
+      "disc": null,
+      "type": "Righteous Fire"
+    },
+    "Righteous Fire of Arcane Devotion": {
+      "disc": "alt_x",
+      "type": "Righteous Fire"
+    },
+    "Rolling Magma": {
+      "disc": null,
+      "type": "Rolling Magma"
+    },
+    "Rupture Support": {
+      "disc": null,
+      "type": "Rupture Support"
+    },
+    "Ruthless Support": {
+      "disc": null,
+      "type": "Ruthless Support"
+    },
+    "Sacred Wisps Support": {
+      "disc": null,
+      "type": "Sacred Wisps Support"
+    },
+    "Sacrifice Support": {
+      "disc": null,
+      "type": "Sacrifice Support"
+    },
+    "Sadism Support": {
+      "disc": null,
+      "type": "Sadism Support"
+    },
+    "Scorching Ray": {
+      "disc": null,
+      "type": "Scorching Ray"
+    },
+    "Scorching Ray of Immolation": {
+      "disc": "alt_x",
+      "type": "Scorching Ray"
+    },
+    "Scornful Herald Support": {
+      "disc": null,
+      "type": "Scornful Herald Support"
+    },
+    "Scourge Arrow": {
+      "disc": null,
+      "type": "Scourge Arrow"
+    },
+    "Scourge Arrow of Menace": {
+      "disc": "alt_x",
+      "type": "Scourge Arrow"
+    },
+    "Searing Bond": {
+      "disc": null,
+      "type": "Searing Bond"
+    },
+    "Searing Bond of Detonation": {
+      "disc": "alt_x",
+      "type": "Searing Bond"
+    },
+    "Second Wind Support": {
+      "disc": null,
+      "type": "Second Wind Support"
+    },
+    "Seismic Cry": {
+      "disc": null,
+      "type": "Seismic Cry"
+    },
+    "Seismic Trap": {
+      "disc": null,
+      "type": "Seismic Trap"
+    },
+    "Seismic Trap of Swells": {
+      "disc": "alt_x",
+      "type": "Seismic Trap"
+    },
+    "Shattering Steel": {
+      "disc": null,
+      "type": "Shattering Steel"
+    },
+    "Shattering Steel of Ammunition": {
+      "disc": "alt_x",
+      "type": "Shattering Steel"
+    },
+    "Shield Charge": {
+      "disc": null,
+      "type": "Shield Charge"
+    },
+    "Shield Crush": {
+      "disc": null,
+      "type": "Shield Crush"
+    },
+    "Shield Crush of the Chieftain": {
+      "disc": "alt_x",
+      "type": "Shield Crush"
+    },
+    "Shield of Light": {
+      "disc": null,
+      "type": "Shield of Light"
+    },
+    "Shock Nova": {
+      "disc": null,
+      "type": "Shock Nova"
+    },
+    "Shock Nova of Procession": {
+      "disc": "alt_x",
+      "type": "Shock Nova"
+    },
+    "Shockwave Support": {
+      "disc": null,
+      "type": "Shockwave Support"
+    },
+    "Shockwave Totem": {
+      "disc": null,
+      "type": "Shockwave Totem"
+    },
+    "Shockwave Totem of Authority": {
+      "disc": "alt_x",
+      "type": "Shockwave Totem"
+    },
+    "Shrapnel Ballista": {
+      "disc": null,
+      "type": "Shrapnel Ballista"
+    },
+    "Shrapnel Ballista of Steel": {
+      "disc": "alt_x",
+      "type": "Shrapnel Ballista"
+    },
+    "Siege Ballista": {
+      "disc": null,
+      "type": "Siege Ballista"
+    },
+    "Siege Ballista of Splintering": {
+      "disc": "alt_x",
+      "type": "Siege Ballista"
+    },
+    "Siege Ballista of Trarthus": {
+      "disc": "alt_y",
+      "type": "Siege Ballista"
+    },
+    "Sigil of Power": {
+      "disc": null,
+      "type": "Sigil of Power"
+    },
+    "Siphoning Trap": {
+      "disc": null,
+      "type": "Siphoning Trap"
+    },
+    "Siphoning Trap of Pain": {
+      "disc": "alt_x",
+      "type": "Siphoning Trap"
+    },
+    "Slower Projectiles Support": {
+      "disc": null,
+      "type": "Slower Projectiles Support"
+    },
+    "Smite": {
+      "disc": null,
+      "type": "Smite"
+    },
+    "Smite of Divine Judgement": {
+      "disc": "alt_x",
+      "type": "Smite"
+    },
+    "Smoke Mine": {
+      "disc": null,
+      "type": "Smoke Mine"
+    },
+    "Snipe": {
+      "disc": null,
+      "type": "Snipe"
+    },
+    "Sniper's Mark": {
+      "disc": null,
+      "type": "Sniper's Mark"
+    },
+    "Somatic Shell": {
+      "disc": null,
+      "type": "Somatic Shell"
+    },
+    "Soul Link": {
+      "disc": null,
+      "type": "Soul Link"
+    },
+    "Soulrend": {
+      "disc": null,
+      "type": "Soulrend"
+    },
+    "Soulrend of Reaping": {
+      "disc": "alt_x",
+      "type": "Soulrend"
+    },
+    "Soulrend of the Spiral": {
+      "disc": "alt_y",
+      "type": "Soulrend"
+    },
+    "Spark": {
+      "disc": null,
+      "type": "Spark"
+    },
+    "Spark of Unpredictability": {
+      "disc": "alt_y",
+      "type": "Spark"
+    },
+    "Spark of the Nova": {
+      "disc": "alt_x",
+      "type": "Spark"
+    },
+    "Spectral Helix": {
+      "disc": null,
+      "type": "Spectral Helix"
+    },
+    "Spectral Helix of Trarthus": {
+      "disc": "alt_y",
+      "type": "Spectral Helix"
+    },
+    "Spectral Shield Throw": {
+      "disc": null,
+      "type": "Spectral Shield Throw"
+    },
+    "Spectral Shield Throw of Shattering": {
+      "disc": "alt_x",
+      "type": "Spectral Shield Throw"
+    },
+    "Spectral Shield Throw of Trarthus": {
+      "disc": "alt_y",
+      "type": "Spectral Shield Throw"
+    },
+    "Spectral Throw": {
+      "disc": null,
+      "type": "Spectral Throw"
+    },
+    "Spectral Throw of Materialising": {
+      "disc": "alt_x",
+      "type": "Spectral Throw"
+    },
+    "Spectral Throw of Trarthus": {
+      "disc": "alt_y",
+      "type": "Spectral Throw"
+    },
+    "Spell Cascade Support": {
+      "disc": null,
+      "type": "Spell Cascade Support"
+    },
+    "Spell Echo Support": {
+      "disc": null,
+      "type": "Spell Echo Support"
+    },
+    "Spell Totem Support": {
+      "disc": null,
+      "type": "Spell Totem Support"
+    },
+    "Spellblade Support": {
+      "disc": null,
+      "type": "Spellblade Support"
+    },
+    "Spellslinger": {
+      "disc": null,
+      "type": "Spellslinger"
+    },
+    "Spirit Offering": {
+      "disc": null,
+      "type": "Spirit Offering"
+    },
+    "Split Arrow": {
+      "disc": null,
+      "type": "Split Arrow"
+    },
+    "Split Arrow of Splitting": {
+      "disc": "alt_x",
+      "type": "Split Arrow"
+    },
+    "Splitting Steel": {
+      "disc": null,
+      "type": "Splitting Steel"
+    },
+    "Splitting Steel of Ammunition": {
+      "disc": "alt_x",
+      "type": "Splitting Steel"
+    },
+    "Static Strike": {
+      "disc": null,
+      "type": "Static Strike"
+    },
+    "Static Strike of Gathering Lightning": {
+      "disc": "alt_x",
+      "type": "Static Strike"
+    },
+    "Steelskin": {
+      "disc": null,
+      "type": "Steelskin"
+    },
+    "Storm Brand": {
+      "disc": null,
+      "type": "Storm Brand"
+    },
+    "Storm Brand of Indecision": {
+      "disc": "alt_x",
+      "type": "Storm Brand"
+    },
+    "Storm Burst": {
+      "disc": null,
+      "type": "Storm Burst"
+    },
+    "Storm Burst of Repulsion": {
+      "disc": "alt_x",
+      "type": "Storm Burst"
+    },
+    "Storm Call": {
+      "disc": null,
+      "type": "Storm Call"
+    },
+    "Storm Call of Trarthus": {
+      "disc": "alt_x",
+      "type": "Storm Call"
+    },
+    "Storm Rain": {
+      "disc": null,
+      "type": "Storm Rain"
+    },
+    "Storm Rain of the Conduit": {
+      "disc": "alt_x",
+      "type": "Storm Rain"
+    },
+    "Storm Rain of the Fence": {
+      "disc": "alt_y",
+      "type": "Storm Rain"
+    },
+    "Stormbind": {
+      "disc": null,
+      "type": "Stormbind"
+    },
+    "Stormbind of Teleportation": {
+      "disc": "alt_x",
+      "type": "Stormbind"
+    },
+    "Stormblast Mine": {
+      "disc": null,
+      "type": "Stormblast Mine"
+    },
+    "Stun Support": {
+      "disc": null,
+      "type": "Stun Support"
+    },
+    "Summon Carrion Golem": {
+      "disc": null,
+      "type": "Summon Carrion Golem"
+    },
+    "Summon Carrion Golem of Hordes": {
+      "disc": "alt_x",
+      "type": "Summon Carrion Golem"
+    },
+    "Summon Carrion Golem of Scavenging": {
+      "disc": "alt_y",
+      "type": "Summon Carrion Golem"
+    },
+    "Summon Chaos Golem": {
+      "disc": null,
+      "type": "Summon Chaos Golem"
+    },
+    "Summon Chaos Golem of Hordes": {
+      "disc": "alt_x",
+      "type": "Summon Chaos Golem"
+    },
+    "Summon Chaos Golem of the Maelström": {
+      "disc": "alt_y",
+      "type": "Summon Chaos Golem"
+    },
+    "Summon Flame Golem": {
+      "disc": null,
+      "type": "Summon Flame Golem"
+    },
+    "Summon Flame Golem of Hordes": {
+      "disc": "alt_x",
+      "type": "Summon Flame Golem"
+    },
+    "Summon Flame Golem of the Meteor": {
+      "disc": "alt_y",
+      "type": "Summon Flame Golem"
+    },
+    "Summon Holy Relic": {
+      "disc": null,
+      "type": "Summon Holy Relic"
+    },
+    "Summon Holy Relic of Conviction": {
+      "disc": "alt_x",
+      "type": "Summon Holy Relic"
+    },
+    "Summon Ice Golem": {
+      "disc": null,
+      "type": "Summon Ice Golem"
+    },
+    "Summon Ice Golem of Hordes": {
+      "disc": "alt_x",
+      "type": "Summon Ice Golem"
+    },
+    "Summon Ice Golem of Shattering": {
+      "disc": "alt_y",
+      "type": "Summon Ice Golem"
+    },
+    "Summon Lightning Golem": {
+      "disc": null,
+      "type": "Summon Lightning Golem"
+    },
+    "Summon Lightning Golem of Hordes": {
+      "disc": "alt_x",
+      "type": "Summon Lightning Golem"
+    },
+    "Summon Phantasm Support": {
+      "disc": null,
+      "type": "Summon Phantasm Support"
+    },
+    "Summon Raging Spirit": {
+      "disc": null,
+      "type": "Summon Raging Spirit"
+    },
+    "Summon Raging Spirit of Enormity": {
+      "disc": "alt_x",
+      "type": "Summon Raging Spirit"
+    },
+    "Summon Reaper": {
+      "disc": null,
+      "type": "Summon Reaper"
+    },
+    "Summon Reaper of Eviscerating": {
+      "disc": "alt_y",
+      "type": "Summon Reaper"
+    },
+    "Summon Reaper of Revenants": {
+      "disc": "alt_x",
+      "type": "Summon Reaper"
+    },
+    "Summon Skeletons": {
+      "disc": null,
+      "type": "Summon Skeletons"
+    },
+    "Summon Skeletons of Archers": {
+      "disc": "alt_x",
+      "type": "Summon Skeletons"
+    },
+    "Summon Skeletons of Mages": {
+      "disc": "alt_y",
+      "type": "Summon Skeletons"
+    },
+    "Summon Skitterbots": {
+      "disc": null,
+      "type": "Summon Skitterbots"
+    },
+    "Summon Stone Golem": {
+      "disc": null,
+      "type": "Summon Stone Golem"
+    },
+    "Summon Stone Golem of Hordes": {
+      "disc": "alt_x",
+      "type": "Summon Stone Golem"
+    },
+    "Summon Stone Golem of Safeguarding": {
+      "disc": "alt_y",
+      "type": "Summon Stone Golem"
+    },
+    "Sunder": {
+      "disc": null,
+      "type": "Sunder"
+    },
+    "Sunder of Earthbreaking": {
+      "disc": "alt_x",
+      "type": "Sunder"
+    },
+    "Sunder of Trarthus": {
+      "disc": "alt_y",
+      "type": "Sunder"
+    },
+    "Swift Affliction Support": {
+      "disc": null,
+      "type": "Swift Affliction Support"
+    },
+    "Swift Assembly Support": {
+      "disc": null,
+      "type": "Swift Assembly Support"
+    },
+    "Swiftbrand Support": {
+      "disc": null,
+      "type": "Swiftbrand Support"
+    },
+    "Swordstorm": {
+      "disc": null,
+      "type": "Swordstorm"
+    },
+    "Tectonic Slam": {
+      "disc": null,
+      "type": "Tectonic Slam"
+    },
+    "Tectonic Slam of Cataclysm": {
+      "disc": "alt_x",
+      "type": "Tectonic Slam"
+    },
+    "Tempest Shield": {
+      "disc": null,
+      "type": "Tempest Shield"
+    },
+    "Temporal Chains": {
+      "disc": null,
+      "type": "Temporal Chains"
+    },
+    "Temporal Rift": {
+      "disc": null,
+      "type": "Temporal Rift"
+    },
+    "Thunderstorm": {
+      "disc": null,
+      "type": "Thunderstorm"
+    },
+    "Tornado": {
+      "disc": null,
+      "type": "Tornado"
+    },
+    "Tornado Shot": {
+      "disc": null,
+      "type": "Tornado Shot"
+    },
+    "Tornado Shot of Cloudburst": {
+      "disc": "alt_x",
+      "type": "Tornado Shot"
+    },
+    "Tornado of Elemental Turbulence": {
+      "disc": "alt_y",
+      "type": "Tornado"
+    },
+    "Toxic Rain": {
+      "disc": null,
+      "type": "Toxic Rain"
+    },
+    "Toxic Rain of Sporeburst": {
+      "disc": "alt_x",
+      "type": "Toxic Rain"
+    },
+    "Toxic Rain of Withering": {
+      "disc": "alt_y",
+      "type": "Toxic Rain"
+    },
+    "Transfusion Support": {
+      "disc": null,
+      "type": "Transfusion Support"
+    },
+    "Trap Support": {
+      "disc": null,
+      "type": "Trap Support"
+    },
+    "Trap and Mine Damage Support": {
+      "disc": null,
+      "type": "Trap and Mine Damage Support"
+    },
+    "Trauma Support": {
+      "disc": null,
+      "type": "Trauma Support"
+    },
+    "Trinity Support": {
+      "disc": null,
+      "type": "Trinity Support"
+    },
+    "Unbound Ailments Support": {
+      "disc": null,
+      "type": "Unbound Ailments Support"
+    },
+    "Unearth": {
+      "disc": null,
+      "type": "Unearth"
+    },
+    "Unholy Trinity Support": {
+      "disc": null,
+      "type": "Unholy Trinity Support"
+    },
+    "Unleash Support": {
+      "disc": null,
+      "type": "Unleash Support"
+    },
+    "Urgent Orders Support": {
+      "disc": null,
+      "type": "Urgent Orders Support"
+    },
+    "Vaal Absolution": {
+      "disc": null,
+      "type": "Vaal Absolution"
+    },
+    "Vaal Absolution (Absolution of Inspiring)": {
+      "disc": "alt_x",
+      "type": "Vaal Absolution"
+    },
+    "Vaal Ancestral Warchief": {
+      "disc": null,
+      "type": "Vaal Ancestral Warchief"
+    },
+    "Vaal Animate Weapon": {
+      "disc": null,
+      "type": "Vaal Animate Weapon"
+    },
+    "Vaal Animate Weapon (Animate Weapon of Ranged Arms)": {
+      "disc": "alt_y",
+      "type": "Vaal Animate Weapon"
+    },
+    "Vaal Animate Weapon (Animate Weapon of Self Reflection)": {
+      "disc": "alt_x",
+      "type": "Vaal Animate Weapon"
+    },
+    "Vaal Arc": {
+      "disc": null,
+      "type": "Vaal Arc"
+    },
+    "Vaal Arc (Arc of Oscillating)": {
+      "disc": "alt_y",
+      "type": "Vaal Arc"
+    },
+    "Vaal Arc (Arc of Surging)": {
+      "disc": "alt_x",
+      "type": "Vaal Arc"
+    },
+    "Vaal Arctic Armour": {
+      "disc": null,
+      "type": "Vaal Arctic Armour"
+    },
+    "Vaal Blade Flurry": {
+      "disc": null,
+      "type": "Vaal Blade Flurry"
+    },
+    "Vaal Blade Flurry (Blade Flurry of Incision)": {
+      "disc": "alt_x",
+      "type": "Vaal Blade Flurry"
+    },
+    "Vaal Blade Vortex": {
+      "disc": null,
+      "type": "Vaal Blade Vortex"
+    },
+    "Vaal Blade Vortex (Blade Vortex of the Scythe)": {
+      "disc": "alt_x",
+      "type": "Vaal Blade Vortex"
+    },
+    "Vaal Blight": {
+      "disc": null,
+      "type": "Vaal Blight"
+    },
+    "Vaal Blight (Blight of Atrophy)": {
+      "disc": "alt_y",
+      "type": "Vaal Blight"
+    },
+    "Vaal Blight (Blight of Contagion)": {
+      "disc": "alt_x",
+      "type": "Vaal Blight"
+    },
+    "Vaal Breach": {
+      "disc": null,
+      "type": "Vaal Breach"
+    },
+    "Vaal Burning Arrow": {
+      "disc": null,
+      "type": "Vaal Burning Arrow"
+    },
+    "Vaal Burning Arrow (Burning Arrow of Vigour)": {
+      "disc": "alt_x",
+      "type": "Vaal Burning Arrow"
+    },
+    "Vaal Caustic Arrow": {
+      "disc": null,
+      "type": "Vaal Caustic Arrow"
+    },
+    "Vaal Caustic Arrow (Caustic Arrow of Poison)": {
+      "disc": "alt_x",
+      "type": "Vaal Caustic Arrow"
+    },
+    "Vaal Clarity": {
+      "disc": null,
+      "type": "Vaal Clarity"
+    },
+    "Vaal Cleave": {
+      "disc": null,
+      "type": "Vaal Cleave"
+    },
+    "Vaal Cleave (Cleave of Rage)": {
+      "disc": "alt_x",
+      "type": "Vaal Cleave"
+    },
+    "Vaal Cold Snap": {
+      "disc": null,
+      "type": "Vaal Cold Snap"
+    },
+    "Vaal Cold Snap (Cold Snap of Power)": {
+      "disc": "alt_x",
+      "type": "Vaal Cold Snap"
+    },
+    "Vaal Cyclone": {
+      "disc": null,
+      "type": "Vaal Cyclone"
+    },
+    "Vaal Cyclone (Cyclone of Tumult)": {
+      "disc": "alt_x",
+      "type": "Vaal Cyclone"
+    },
+    "Vaal Detonate Dead": {
+      "disc": null,
+      "type": "Vaal Detonate Dead"
+    },
+    "Vaal Detonate Dead (Detonate Dead of Chain Reaction)": {
+      "disc": "alt_y",
+      "type": "Vaal Detonate Dead"
+    },
+    "Vaal Detonate Dead (Detonate Dead of Scavenging)": {
+      "disc": "alt_x",
+      "type": "Vaal Detonate Dead"
+    },
+    "Vaal Discipline": {
+      "disc": null,
+      "type": "Vaal Discipline"
+    },
+    "Vaal Domination": {
+      "disc": null,
+      "type": "Vaal Domination"
+    },
+    "Vaal Domination (Dominating Blow of Inspiring)": {
+      "disc": "alt_x",
+      "type": "Vaal Domination"
+    },
+    "Vaal Double Strike": {
+      "disc": null,
+      "type": "Vaal Double Strike"
+    },
+    "Vaal Double Strike (Double Strike of Impaling)": {
+      "disc": "alt_x",
+      "type": "Vaal Double Strike"
+    },
+    "Vaal Double Strike (Double Strike of Momentum)": {
+      "disc": "alt_y",
+      "type": "Vaal Double Strike"
+    },
+    "Vaal Earthquake": {
+      "disc": null,
+      "type": "Vaal Earthquake"
+    },
+    "Vaal Earthquake (Earthquake of Amplification)": {
+      "disc": "alt_x",
+      "type": "Vaal Earthquake"
+    },
+    "Vaal Fireball": {
+      "disc": null,
+      "type": "Vaal Fireball"
+    },
+    "Vaal Firestorm": {
+      "disc": null,
+      "type": "Vaal Firestorm"
+    },
+    "Vaal Firestorm (Firestorm of Meteors)": {
+      "disc": "alt_x",
+      "type": "Vaal Firestorm"
+    },
+    "Vaal Firestorm (Firestorm of Pelting)": {
+      "disc": "alt_y",
+      "type": "Vaal Firestorm"
+    },
+    "Vaal Flameblast": {
+      "disc": null,
+      "type": "Vaal Flameblast"
+    },
+    "Vaal Flameblast (Flameblast of Celerity)": {
+      "disc": "alt_x",
+      "type": "Vaal Flameblast"
+    },
+    "Vaal Flameblast (Flameblast of Contraction)": {
+      "disc": "alt_y",
+      "type": "Vaal Flameblast"
+    },
+    "Vaal Flicker Strike": {
+      "disc": null,
+      "type": "Vaal Flicker Strike"
+    },
+    "Vaal Flicker Strike (Flicker Strike of Power)": {
+      "disc": "alt_x",
+      "type": "Vaal Flicker Strike"
+    },
+    "Vaal Glacial Hammer": {
+      "disc": null,
+      "type": "Vaal Glacial Hammer"
+    },
+    "Vaal Glacial Hammer (Glacial Hammer of Shattering)": {
+      "disc": "alt_x",
+      "type": "Vaal Glacial Hammer"
+    },
+    "Vaal Grace": {
+      "disc": null,
+      "type": "Vaal Grace"
+    },
+    "Vaal Ground Slam": {
+      "disc": null,
+      "type": "Vaal Ground Slam"
+    },
+    "Vaal Ground Slam (Ground Slam of Earthshaking)": {
+      "disc": "alt_x",
+      "type": "Vaal Ground Slam"
+    },
+    "Vaal Haste": {
+      "disc": null,
+      "type": "Vaal Haste"
+    },
+    "Vaal Ice Nova": {
+      "disc": null,
+      "type": "Vaal Ice Nova"
+    },
+    "Vaal Ice Nova (Ice Nova of Deep Freeze)": {
+      "disc": "alt_y",
+      "type": "Vaal Ice Nova"
+    },
+    "Vaal Ice Nova (Ice Nova of Frostbolts)": {
+      "disc": "alt_x",
+      "type": "Vaal Ice Nova"
+    },
+    "Vaal Ice Shot": {
+      "disc": null,
+      "type": "Vaal Ice Shot"
+    },
+    "Vaal Ice Shot (Ice Shot of Penetration)": {
+      "disc": "alt_x",
+      "type": "Vaal Ice Shot"
+    },
+    "Vaal Immortal Call": {
+      "disc": null,
+      "type": "Vaal Immortal Call"
+    },
+    "Vaal Impurity of Fire": {
+      "disc": null,
+      "type": "Vaal Impurity of Fire"
+    },
+    "Vaal Impurity of Ice": {
+      "disc": null,
+      "type": "Vaal Impurity of Ice"
+    },
+    "Vaal Impurity of Lightning": {
+      "disc": null,
+      "type": "Vaal Impurity of Lightning"
+    },
+    "Vaal Lightning Arrow": {
+      "disc": null,
+      "type": "Vaal Lightning Arrow"
+    },
+    "Vaal Lightning Arrow (Lightning Arrow of Electrocution)": {
+      "disc": "alt_x",
+      "type": "Vaal Lightning Arrow"
+    },
+    "Vaal Lightning Strike": {
+      "disc": null,
+      "type": "Vaal Lightning Strike"
+    },
+    "Vaal Lightning Strike (Lightning Strike of Arcing)": {
+      "disc": "alt_x",
+      "type": "Vaal Lightning Strike"
+    },
+    "Vaal Lightning Trap": {
+      "disc": null,
+      "type": "Vaal Lightning Trap"
+    },
+    "Vaal Lightning Trap (Lightning Trap of Sparking)": {
+      "disc": "alt_x",
+      "type": "Vaal Lightning Trap"
+    },
+    "Vaal Lightning Warp": {
+      "disc": null,
+      "type": "Vaal Lightning Warp"
+    },
+    "Vaal Molten Shell": {
+      "disc": null,
+      "type": "Vaal Molten Shell"
+    },
+    "Vaal Molten Strike": {
+      "disc": null,
+      "type": "Vaal Molten Strike"
+    },
+    "Vaal Molten Strike (Molten Strike of the Zenith)": {
+      "disc": "alt_x",
+      "type": "Vaal Molten Strike"
+    },
+    "Vaal Power Siphon": {
+      "disc": null,
+      "type": "Vaal Power Siphon"
+    },
+    "Vaal Power Siphon (Power Siphon of the Archmage)": {
+      "disc": "alt_x",
+      "type": "Vaal Power Siphon"
+    },
+    "Vaal Rain of Arrows": {
+      "disc": null,
+      "type": "Vaal Rain of Arrows"
+    },
+    "Vaal Rain of Arrows (Rain of Arrows of Artillery)": {
+      "disc": "alt_x",
+      "type": "Vaal Rain of Arrows"
+    },
+    "Vaal Rain of Arrows (Rain of Arrows of Saturation)": {
+      "disc": "alt_y",
+      "type": "Vaal Rain of Arrows"
+    },
+    "Vaal Reap": {
+      "disc": null,
+      "type": "Vaal Reap"
+    },
+    "Vaal Reap (Reap of Butchery)": {
+      "disc": "alt_x",
+      "type": "Vaal Reap"
+    },
+    "Vaal Reave": {
+      "disc": null,
+      "type": "Vaal Reave"
+    },
+    "Vaal Reave (Reave of Refraction)": {
+      "disc": "alt_x",
+      "type": "Vaal Reave"
+    },
+    "Vaal Rejuvenation Totem": {
+      "disc": null,
+      "type": "Vaal Rejuvenation Totem"
+    },
+    "Vaal Righteous Fire": {
+      "disc": null,
+      "type": "Vaal Righteous Fire"
+    },
+    "Vaal Righteous Fire (Righteous Fire of Arcane Devotion)": {
+      "disc": "alt_x",
+      "type": "Vaal Righteous Fire"
+    },
+    "Vaal Sacrifice Support": {
+      "disc": null,
+      "type": "Vaal Sacrifice Support"
+    },
+    "Vaal Smite": {
+      "disc": null,
+      "type": "Vaal Smite"
+    },
+    "Vaal Smite (Smite of Divine Judgement)": {
+      "disc": "alt_x",
+      "type": "Vaal Smite"
+    },
+    "Vaal Spark": {
+      "disc": null,
+      "type": "Vaal Spark"
+    },
+    "Vaal Spark (Spark of Unpredictability)": {
+      "disc": "alt_y",
+      "type": "Vaal Spark"
+    },
+    "Vaal Spark (Spark of the Nova)": {
+      "disc": "alt_x",
+      "type": "Vaal Spark"
+    },
+    "Vaal Spectral Throw": {
+      "disc": null,
+      "type": "Vaal Spectral Throw"
+    },
+    "Vaal Spectral Throw (Spectral Throw of Materialising)": {
+      "disc": "alt_x",
+      "type": "Vaal Spectral Throw"
+    },
+    "Vaal Spectral Throw (Spectral Throw of Trarthus)": {
+      "disc": "alt_y",
+      "type": "Vaal Spectral Throw"
+    },
+    "Vaal Storm Call": {
+      "disc": null,
+      "type": "Vaal Storm Call"
+    },
+    "Vaal Storm Call (Storm Call of Trarthus)": {
+      "disc": "alt_x",
+      "type": "Vaal Storm Call"
+    },
+    "Vaal Summon Skeletons": {
+      "disc": null,
+      "type": "Vaal Summon Skeletons"
+    },
+    "Vaal Summon Skeletons (Summon Skeletons of Archers)": {
+      "disc": "alt_x",
+      "type": "Vaal Summon Skeletons"
+    },
+    "Vaal Summon Skeletons (Summon Skeletons of Mages)": {
+      "disc": "alt_y",
+      "type": "Vaal Summon Skeletons"
+    },
+    "Vaal Temptation Support": {
+      "disc": null,
+      "type": "Vaal Temptation Support"
+    },
+    "Vaal Venom Gyre": {
+      "disc": null,
+      "type": "Vaal Venom Gyre"
+    },
+    "Vaal Volcanic Fissure": {
+      "disc": null,
+      "type": "Vaal Volcanic Fissure"
+    },
+    "Vaal Volcanic Fissure (Volcanic Fissure of Snaking)": {
+      "disc": "alt_x",
+      "type": "Vaal Volcanic Fissure"
+    },
+    "Vampiric Link": {
+      "disc": null,
+      "type": "Vampiric Link"
+    },
+    "Vengeful Cry": {
+      "disc": null,
+      "type": "Vengeful Cry"
+    },
+    "Venom Gyre": {
+      "disc": null,
+      "type": "Venom Gyre"
+    },
+    "Vicious Projectiles Support": {
+      "disc": null,
+      "type": "Vicious Projectiles Support"
+    },
+    "Vigilant Strike": {
+      "disc": null,
+      "type": "Vigilant Strike"
+    },
+    "Vile Toxins Support": {
+      "disc": null,
+      "type": "Vile Toxins Support"
+    },
+    "Viper Strike": {
+      "disc": null,
+      "type": "Viper Strike"
+    },
+    "Viper Strike of the Mamba": {
+      "disc": "alt_x",
+      "type": "Viper Strike"
+    },
+    "Vitality": {
+      "disc": null,
+      "type": "Vitality"
+    },
+    "Void Manipulation Support": {
+      "disc": null,
+      "type": "Void Manipulation Support"
+    },
+    "Void Shockwave Support": {
+      "disc": null,
+      "type": "Void Shockwave Support"
+    },
+    "Void Sphere": {
+      "disc": null,
+      "type": "Void Sphere"
+    },
+    "Void Sphere of Rending": {
+      "disc": "alt_x",
+      "type": "Void Sphere"
+    },
+    "Voidstorm Support": {
+      "disc": null,
+      "type": "Voidstorm Support"
+    },
+    "Volatile Dead": {
+      "disc": null,
+      "type": "Volatile Dead"
+    },
+    "Volatile Dead of Confinement": {
+      "disc": "alt_x",
+      "type": "Volatile Dead"
+    },
+    "Volatile Dead of Seething": {
+      "disc": "alt_y",
+      "type": "Volatile Dead"
+    },
+    "Volatility Support": {
+      "disc": null,
+      "type": "Volatility Support"
+    },
+    "Volcanic Fissure": {
+      "disc": null,
+      "type": "Volcanic Fissure"
+    },
+    "Volcanic Fissure of Snaking": {
+      "disc": "alt_x",
+      "type": "Volcanic Fissure"
+    },
+    "Volley Support": {
+      "disc": null,
+      "type": "Volley Support"
+    },
+    "Voltaxic Burst": {
+      "disc": null,
+      "type": "Voltaxic Burst"
+    },
+    "Vortex": {
+      "disc": null,
+      "type": "Vortex"
+    },
+    "Vortex of Projection": {
+      "disc": "alt_x",
+      "type": "Vortex"
+    },
+    "Vulnerability": {
+      "disc": null,
+      "type": "Vulnerability"
+    },
+    "Wall of Force": {
+      "disc": null,
+      "type": "Wall of Force"
+    },
+    "War Banner": {
+      "disc": null,
+      "type": "War Banner"
+    },
+    "Warlord's Mark": {
+      "disc": null,
+      "type": "Warlord's Mark"
+    },
+    "Wave of Conviction": {
+      "disc": null,
+      "type": "Wave of Conviction"
+    },
+    "Wave of Conviction of Trarthus": {
+      "disc": "alt_y",
+      "type": "Wave of Conviction"
+    },
+    "Whirling Blades": {
+      "disc": null,
+      "type": "Whirling Blades"
+    },
+    "Wild Strike": {
+      "disc": null,
+      "type": "Wild Strike"
+    },
+    "Wild Strike of Extremes": {
+      "disc": "alt_x",
+      "type": "Wild Strike"
+    },
+    "Windburst Support": {
+      "disc": null,
+      "type": "Windburst Support"
+    },
+    "Winter Orb": {
+      "disc": null,
+      "type": "Winter Orb"
+    },
+    "Wintertide Brand": {
+      "disc": null,
+      "type": "Wintertide Brand"
+    },
+    "Wither": {
+      "disc": null,
+      "type": "Wither"
+    },
+    "Withering Step": {
+      "disc": null,
+      "type": "Withering Step"
+    },
+    "Withering Touch Support": {
+      "disc": null,
+      "type": "Withering Touch Support"
+    },
+    "Wrath": {
+      "disc": null,
+      "type": "Wrath"
+    },
+    "Zealotry": {
+      "disc": null,
+      "type": "Zealotry"
+    }
+  }
+}

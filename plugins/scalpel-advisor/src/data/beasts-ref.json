@@ -1,0 +1,341 @@
+{
+  "classifications": [
+    "The Deep",
+    "The Wilds",
+    "The Caverns",
+    "The Sands"
+  ],
+  "beasts": [
+    {
+      "name": "Craicic Croaker",
+      "classification": "The Deep",
+      "count": 36,
+      "priceId": "craicic-chimeral"
+    },
+    {
+      "name": "Craicic Maw",
+      "classification": "The Deep",
+      "count": 48,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Sand Spitter",
+      "classification": "The Deep",
+      "count": 258,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Savage Crab",
+      "classification": "The Deep",
+      "count": 222,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Shield Crab",
+      "classification": "The Deep",
+      "count": 208,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Spider Crab",
+      "classification": "The Deep",
+      "count": 40,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Squid",
+      "classification": "The Deep",
+      "count": 262,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Vassal",
+      "classification": "The Deep",
+      "count": 52,
+      "priceId": null
+    },
+    {
+      "name": "Craicic Watcher",
+      "classification": "The Deep",
+      "count": 190,
+      "priceId": null
+    },
+    {
+      "name": "Primal Crushclaw",
+      "classification": "The Deep",
+      "count": 8,
+      "priceId": null
+    },
+    {
+      "name": "Vivid Watcher",
+      "classification": "The Deep",
+      "count": 2,
+      "priceId": "vivid-watcher"
+    },
+    {
+      "name": "Farric Ape",
+      "classification": "The Wilds",
+      "count": 62,
+      "priceId": null
+    },
+    {
+      "name": "Farric Chieftain",
+      "classification": "The Wilds",
+      "count": 214,
+      "priceId": null
+    },
+    {
+      "name": "Farric Flame Hellion Alpha",
+      "classification": "The Wilds",
+      "count": 144,
+      "priceId": null
+    },
+    {
+      "name": "Farric Frost Hellion Alpha",
+      "classification": "The Wilds",
+      "count": 22,
+      "priceId": null
+    },
+    {
+      "name": "Farric Gargantuan",
+      "classification": "The Wilds",
+      "count": 202,
+      "priceId": null
+    },
+    {
+      "name": "Farric Goatman",
+      "classification": "The Wilds",
+      "count": 234,
+      "priceId": null
+    },
+    {
+      "name": "Farric Goliath",
+      "classification": "The Wilds",
+      "count": 194,
+      "priceId": null
+    },
+    {
+      "name": "Farric Lynx Alpha",
+      "classification": "The Wilds",
+      "count": 122,
+      "priceId": null
+    },
+    {
+      "name": "Farric Magma Hound",
+      "classification": "The Wilds",
+      "count": 122,
+      "priceId": null
+    },
+    {
+      "name": "Farric Pit Hound",
+      "classification": "The Wilds",
+      "count": 86,
+      "priceId": null
+    },
+    {
+      "name": "Farric Taurus",
+      "classification": "The Wilds",
+      "count": 194,
+      "priceId": null
+    },
+    {
+      "name": "Farric Tiger Alpha",
+      "classification": "The Wilds",
+      "count": 38,
+      "priceId": null
+    },
+    {
+      "name": "Farric Ursa",
+      "classification": "The Wilds",
+      "count": 212,
+      "priceId": null
+    },
+    {
+      "name": "Farric Wolf Alpha",
+      "classification": "The Wilds",
+      "count": 80,
+      "priceId": null
+    },
+    {
+      "name": "Primal Cystcaller",
+      "classification": "The Wilds",
+      "count": 6,
+      "priceId": null
+    },
+    {
+      "name": "Primal Rhex Matriarch",
+      "classification": "The Wilds",
+      "count": 10,
+      "priceId": null
+    },
+    {
+      "name": "Wild Brambleback",
+      "classification": "The Wilds",
+      "count": 4,
+      "priceId": "wild-brambleback"
+    },
+    {
+      "name": "Wild Bristle Matron",
+      "classification": "The Wilds",
+      "count": 2,
+      "priceId": "wild-bristle-matron"
+    },
+    {
+      "name": "Wild Hellion Alpha",
+      "classification": "The Wilds",
+      "count": 6,
+      "priceId": "wild-hellion-alpha"
+    },
+    {
+      "name": "The Black Morrigan",
+      "classification": "The Wilds",
+      "count": 14,
+      "priceId": "black-morrigan"
+    },
+    {
+      "name": "Fenumal Devourer",
+      "classification": "The Caverns",
+      "count": 228,
+      "priceId": null
+    },
+    {
+      "name": "Fenumal Hybrid Arachnid",
+      "classification": "The Caverns",
+      "count": 52,
+      "priceId": null
+    },
+    {
+      "name": "Fenumal Plagued Arachnid",
+      "classification": "The Caverns",
+      "count": 62,
+      "priceId": "fenumal-plagued-arachnid"
+    },
+    {
+      "name": "Fenumal Queen",
+      "classification": "The Caverns",
+      "count": 214,
+      "priceId": null
+    },
+    {
+      "name": "Fenumal Scorpion",
+      "classification": "The Caverns",
+      "count": 200,
+      "priceId": null
+    },
+    {
+      "name": "Fenumal Scrabbler",
+      "classification": "The Caverns",
+      "count": 226,
+      "priceId": null
+    },
+    {
+      "name": "Fenumal Widow",
+      "classification": "The Caverns",
+      "count": 214,
+      "priceId": null
+    },
+    {
+      "name": "Vivid Abberarach",
+      "classification": "The Caverns",
+      "count": 10,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Blood Viper",
+      "classification": "The Sands",
+      "count": 192,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Chimeral",
+      "classification": "The Sands",
+      "count": 198,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Cobra",
+      "classification": "The Sands",
+      "count": 202,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Retch",
+      "classification": "The Sands",
+      "count": 226,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Rhex",
+      "classification": "The Sands",
+      "count": 82,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Rhoa",
+      "classification": "The Sands",
+      "count": 258,
+      "priceId": null
+    },
+    {
+      "name": "Saqawine Vulture",
+      "classification": "The Sands",
+      "count": 56,
+      "priceId": null
+    },
+    {
+      "name": "Vivid Vulture",
+      "classification": "The Sands",
+      "count": 14,
+      "priceId": "vivid-vulture"
+    }
+  ],
+  "weights": {
+    "Craicic Croaker": 36,
+    "Craicic Maw": 48,
+    "Craicic Sand Spitter": 258,
+    "Craicic Savage Crab": 222,
+    "Craicic Shield Crab": 208,
+    "Craicic Spider Crab": 40,
+    "Craicic Squid": 262,
+    "Craicic Vassal": 52,
+    "Craicic Watcher": 190,
+    "Primal Crushclaw": 8,
+    "Vivid Watcher": 2,
+    "Farric Ape": 62,
+    "Farric Chieftain": 214,
+    "Farric Flame Hellion Alpha": 144,
+    "Farric Frost Hellion Alpha": 22,
+    "Farric Gargantuan": 202,
+    "Farric Goatman": 234,
+    "Farric Goliath": 194,
+    "Farric Lynx Alpha": 122,
+    "Farric Magma Hound": 122,
+    "Farric Pit Hound": 86,
+    "Farric Taurus": 194,
+    "Farric Tiger Alpha": 38,
+    "Farric Ursa": 212,
+    "Farric Wolf Alpha": 80,
+    "Primal Cystcaller": 6,
+    "Primal Rhex Matriarch": 10,
+    "Wild Brambleback": 4,
+    "Wild Bristle Matron": 2,
+    "Wild Hellion Alpha": 6,
+    "The Black Morrigan": 14,
+    "Fenumal Devourer": 228,
+    "Fenumal Hybrid Arachnid": 52,
+    "Fenumal Plagued Arachnid": 62,
+    "Fenumal Queen": 214,
+    "Fenumal Scorpion": 200,
+    "Fenumal Scrabbler": 226,
+    "Fenumal Widow": 214,
+    "Vivid Abberarach": 10,
+    "Saqawine Blood Viper": 192,
+    "Saqawine Chimeral": 198,
+    "Saqawine Cobra": 202,
+    "Saqawine Retch": 226,
+    "Saqawine Rhex": 82,
+    "Saqawine Rhoa": 258,
+    "Saqawine Vulture": 56,
+    "Vivid Vulture": 14
+  }
+}

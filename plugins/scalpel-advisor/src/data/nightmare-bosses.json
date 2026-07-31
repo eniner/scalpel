@@ -1,0 +1,102 @@
+{
+  "bosses": [
+    {
+      "id": "abomination",
+      "name": "Abomination",
+      "fragments": [
+        "awakening-fragment",
+        "reality-fragment"
+      ],
+      "unique": {
+        "name": "Malachai's Mark",
+        "rate": 5
+      },
+      "gem": {
+        "name": "Unholy Trinity Support",
+        "rate": 5
+      },
+      "defaultTpm": 2.5
+    },
+    {
+      "id": "citadel",
+      "name": "Citadel",
+      "fragments": [
+        "cosmic-fragment",
+        "synthesising-fragment"
+      ],
+      "unique": {
+        "name": "Manastorm",
+        "rate": 5
+      },
+      "gem": {
+        "name": "Cast on Ward Break Support",
+        "rate": 5
+      },
+      "defaultTpm": 3.5
+    },
+    {
+      "id": "fortress",
+      "name": "Fortress",
+      "fragments": [
+        "decaying-fragment",
+        "synthesising-fragment"
+      ],
+      "unique": {
+        "name": "Yoke of Suffering",
+        "rate": 5
+      },
+      "gem": {
+        "name": "Overloaded Intensity Support",
+        "rate": 5
+      },
+      "defaultTpm": 2.5
+    },
+    {
+      "id": "sanctuary",
+      "name": "Sanctuary",
+      "fragments": [
+        "lonely-fragment",
+        "traumatic-fragment",
+        "reverent-fragment"
+      ],
+      "unique": {
+        "name": "Unid The Dark Seer",
+        "rate": 5
+      },
+      "gem": {
+        "name": "Scornful Herald Support",
+        "rate": 5
+      },
+      "defaultTpm": 3
+    },
+    {
+      "id": "ziggurat",
+      "name": "Ziggurat",
+      "fragments": [
+        "blazing-fragment",
+        "devouring-fragment"
+      ],
+      "unique": {
+        "name": "Unid Wraithlord",
+        "rate": 5
+      },
+      "gem": {
+        "name": "Communion Support",
+        "rate": 5
+      },
+      "defaultTpm": 3
+    }
+  ],
+  "fragmentNames": {
+    "awakening-fragment": "Awakening Fragment",
+    "reality-fragment": "Reality Fragment",
+    "cosmic-fragment": "Cosmic Fragment",
+    "synthesising-fragment": "Synthesising Fragment",
+    "decaying-fragment": "Decaying Fragment",
+    "lonely-fragment": "Lonely Fragment",
+    "traumatic-fragment": "Traumatic Fragment",
+    "reverent-fragment": "Reverent Fragment",
+    "blazing-fragment": "Blazing Fragment",
+    "devouring-fragment": "Devouring Fragment"
+  }
+}

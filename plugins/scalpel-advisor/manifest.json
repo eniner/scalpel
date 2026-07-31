@@ -1,0 +1,10 @@
+{
+  "manifestVersion": 1,
+  "id": "scalpel-advisor",
+  "version": "0.1.0",
+  "name": "Scalpel Advisor",
+  "description": "PoE1 farming EV advisors — gems, beasts, scarabs, essences, harvest, bosses, betrayal, and more",
+  "author": "E9",
+  "scalpelMinVersion": ">=0.9.16-rc1",
+  "poeVersions": [1]
+}

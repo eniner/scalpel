@@ -1,0 +1,2485 @@
+{
+  "baseNotes": "Drop rates sourced from poewiki. Unique prices use lowest instant buyout listing regardless of rolls. Some items use custom pricing (e.g., unidentified jewels, veiled items).",
+  "tradeDefaults": {
+    "corrupted": false
+  },
+  "defaultTtk": {
+    "shaper": 4,
+    "elder": 1.83,
+    "sirus": 3.5,
+    "cortex": 2.5,
+    "maven": 4,
+    "black-star": 0.5,
+    "searing-exarch": 1.5,
+    "eater-of-worlds": 0.75,
+    "infinite-hunger": 0.5,
+    "king-in-the-mists": 0.75,
+    "mastermind": 2,
+    "oshabi": 1,
+    "uber-atziri": 2.5,
+    "saresh": 1,
+    "esh-tul": 3,
+    "incarnation-of-dread": 3.33,
+    "incarnation-of-neglect": 1,
+    "incarnation-of-fear": 1,
+    "uber-shaper": 5,
+    "uber-elder": 3,
+    "uber-uber-elder": 4,
+    "uber-sirus": 4.5,
+    "uber-cortex": 3.5,
+    "uber-maven": 5,
+    "uber-searing-exarch": 3,
+    "uber-eater-of-worlds": 2.5,
+    "uber-incarnation-of-dread": 4.5,
+    "uber-incarnation-of-neglect": 2,
+    "uber-incarnation-of-fear": 2
+  },
+  "bosses": {
+    "shaper": {
+      "name": "Shaper",
+      "icon": "/icons/shaper.png",
+      "entryItems": [
+        {
+          "id": "hydra",
+          "name": "Fragment of the Hydra"
+        },
+        {
+          "id": "phoenix",
+          "name": "Fragment of the Phoenix"
+        },
+        {
+          "id": "chimer",
+          "name": "Fragment of the Chimera"
+        },
+        {
+          "id": "minot",
+          "name": "Fragment of the Minotaur"
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Fragment of Shape",
+          "rate": 50,
+          "currencyId": "fragment-of-shape"
+        },
+        {
+          "name": "Fragment of Knowledge",
+          "rate": 50,
+          "currencyId": "fragment-of-knowledge"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Shaper's Touch",
+          "rate": 55
+        },
+        {
+          "name": "Voidwalker",
+          "rate": 32
+        },
+        {
+          "name": "Solstice Vigil",
+          "rate": 11
+        },
+        {
+          "name": "Dying Sun",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Shaper's Exalted Orb",
+          "rate": 12,
+          "currencyId": "shapers-exalted-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 3,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "Voidstorm",
+          "priceKey": "Voidstorm Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "name": "Voidstorm Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-shaper": {
+      "name": "Uber Shaper",
+      "icon": "/icons/shaper.png",
+      "customNotes": "Sublime Vision uses unidentified pricing.",
+      "entryItems": [
+        {
+          "id": "cosmic-fragment",
+          "name": "Cosmic Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Fragment of Shape",
+          "rate": 50,
+          "currencyId": "fragment-of-shape"
+        },
+        {
+          "name": "Fragment of Knowledge",
+          "rate": 50,
+          "currencyId": "fragment-of-knowledge"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Echoes of Creation",
+          "rate": 40
+        },
+        {
+          "name": "Entropic Devastation",
+          "rate": 36
+        },
+        {
+          "name": "The Tides of Time",
+          "rate": 22
+        },
+        {
+          "name": "Starforge",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Sublime Vision",
+          "priceKey": "Unid Sublime Vision",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "name": "Sublime Vision",
+            "identified": false
+          }
+        },
+        {
+          "name": "Cosmic Reliquary Key",
+          "rate": 1,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Shaper's Exalted Orb",
+          "rate": 12,
+          "currencyId": "shapers-exalted-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 3,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "Voidstorm",
+          "priceKey": "Voidstorm Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "name": "Voidstorm Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "elder": {
+      "name": "Elder",
+      "icon": "/icons/elder.png",
+      "customNotes": "Watcher's Eye uses unidentified pricing.",
+      "entryItems": [
+        {
+          "id": "fragment-of-purification",
+          "name": "Fragment of Purification"
+        },
+        {
+          "id": "fragment-of-constriction",
+          "name": "Fragment of Constriction"
+        },
+        {
+          "id": "fragment-of-enslavement",
+          "name": "Fragment of Enslavement"
+        },
+        {
+          "id": "fragment-of-eradication",
+          "name": "Fragment of Eradication"
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Fragment of Terror",
+          "rate": 50,
+          "currencyId": "fragment-of-terror"
+        },
+        {
+          "name": "Fragment of Emptiness",
+          "rate": 50,
+          "currencyId": "fragment-of-emptiness"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Cyclopean Coil",
+          "rate": 30
+        },
+        {
+          "name": "Blasphemer's Grasp",
+          "rate": 30
+        },
+        {
+          "name": "Nebuloch",
+          "rate": 10
+        },
+        {
+          "name": "Hopeshredder",
+          "rate": 10
+        },
+        {
+          "name": "Shimmeron",
+          "rate": 10
+        },
+        {
+          "name": "Impresence",
+          "rate": 10
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Watcher's Eye (2-mod)",
+          "priceKey": "Unid Watcher's Eye (2-mod)",
+          "rate": 40,
+          "tracked": true,
+          "trade": {
+            "name": "Watcher's Eye",
+            "identified": false,
+            "ilvlMax": 85
+          }
+        },
+        {
+          "name": "Elder's Exalted Orb",
+          "rate": 10,
+          "currencyId": "elders-exalted-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 2,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "Void of the Elements",
+          "rate": 1,
+          "currencyId": "void-of-the-elements"
+        },
+        {
+          "name": "Eldritch Blasphemy Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-elder": {
+      "name": "Uber Elder",
+      "icon": "/icons/elder.png",
+      "customNotes": "Watcher's Eye uses unidentified pricing.",
+      "entryItems": [
+        {
+          "id": "fragment-of-knowledge",
+          "name": "Fragment of Knowledge"
+        },
+        {
+          "id": "fragment-of-shape",
+          "name": "Fragment of Shape"
+        },
+        {
+          "id": "fragment-of-terror",
+          "name": "Fragment of Terror"
+        },
+        {
+          "id": "fragment-of-emptiness",
+          "name": "Fragment of Emptiness"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Mark of the Shaper",
+          "rate": 35
+        },
+        {
+          "name": "Mark of the Elder",
+          "rate": 35
+        },
+        {
+          "name": "Voidfletcher",
+          "rate": 15
+        },
+        {
+          "name": "Indigon",
+          "rate": 12
+        },
+        {
+          "name": "Disintegrator",
+          "rate": 3
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Watcher's Eye (3-mod)",
+          "priceKey": "Unid Watcher's Eye (3-mod)",
+          "rate": 30,
+          "tracked": true,
+          "trade": {
+            "name": "Watcher's Eye",
+            "identified": false,
+            "ilvlMin": 86
+          }
+        },
+        {
+          "name": "Shaper's Exalted Orb",
+          "rate": 15,
+          "currencyId": "shapers-exalted-orb"
+        },
+        {
+          "name": "Elder's Exalted Orb",
+          "rate": 10,
+          "currencyId": "elders-exalted-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 5,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "Void of the Elements",
+          "rate": 1,
+          "currencyId": "void-of-the-elements"
+        },
+        {
+          "name": "Auspicious Ambitions",
+          "rate": 1,
+          "currencyId": "auspicious-ambitions"
+        },
+        {
+          "name": "Void Shockwave",
+          "priceKey": "Void Shockwave Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Void Shockwave Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-uber-elder": {
+      "name": "Uber Uber Elder",
+      "icon": "/icons/elder.png",
+      "customNotes": "Watcher's Eye and Sublime Vision use unidentified pricing.",
+      "entryItems": [
+        {
+          "id": "decaying-fragment",
+          "name": "Decaying Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Call of the Void",
+          "rate": 40
+        },
+        {
+          "name": "The Devourer of Minds",
+          "rate": 30
+        },
+        {
+          "name": "Soul Ascension",
+          "rate": 10
+        },
+        {
+          "name": "Impresence",
+          "rate": 10
+        },
+        {
+          "name": "The Eternity Shroud",
+          "rate": 6
+        },
+        {
+          "name": "Voidforge",
+          "rate": 4
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Sublime Vision",
+          "priceKey": "Unid Sublime Vision",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "name": "Sublime Vision",
+            "identified": false
+          }
+        },
+        {
+          "name": "Unid Watcher's Eye (3-mod)",
+          "priceKey": "Unid Watcher's Eye (3-mod)",
+          "rate": 30,
+          "tracked": true,
+          "trade": {
+            "name": "Watcher's Eye",
+            "identified": false,
+            "ilvlMin": 86
+          }
+        },
+        {
+          "name": "Decaying Reliquary Key",
+          "rate": 1.5,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Curio of Decay",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "baseType": "Primordial Fragment"
+          }
+        },
+        {
+          "name": "Shaper's Exalted Orb",
+          "rate": 20,
+          "currencyId": "shapers-exalted-orb"
+        },
+        {
+          "name": "Elder's Exalted Orb",
+          "rate": 15,
+          "currencyId": "elders-exalted-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 8,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "Void of the Elements",
+          "rate": 1,
+          "currencyId": "void-of-the-elements"
+        },
+        {
+          "name": "Auspicious Ambitions",
+          "rate": 1,
+          "currencyId": "auspicious-ambitions"
+        },
+        {
+          "name": "Void Shockwave",
+          "priceKey": "Void Shockwave Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Void Shockwave Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "sirus": {
+      "name": "Sirus",
+      "icon": "/icons/sirus.png",
+      "customNotes": "Thread of Hope uses unidentified pricing, with fallback to average of identified size variants.",
+      "entryItems": [
+        {
+          "id": "al-hezmins-crest",
+          "name": "Al-Hezmin's Crest"
+        },
+        {
+          "id": "barans-crest",
+          "name": "Baran's Crest"
+        },
+        {
+          "id": "droxs-crest",
+          "name": "Drox's Crest"
+        },
+        {
+          "id": "veritanias-crest",
+          "name": "Veritania's Crest"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Hands of the High Templar",
+          "rate": 40
+        },
+        {
+          "name": "Crown of the Inward Eye",
+          "rate": 35
+        },
+        {
+          "name": "The Burden of Truth",
+          "rate": 20
+        },
+        {
+          "name": "Unid Thread of Hope",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "name": "Thread of Hope",
+            "identified": false,
+            "ilvlMax": 85
+          }
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Awakener's Orb",
+          "rate": 20,
+          "currencyId": "awakeners-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 10,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "A Fate Worse Than Death",
+          "rate": 4,
+          "currencyId": "a-fate-worse-than-death"
+        },
+        {
+          "name": "Annihilation Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-sirus": {
+      "name": "Uber Sirus",
+      "icon": "/icons/sirus.png",
+      "customNotes": "Thread of Hope (Massive) uses unidentified pricing, with fallback to identified Massive listings.",
+      "entryItems": [
+        {
+          "id": "awakening-fragment",
+          "name": "Awakening Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Unid Thread of Hope (Massive)",
+          "rate": 55,
+          "tracked": true,
+          "trade": {
+            "name": "Thread of Hope",
+            "identified": false,
+            "ilvlMin": 86
+          }
+        },
+        {
+          "name": "The Tempest Rising",
+          "rate": 37
+        },
+        {
+          "name": "Oriath's End",
+          "rate": 7.5
+        },
+        {
+          "name": "The Saviour",
+          "rate": 0.5
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Awakener's Orb",
+          "rate": 20,
+          "currencyId": "awakeners-orb"
+        },
+        {
+          "name": "Orb of Dominance",
+          "rate": 10,
+          "currencyId": "mavens-orb"
+        },
+        {
+          "name": "Oubliette Reliquary Key",
+          "rate": 1.5,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "A Fate Worse Than Death",
+          "rate": 4,
+          "currencyId": "a-fate-worse-than-death"
+        },
+        {
+          "name": "Annihilation Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "cortex": {
+      "name": "Cortex",
+      "icon": "/icons/cortex.png",
+      "entryItems": [
+        {
+          "id": "cortex",
+          "name": "Cortex",
+          "tracked": true
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Offering to the Serpent",
+          "rate": 45
+        },
+        {
+          "name": "Perepiteia",
+          "rate": 35
+        },
+        {
+          "name": "Garb of the Ephemeral",
+          "rate": 15
+        },
+        {
+          "name": "Bottled Faith",
+          "rate": 5
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Greater Kinetic Instability Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "name": "Greater Kinetic Instability Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-cortex": {
+      "name": "Uber Cortex",
+      "icon": "/icons/cortex.png",
+      "entryItems": [
+        {
+          "id": "synthesising-fragment",
+          "name": "Synthesising Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Nebulis",
+          "rate": 40
+        },
+        {
+          "name": "Mask of the Tribunal",
+          "rate": 30
+        },
+        {
+          "name": "The Apostate",
+          "rate": 15
+        },
+        {
+          "name": "Circle of Ambition",
+          "rate": 10
+        },
+        {
+          "name": "Rational Doctrine",
+          "rate": 5
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Forgotten Reliquary Key",
+          "rate": 1.5,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Greater Kinetic Instability Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "name": "Greater Kinetic Instability Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "incarnation-of-dread": {
+      "name": "Incarnation of Dread",
+      "icon": "/icons/incarnation-of-dread.png",
+      "entryItems": [
+        {
+          "id": "echo-of-reverence",
+          "name": "Echo of Reverence"
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Templar Astrolabe",
+          "rate": 33,
+          "currencyId": "templar-astrolabe"
+        },
+        {
+          "name": "Grasping Astrolabe",
+          "rate": 7.44,
+          "currencyId": "grasping-astrolabe"
+        },
+        {
+          "name": "Runic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "runic-astrolabe"
+        },
+        {
+          "name": "Chaotic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "chaotic-astrolabe"
+        },
+        {
+          "name": "Fungal Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fungal-astrolabe"
+        },
+        {
+          "name": "Nameless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "nameless-astrolabe"
+        },
+        {
+          "name": "Timeless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "timeless-astrolabe"
+        },
+        {
+          "name": "Deceptive Astrolabe",
+          "rate": 7.44,
+          "currencyId": "enshrouded-astrolabe"
+        },
+        {
+          "name": "Lightless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "lightless-astrolabe"
+        },
+        {
+          "name": "Fruiting Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fruiting-astrolabe"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Bonemeld",
+          "rate": 55
+        },
+        {
+          "name": "The Dark Monarch",
+          "rate": 35
+        },
+        {
+          "name": "Seven Teachings",
+          "rate": 8
+        },
+        {
+          "name": "Wine of the Prophet",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Bound by Destiny",
+          "priceKey": "Unid Bound by Destiny",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Bound by Destiny",
+            "identified": false
+          }
+        },
+        {
+          "name": "Orb of Unravelling",
+          "rate": 33,
+          "currencyId": "orb-of-unravelling"
+        },
+        {
+          "name": "Congregation Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-incarnation-of-dread": {
+      "name": "Uber Incarnation of Dread",
+      "icon": "/icons/incarnation-of-dread.png",
+      "entryItems": [
+        {
+          "id": "reverent-fragment",
+          "name": "Reverent Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Templar Astrolabe",
+          "rate": 33,
+          "currencyId": "templar-astrolabe"
+        },
+        {
+          "name": "Grasping Astrolabe",
+          "rate": 7.44,
+          "currencyId": "grasping-astrolabe"
+        },
+        {
+          "name": "Runic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "runic-astrolabe"
+        },
+        {
+          "name": "Chaotic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "chaotic-astrolabe"
+        },
+        {
+          "name": "Fungal Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fungal-astrolabe"
+        },
+        {
+          "name": "Nameless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "nameless-astrolabe"
+        },
+        {
+          "name": "Timeless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "timeless-astrolabe"
+        },
+        {
+          "name": "Deceptive Astrolabe",
+          "rate": 7.44,
+          "currencyId": "enshrouded-astrolabe"
+        },
+        {
+          "name": "Lightless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "lightless-astrolabe"
+        },
+        {
+          "name": "Fruiting Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fruiting-astrolabe"
+        }
+      ],
+      "drops": [
+        {
+          "name": "The Hallowed Monarch",
+          "rate": 54
+        },
+        {
+          "name": "Whispers of Infinity",
+          "rate": 30
+        },
+        {
+          "name": "Wellwater Phylactery",
+          "rate": 14
+        },
+        {
+          "name": "The Golden Charlatan",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Bound by Destiny",
+          "priceKey": "Unid Bound by Destiny",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Bound by Destiny",
+            "identified": false
+          }
+        },
+        {
+          "name": "Orb of Unravelling",
+          "rate": 33,
+          "currencyId": "orb-of-unravelling"
+        },
+        {
+          "name": "Reverent Reliquary Key",
+          "rate": 1,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Congregation Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "incarnation-of-neglect": {
+      "name": "Incarnation of Neglect",
+      "icon": "/icons/incarnation-of-neglect.png",
+      "entryItems": [
+        {
+          "id": "echo-of-loneliness",
+          "name": "Echo of Loneliness"
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Templar Astrolabe",
+          "rate": 33,
+          "currencyId": "templar-astrolabe"
+        },
+        {
+          "name": "Grasping Astrolabe",
+          "rate": 7.44,
+          "currencyId": "grasping-astrolabe"
+        },
+        {
+          "name": "Runic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "runic-astrolabe"
+        },
+        {
+          "name": "Chaotic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "chaotic-astrolabe"
+        },
+        {
+          "name": "Fungal Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fungal-astrolabe"
+        },
+        {
+          "name": "Nameless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "nameless-astrolabe"
+        },
+        {
+          "name": "Timeless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "timeless-astrolabe"
+        },
+        {
+          "name": "Deceptive Astrolabe",
+          "rate": 7.44,
+          "currencyId": "enshrouded-astrolabe"
+        },
+        {
+          "name": "Lightless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "lightless-astrolabe"
+        },
+        {
+          "name": "Fruiting Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fruiting-astrolabe"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Betrayal's Sting",
+          "rate": 50
+        },
+        {
+          "name": "The Arkhon's Tools",
+          "rate": 38
+        },
+        {
+          "name": "Venarius' Astrolabe",
+          "rate": 10
+        },
+        {
+          "name": "Legacy of the Rose",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Bound by Destiny",
+          "priceKey": "Unid Bound by Destiny",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Bound by Destiny",
+            "identified": false
+          }
+        },
+        {
+          "name": "Orb of Remembrance",
+          "rate": 33,
+          "currencyId": "orb-of-remembrance"
+        },
+        {
+          "name": "Monochrome",
+          "rate": 3,
+          "currencyId": "monochrome"
+        },
+        {
+          "name": "Frostmage Support",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-incarnation-of-neglect": {
+      "name": "Uber Incarnation of Neglect",
+      "icon": "/icons/incarnation-of-neglect.png",
+      "entryItems": [
+        {
+          "id": "lonely-fragment",
+          "name": "Lonely Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Templar Astrolabe",
+          "rate": 33,
+          "currencyId": "templar-astrolabe"
+        },
+        {
+          "name": "Grasping Astrolabe",
+          "rate": 7.44,
+          "currencyId": "grasping-astrolabe"
+        },
+        {
+          "name": "Runic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "runic-astrolabe"
+        },
+        {
+          "name": "Chaotic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "chaotic-astrolabe"
+        },
+        {
+          "name": "Fungal Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fungal-astrolabe"
+        },
+        {
+          "name": "Nameless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "nameless-astrolabe"
+        },
+        {
+          "name": "Timeless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "timeless-astrolabe"
+        },
+        {
+          "name": "Deceptive Astrolabe",
+          "rate": 7.44,
+          "currencyId": "enshrouded-astrolabe"
+        },
+        {
+          "name": "Lightless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "lightless-astrolabe"
+        },
+        {
+          "name": "Fruiting Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fruiting-astrolabe"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Refuge in Isolation",
+          "rate": 55
+        },
+        {
+          "name": "Bitter Instinct",
+          "rate": 30
+        },
+        {
+          "name": "Haunting Memories",
+          "rate": 13
+        },
+        {
+          "name": "Festering Resentment",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Bound by Destiny",
+          "priceKey": "Unid Bound by Destiny",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Bound by Destiny",
+            "identified": false
+          }
+        },
+        {
+          "name": "Orb of Remembrance",
+          "rate": 33,
+          "currencyId": "orb-of-remembrance"
+        },
+        {
+          "name": "Lonely Reliquary Key",
+          "rate": 1,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Monochrome",
+          "rate": 3,
+          "currencyId": "monochrome"
+        },
+        {
+          "name": "Frostmage Support",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "incarnation-of-fear": {
+      "name": "Incarnation of Fear",
+      "icon": "/icons/incarnation-of-fear.png",
+      "entryItems": [
+        {
+          "id": "echo-of-trauma",
+          "name": "Echo of Trauma"
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Templar Astrolabe",
+          "rate": 33,
+          "currencyId": "templar-astrolabe"
+        },
+        {
+          "name": "Grasping Astrolabe",
+          "rate": 7.44,
+          "currencyId": "grasping-astrolabe"
+        },
+        {
+          "name": "Runic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "runic-astrolabe"
+        },
+        {
+          "name": "Chaotic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "chaotic-astrolabe"
+        },
+        {
+          "name": "Fungal Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fungal-astrolabe"
+        },
+        {
+          "name": "Nameless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "nameless-astrolabe"
+        },
+        {
+          "name": "Timeless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "timeless-astrolabe"
+        },
+        {
+          "name": "Deceptive Astrolabe",
+          "rate": 7.44,
+          "currencyId": "enshrouded-astrolabe"
+        },
+        {
+          "name": "Lightless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "lightless-astrolabe"
+        },
+        {
+          "name": "Fruiting Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fruiting-astrolabe"
+        }
+      ],
+      "drops": [
+        {
+          "name": "Servant of Decay",
+          "rate": 50
+        },
+        {
+          "name": "The Unseen Hue",
+          "rate": 40
+        },
+        {
+          "name": "Enmity's Embrace",
+          "rate": 8
+        },
+        {
+          "name": "Starcaller",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Bound by Destiny",
+          "priceKey": "Unid Bound by Destiny",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Bound by Destiny",
+            "identified": false
+          }
+        },
+        {
+          "name": "Orb of Intention",
+          "rate": 50,
+          "currencyId": "orb-of-intention"
+        },
+        {
+          "name": "Greater Devour Support",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-incarnation-of-fear": {
+      "name": "Uber Incarnation of Fear",
+      "icon": "/icons/incarnation-of-fear.png",
+      "entryItems": [
+        {
+          "id": "traumatic-fragment",
+          "name": "Traumatic Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [
+        {
+          "name": "Templar Astrolabe",
+          "rate": 33,
+          "currencyId": "templar-astrolabe"
+        },
+        {
+          "name": "Grasping Astrolabe",
+          "rate": 7.44,
+          "currencyId": "grasping-astrolabe"
+        },
+        {
+          "name": "Runic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "runic-astrolabe"
+        },
+        {
+          "name": "Chaotic Astrolabe",
+          "rate": 7.44,
+          "currencyId": "chaotic-astrolabe"
+        },
+        {
+          "name": "Fungal Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fungal-astrolabe"
+        },
+        {
+          "name": "Nameless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "nameless-astrolabe"
+        },
+        {
+          "name": "Timeless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "timeless-astrolabe"
+        },
+        {
+          "name": "Deceptive Astrolabe",
+          "rate": 7.44,
+          "currencyId": "enshrouded-astrolabe"
+        },
+        {
+          "name": "Lightless Astrolabe",
+          "rate": 7.44,
+          "currencyId": "lightless-astrolabe"
+        },
+        {
+          "name": "Fruiting Astrolabe",
+          "rate": 7.44,
+          "currencyId": "fruiting-astrolabe"
+        }
+      ],
+      "drops": [
+        {
+          "name": "The Caged Mammoth",
+          "rate": 60
+        },
+        {
+          "name": "Coiling Whisper",
+          "rate": 32
+        },
+        {
+          "name": "Woespike",
+          "rate": 3
+        },
+        {
+          "name": "Wing of the Wyvern",
+          "rate": 4
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Bound by Destiny",
+          "priceKey": "Unid Bound by Destiny",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Bound by Destiny",
+            "identified": false
+          }
+        },
+        {
+          "name": "Orb of Intention",
+          "rate": 50,
+          "currencyId": "orb-of-intention"
+        },
+        {
+          "name": "Traumatic Reliquary Key",
+          "rate": 1,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Greater Devour Support",
+          "rate": 6,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "maven": {
+      "name": "Maven",
+      "icon": "/icons/maven.png",
+      "customNotes": "Impossible Escape uses unidentified pricing.",
+      "entryItems": [
+        {
+          "id": "the-mavens-writ",
+          "name": "Maven's Writ"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Legacy of Fury",
+          "rate": 44
+        },
+        {
+          "name": "Graven's Secret",
+          "rate": 16
+        },
+        {
+          "name": "Arn's Anguish",
+          "rate": 16
+        },
+        {
+          "name": "Olesya's Delight",
+          "rate": 16
+        },
+        {
+          "name": "Doppelgänger Guise",
+          "rate": 7
+        },
+        {
+          "name": "Echoforge",
+          "rate": 1
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Orb of Conflict",
+          "rate": 35,
+          "currencyId": "orb-of-conflict"
+        },
+        {
+          "name": "Invert the Rules Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-maven": {
+      "name": "Uber Maven",
+      "icon": "/icons/maven.png",
+      "customNotes": "Impossible Escape uses unidentified pricing.",
+      "entryItems": [
+        {
+          "id": "reality-fragment",
+          "name": "Reality Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Viridi's Veil",
+          "rate": 52
+        },
+        {
+          "name": "Unid Impossible Escape",
+          "priceKey": "Unid Impossible Escape",
+          "rate": 33,
+          "trade": {
+            "name": "Impossible Escape",
+            "identified": false,
+            "corrupted": null
+          }
+        },
+        {
+          "name": "Grace of the Goddess",
+          "rate": 13
+        },
+        {
+          "name": "Progenesis",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Orb of Conflict",
+          "rate": 30,
+          "currencyId": "orb-of-conflict"
+        },
+        {
+          "name": "Shiny Reliquary Key",
+          "rate": 1.5,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Curio of Potential",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "baseType": "Primordial Fragment"
+          }
+        },
+        {
+          "name": "Invert the Rules Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        },
+        {
+          "name": "Eclipse Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ],
+      "gemDrops": {
+        "baseRate": 2,
+        "gems": [
+          {
+            "name": "Awakened Empower Support",
+            "weight": 1,
+            "trade": {
+              "name": "Awakened Empower Support",
+              "gem": true
+            }
+          },
+          {
+            "name": "Awakened Enhance Support",
+            "weight": 1,
+            "trade": {
+              "name": "Awakened Enhance Support",
+              "gem": true
+            }
+          },
+          {
+            "name": "Awakened Enlighten Support",
+            "weight": 1,
+            "trade": {
+              "name": "Awakened Enlighten Support",
+              "gem": true
+            }
+          }
+        ]
+      }
+    },
+    "black-star": {
+      "name": "Black Star",
+      "icon": "/icons/black-star.png",
+      "quantityBonus": 50,
+      "entryItems": [
+        {
+          "id": "polaric-invitation",
+          "name": "Polaric Invitation",
+          "tracked": true
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [],
+      "extraDrops": [
+        {
+          "name": "Polaric Devastation",
+          "rate": 3,
+          "tracked": true
+        },
+        {
+          "name": "Sudden Dawn",
+          "rate": 3,
+          "tracked": true
+        },
+        {
+          "name": "The Eternal Struggle",
+          "rate": 5,
+          "tracked": true
+        },
+        {
+          "name": "Eldritch Orb of Annulment",
+          "rate": 5,
+          "currencyId": "eldritch-orb-of-annulment"
+        },
+        {
+          "name": "Eldritch Chaos Orb",
+          "rate": 5,
+          "currencyId": "eldritch-chaos-orb"
+        },
+        {
+          "name": "Eldritch Exalted Orb",
+          "rate": 5,
+          "currencyId": "eldritch-exalted-orb"
+        },
+        {
+          "name": "Grand Eldritch Ember",
+          "rate": 12,
+          "currencyId": "grand-eldritch-ember"
+        },
+        {
+          "name": "Greater Eldritch Ember",
+          "rate": 12,
+          "currencyId": "greater-eldritch-ember"
+        }
+      ]
+    },
+    "searing-exarch": {
+      "name": "Exarch",
+      "icon": "/icons/searing-exarch.png",
+      "quantityBonus": 70,
+      "entryItems": [
+        {
+          "id": "incandescent-invitation",
+          "name": "Incandescent Invitation",
+          "tracked": true
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Dawnbreaker",
+          "rate": 63
+        },
+        {
+          "name": "Dawnstrider",
+          "rate": 35
+        },
+        {
+          "name": "Dissolution of the Flesh",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Forbidden Flame (ilvl 86-)",
+          "priceKey": "Unid Forbidden Flame (ilvl 86-)",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "name": "Forbidden Flame",
+            "identified": false,
+            "ilvlMax": 86,
+            "corrupted": null
+          }
+        },
+        {
+          "name": "Exceptional Eldritch Ember",
+          "rate": 15,
+          "currencyId": "exceptional-eldritch-ember"
+        },
+        {
+          "name": "Eldritch Orb of Annulment",
+          "rate": 5,
+          "currencyId": "eldritch-orb-of-annulment"
+        },
+        {
+          "name": "Eldritch Chaos Orb",
+          "rate": 5,
+          "currencyId": "eldritch-chaos-orb"
+        },
+        {
+          "name": "Eldritch Exalted Orb",
+          "rate": 5,
+          "currencyId": "eldritch-exalted-orb"
+        },
+        {
+          "name": "Overheat Support",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "eater-of-worlds": {
+      "name": "Eater",
+      "icon": "/icons/eater-of-worlds.png",
+      "quantityBonus": 70,
+      "entryItems": [
+        {
+          "id": "screaming-invitation",
+          "name": "Screaming Invitation",
+          "tracked": true
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Inextricable Fate",
+          "rate": 55
+        },
+        {
+          "name": "The Gluttonous Tide",
+          "rate": 43
+        },
+        {
+          "name": "Melding of the Flesh",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Forbidden Flesh (ilvl 86-)",
+          "priceKey": "Unid Forbidden Flesh (ilvl 86-)",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "name": "Forbidden Flesh",
+            "identified": false,
+            "ilvlMax": 86,
+            "corrupted": null
+          }
+        },
+        {
+          "name": "Exceptional Eldritch Ichor",
+          "rate": 15,
+          "currencyId": "exceptional-eldritch-ichor"
+        },
+        {
+          "name": "Eldritch Orb of Annulment",
+          "rate": 5,
+          "currencyId": "eldritch-orb-of-annulment"
+        },
+        {
+          "name": "Eldritch Chaos Orb",
+          "rate": 5,
+          "currencyId": "eldritch-chaos-orb"
+        },
+        {
+          "name": "Eldritch Exalted Orb",
+          "rate": 5,
+          "currencyId": "eldritch-exalted-orb"
+        },
+        {
+          "name": "Gluttony Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-searing-exarch": {
+      "name": "Uber Exarch",
+      "icon": "/icons/searing-exarch.png",
+      "entryItems": [
+        {
+          "id": "blazing-fragment",
+          "name": "Blazing Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "The Annihilating Light",
+          "rate": 45.5
+        },
+        {
+          "name": "Annihilation's Approach",
+          "rate": 29
+        },
+        {
+          "name": "Crystallised Omniscience",
+          "rate": 24
+        },
+        {
+          "name": "The Celestial Brace",
+          "rate": 1.5
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Forbidden Flame (ilvl 87+)",
+          "priceKey": "Unid Forbidden Flame (ilvl 87+)",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "name": "Forbidden Flame",
+            "identified": false,
+            "ilvlMin": 87,
+            "corrupted": null
+          }
+        },
+        {
+          "name": "Exceptional Eldritch Ember",
+          "rate": 15,
+          "currencyId": "exceptional-eldritch-ember"
+        },
+        {
+          "name": "Eldritch Orb of Annulment",
+          "rate": 5,
+          "currencyId": "eldritch-orb-of-annulment"
+        },
+        {
+          "name": "Eldritch Chaos Orb",
+          "rate": 5,
+          "currencyId": "eldritch-chaos-orb"
+        },
+        {
+          "name": "Eldritch Exalted Orb",
+          "rate": 5,
+          "currencyId": "eldritch-exalted-orb"
+        },
+        {
+          "name": "Archive Reliquary Key",
+          "rate": 1.5,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Curio of Absorption",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "baseType": "Primordial Fragment"
+          }
+        }
+      ]
+    },
+    "uber-eater-of-worlds": {
+      "name": "Uber Eater",
+      "icon": "/icons/eater-of-worlds.png",
+      "entryItems": [
+        {
+          "id": "devouring-fragment",
+          "name": "Devouring Fragment",
+          "qty": 4
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Ravenous Passion",
+          "rate": 68
+        },
+        {
+          "name": "Ashes of the Stars",
+          "rate": 30
+        },
+        {
+          "name": "Nimis",
+          "rate": 2
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Unid Forbidden Flesh (ilvl 87+)",
+          "priceKey": "Unid Forbidden Flesh (ilvl 87+)",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "name": "Forbidden Flesh",
+            "identified": false,
+            "ilvlMin": 87,
+            "corrupted": null
+          }
+        },
+        {
+          "name": "Exceptional Eldritch Ichor",
+          "rate": 15,
+          "currencyId": "exceptional-eldritch-ichor"
+        },
+        {
+          "name": "Eldritch Orb of Annulment",
+          "rate": 5,
+          "currencyId": "eldritch-orb-of-annulment"
+        },
+        {
+          "name": "Eldritch Chaos Orb",
+          "rate": 5,
+          "currencyId": "eldritch-chaos-orb"
+        },
+        {
+          "name": "Eldritch Exalted Orb",
+          "rate": 5,
+          "currencyId": "eldritch-exalted-orb"
+        },
+        {
+          "name": "Visceral Reliquary Key",
+          "rate": 1,
+          "tracked": true,
+          "trade": {
+            "useType": true
+          }
+        },
+        {
+          "name": "Curio of Consumption",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "baseType": "Primordial Fragment"
+          }
+        },
+        {
+          "name": "Gluttony Support",
+          "rate": 2,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "infinite-hunger": {
+      "name": "Infinite Hunger",
+      "icon": "/icons/infinite-hunger.png",
+      "quantityBonus": 50,
+      "entryItems": [
+        {
+          "id": "writhing-invitation",
+          "name": "Writhing Invitation",
+          "tracked": true
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [],
+      "extraDrops": [
+        {
+          "name": "Choking Guilt",
+          "rate": 0.5,
+          "currencyId": "choking-guilt"
+        },
+        {
+          "name": "Ceaseless Feast",
+          "rate": 3,
+          "tracked": true
+        },
+        {
+          "name": "Black Zenith",
+          "rate": 3,
+          "tracked": true
+        },
+        {
+          "name": "The Eternal Struggle",
+          "rate": 5,
+          "tracked": true
+        },
+        {
+          "name": "Eldritch Orb of Annulment",
+          "rate": 5,
+          "currencyId": "eldritch-orb-of-annulment"
+        },
+        {
+          "name": "Eldritch Chaos Orb",
+          "rate": 5,
+          "currencyId": "eldritch-chaos-orb"
+        },
+        {
+          "name": "Eldritch Exalted Orb",
+          "rate": 5,
+          "currencyId": "eldritch-exalted-orb"
+        },
+        {
+          "name": "Grand Eldritch Ichor",
+          "rate": 12,
+          "currencyId": "grand-eldritch-ichor"
+        },
+        {
+          "name": "Greater Eldritch Ichor",
+          "rate": 12,
+          "currencyId": "greater-eldritch-ichor"
+        }
+      ]
+    },
+    "king-in-the-mists": {
+      "name": "King in the Mists",
+      "icon": "/icons/light-of-meaning.png",
+      "customNotes": "Rates exclude the rare corpse drop.",
+      "entryItems": [
+        {
+          "id": "an-audience-with-the-king",
+          "name": "An Audience with the King"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "The Untouched Soul",
+          "rate": 40
+        },
+        {
+          "name": "Pragmatism",
+          "rate": 35
+        },
+        {
+          "name": "Unid The Light of Meaning",
+          "priceKey": "Unid The Light of Meaning",
+          "rate": 20,
+          "tracked": true,
+          "trade": {
+            "name": "The Light of Meaning",
+            "identified": false
+          }
+        },
+        {
+          "name": "The Burden of Shadows",
+          "rate": 5
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Bursting Toad",
+          "priceKey": "Hextoad Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Hextoad Support",
+            "gem": true
+          }
+        },
+        {
+          "name": "Hexpass Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "mastermind": {
+      "name": "Catarina",
+      "icon": "/icons/cinderswallow-urn.png",
+      "customNotes": "Unique prices based on veiled (not unveiled) items.",
+      "entryItems": [
+        {
+          "id": "syndicate-medallion",
+          "name": "Syndicate Medallion"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Veiled Cinderswallow Urn (Life)",
+          "priceKey": "Cinderswallow Life (veiled)",
+          "rate": 10,
+          "trade": {
+            "name": "Cinderswallow Urn",
+            "veiled": true,
+            "stats": [
+              {
+                "id": "explicit.stat_1217476473",
+                "value": {
+                  "min": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Veiled Cinderswallow Urn (ES)",
+          "priceKey": "Cinderswallow ES (veiled)",
+          "rate": 10,
+          "trade": {
+            "name": "Cinderswallow Urn",
+            "veiled": true,
+            "stats": [
+              {
+                "id": "explicit.stat_2347201221",
+                "value": {
+                  "min": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Veiled Cinderswallow Urn (Mana)",
+          "priceKey": "Cinderswallow Mana (veiled)",
+          "rate": 10,
+          "trade": {
+            "name": "Cinderswallow Urn",
+            "veiled": true,
+            "stats": [
+              {
+                "id": "explicit.stat_3247931236",
+                "value": {
+                  "min": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Veiled Spinehail",
+          "priceKey": "Spinehail (veiled)",
+          "rate": 20,
+          "trade": {
+            "name": "Spinehail",
+            "veiled": true
+          }
+        },
+        {
+          "name": "Veiled Devouring Diadem",
+          "priceKey": "Devouring Diadem (veiled)",
+          "rate": 16,
+          "trade": {
+            "name": "The Devouring Diadem",
+            "veiled": true
+          }
+        },
+        {
+          "name": "Veiled Bitterbind Point",
+          "priceKey": "Bitterbind Point (veiled)",
+          "rate": 10,
+          "trade": {
+            "name": "Bitterbind Point",
+            "veiled": true
+          }
+        },
+        {
+          "name": "Veiled Queen's Hunger",
+          "priceKey": "Queen's Hunger (veiled)",
+          "rate": 6,
+          "trade": {
+            "name": "The Queen's Hunger",
+            "veiled": true
+          }
+        },
+        {
+          "name": "Veiled Cane of Kulemak (1P2S)",
+          "priceKey": "Cane of Kulemak (3-mod 1P2S)",
+          "rate": 7,
+          "trade": {
+            "name": "Cane of Kulemak",
+            "veiled": true
+          }
+        },
+        {
+          "name": "Veiled Cane of Kulemak (2P1S)",
+          "priceKey": "Cane of Kulemak (3-mod 2P1S)",
+          "rate": 7,
+          "trade": {
+            "name": "Cane of Kulemak",
+            "veiled": true
+          }
+        },
+        {
+          "name": "Veiled Cane of Kulemak (4 mod)",
+          "priceKey": "Cane of Kulemak (4-mod)",
+          "rate": 4,
+          "trade": {
+            "name": "Cane of Kulemak",
+            "veiled": true,
+            "stats": [
+              {
+                "id": "pseudo.pseudo_number_of_prefix_mods",
+                "value": {
+                  "min": 2
+                }
+              },
+              {
+                "id": "pseudo.pseudo_number_of_suffix_mods",
+                "value": {
+                  "min": 2
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Veiled Exalted Orb",
+          "rate": 25,
+          "currencyId": "veiled-exalted-orb"
+        },
+        {
+          "name": "Allflame Ember of Resplendence",
+          "rate": 60,
+          "currencyId": "allflame-ember-of-resplendence"
+        },
+        {
+          "name": "Allflame Ember of Kulemak",
+          "rate": 30,
+          "currencyId": "allflame-ember-of-kulemak"
+        },
+        {
+          "name": "Allflame Ember of Propagation",
+          "rate": 30,
+          "currencyId": "allflame-ember-of-propagation"
+        },
+        {
+          "name": "Nook's Crown",
+          "rate": 0.5,
+          "currencyId": "nooks-crown"
+        },
+        {
+          "name": "Communion Support",
+          "rate": 8,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "oshabi": {
+      "name": "Oshabi",
+      "icon": "/icons/forbidden-shako.png",
+      "customNotes": "Forbidden Shako price based on unidentified listings.",
+      "entryItems": [
+        {
+          "id": "sacred-blossom",
+          "name": "Sacred Blossom"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Unid Forbidden Shako",
+          "priceKey": "Unid Forbidden Shako",
+          "rate": 52,
+          "tracked": true,
+          "trade": {
+            "name": "Forbidden Shako",
+            "identified": false
+          }
+        },
+        {
+          "name": "Law of the Wilds",
+          "rate": 20
+        },
+        {
+          "name": "Witchhunter's Judgment",
+          "rate": 16
+        },
+        {
+          "name": "Abhorrent Interrogation",
+          "rate": 12
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Sacred Crystallised Lifeforce",
+          "rate": 100,
+          "currencyId": "sacred-lifeforce"
+        },
+        {
+          "name": "The Aspirant",
+          "rate": 10,
+          "currencyId": "the-aspirant"
+        },
+        {
+          "name": "Pacifism Support",
+          "rate": 12,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        },
+        {
+          "name": "Greater Unleash Support",
+          "rate": 4,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "saresh": {
+      "name": "Saresh",
+      "icon": "/icons/the-black-barya.png",
+      "entryItems": [
+        {
+          "id": "the-black-barya",
+          "name": "The Black Barya"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "Unid Screams of the Desiccated",
+          "priceKey": "Screams of the Desiccated (Unid)",
+          "rate": 55,
+          "tracked": true,
+          "trade": {
+            "name": "Screams of the Desiccated",
+            "identified": false
+          }
+        },
+        {
+          "name": "The Broken Elegy",
+          "rate": 40
+        },
+        {
+          "name": "The Sands of Time",
+          "rate": 5
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Mirage Map",
+          "rate": 100,
+          "tracked": true,
+          "noTrade": true
+        },
+        {
+          "name": "Transfusion Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    },
+    "esh-tul": {
+      "name": "Esh-Tul",
+      "entryItems": [
+        {
+          "id": "hivebrain-gland",
+          "name": "Hivebrain Gland"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "The Will of Xoph",
+          "rate": 17
+        },
+        {
+          "name": "The Will of Tul",
+          "rate": 17
+        },
+        {
+          "name": "The Will of Esh",
+          "rate": 17
+        },
+        {
+          "name": "The Will of Uul-Netol",
+          "rate": 10
+        },
+        {
+          "name": "Hand of the Lords",
+          "rate": 30
+        },
+        {
+          "name": "The Grey Wind",
+          "rate": 5
+        },
+        {
+          "name": "The Sundered Will",
+          "rate": 3
+        },
+        {
+          "name": "Uul-Netol's Vow",
+          "rate": 1
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Flesh of Xesht",
+          "rate": 20,
+          "currencyId": "blessing-general"
+        },
+        {
+          "name": "Something Dark",
+          "rate": 10,
+          "currencyId": "something-dark"
+        },
+        {
+          "name": "Foulgrasp",
+          "priceKey": "Foulgrasp Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "name": "Foulgrasp Support",
+            "gem": true
+          }
+        },
+        {
+          "name": "The Escape",
+          "rate": 6,
+          "currencyId": "the-escape"
+        },
+        {
+          "name": "Summon Hiveborn",
+          "priceKey": "Hiveborn Support",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "name": "Hiveborn Support",
+            "gem": true
+          }
+        }
+      ]
+    },
+    "uber-atziri": {
+      "name": "Uber Atziri",
+      "icon": "/icons/atziri.png",
+      "customNotes": "Atziri's Splendour has 9 defence variants and Triumvirate Authority has random mods. Prices use cheapest listings which may be misleading due to low popularity. The Price of Devotion div card (<0.2%) excluded due to negligible EV contribution.",
+      "entryItems": [
+        {
+          "id": "grie",
+          "name": "Mortal Grief"
+        },
+        {
+          "id": "ign",
+          "name": "Mortal Ignorance"
+        },
+        {
+          "id": "rage",
+          "name": "Mortal Rage"
+        },
+        {
+          "id": "hope",
+          "name": "Mortal Hope"
+        }
+      ],
+      "guaranteedDrops": [],
+      "drops": [
+        {
+          "name": "The Vertex",
+          "rate": 42
+        },
+        {
+          "name": "Atziri's Splendour",
+          "rate": 39
+        },
+        {
+          "name": "Triumvirate Authority",
+          "rate": 6
+        },
+        {
+          "name": "Atziri's Acuity",
+          "rate": 6
+        },
+        {
+          "name": "Atziri's Reflection",
+          "rate": 3
+        },
+        {
+          "name": "Atziri's Rule",
+          "rate": 3
+        },
+        {
+          "name": "Atziri's Disfavour",
+          "rate": 1
+        }
+      ],
+      "extraDrops": [
+        {
+          "name": "Beauty",
+          "rate": 12.5,
+          "tracked": true,
+          "trade": {
+            "baseType": "Vaal Aspect"
+          }
+        },
+        {
+          "name": "Greater Spell Echo Support",
+          "rate": 5,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        },
+        {
+          "name": "Vaal Sacrifice Support",
+          "rate": 10,
+          "tracked": true,
+          "trade": {
+            "gem": true
+          }
+        }
+      ]
+    }
+  }
+}

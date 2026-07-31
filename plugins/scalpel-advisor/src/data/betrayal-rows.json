@@ -1,0 +1,94 @@
+[
+  {
+    "id": "veiled-chaos",
+    "name": "Veiled Chaos Orb",
+    "icon": "veiled-chaos-orb.png",
+    "kind": "currency",
+    "currencyId": "veiled-chaos-orb",
+    "defaultDrop": 50
+  },
+  {
+    "id": "medallion",
+    "name": "Syndicate Medallion",
+    "icon": "syndicate-medallion.png",
+    "kind": "currency",
+    "currencyId": "syndicate-medallion",
+    "defaultDrop": 12
+  },
+  {
+    "id": "allflame-wildwood",
+    "name": "Allflame Ember of the Wildwood",
+    "icon": "allflame-wildwood.png",
+    "kind": "allflame",
+    "currencyId": "allflame-ember-of-the-wildwood",
+    "defaultDrop": 0
+  },
+  {
+    "id": "allflame-toad",
+    "name": "Allflame Ember of Toads",
+    "icon": "allflame-toad.png",
+    "kind": "allflame",
+    "currencyId": "allflame-ember-of-toads",
+    "defaultDrop": 0
+  },
+  {
+    "id": "allflame-gilded",
+    "name": "Allflame Ember of the Gilded",
+    "icon": "allflame-gilded.png",
+    "kind": "allflame",
+    "currencyId": "allflame-ember-of-the-gilded",
+    "defaultDrop": 0
+  },
+  {
+    "id": "allflame-flesh",
+    "name": "Allflame Ember of Flesh",
+    "icon": "allflame-flesh.png",
+    "kind": "allflame",
+    "currencyId": "allflame-ember-of-flesh",
+    "defaultDrop": 0
+  },
+  {
+    "id": "allflame-ethereal",
+    "name": "Allflame Ember of the Ethereal",
+    "icon": "allflame-ethereal.png",
+    "kind": "allflame",
+    "currencyId": "allflame-ember-of-the-ethereal",
+    "defaultDrop": 0
+  },
+  {
+    "id": "hyperboreus",
+    "name": "Hyperboreus",
+    "icon": "hyperboreus.png",
+    "kind": "unique",
+    "uniqueName": "Hyperboreus",
+    "safehouse": "transportation",
+    "defaultDrop": 5
+  },
+  {
+    "id": "crimson-storm",
+    "name": "The Crimson Storm",
+    "icon": "crimson-storm.png",
+    "kind": "unique",
+    "uniqueName": "The Crimson Storm",
+    "safehouse": "fortification",
+    "defaultDrop": 5
+  },
+  {
+    "id": "vivinsect",
+    "name": "Vivinsect",
+    "icon": "vivinsect.png",
+    "kind": "unique",
+    "uniqueName": "Vivinsect",
+    "safehouse": "research",
+    "defaultDrop": 5
+  },
+  {
+    "id": "paradoxica",
+    "name": "Paradoxica",
+    "icon": "paradoxica.png",
+    "kind": "unique",
+    "uniqueName": "Paradoxica",
+    "safehouse": "intervention",
+    "defaultDrop": 5
+  }
+]

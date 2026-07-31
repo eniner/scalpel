@@ -1,0 +1,7 @@
+﻿node_modules/
+dist/
+src/data/live/
+src/data/icons/
+src/engines/ref-*.js
+*.map
+.DS_Store
