@@ -962,6 +962,11 @@ describe('searchTrade filter-group dispatch', () => {
       itemClass: 'Maps',
       rarity: 'Normal',
     }
+    // GGG's PoE1 /data/stats flattens these option stats into one entry per choice
+    // ("implicit.stat_2563183002|3" = Al-Hezmin) with no `option` group attached, so
+    // the producer leaves StatFilter.option unset and the query ships the bare id.
+    // That shape matters: pairing a flattened `|N` id with `value: {option: N}`
+    // matches zero listings on the live API.
     const mapImplicits: StatFilter[] = [
       {
         id: 'implicit.stat_1792283443|1',
@@ -1025,7 +1030,6 @@ describe('searchTrade filter-group dispatch', () => {
         value: null,
         min: null,
         max: null,
-        option: 1,
       },
       {
         id: 'implicit.stat_2563183002|2',
@@ -1035,7 +1039,6 @@ describe('searchTrade filter-group dispatch', () => {
         value: null,
         min: null,
         max: null,
-        option: 2,
       },
       {
         id: 'implicit.stat_2563183002|3',
@@ -1045,7 +1048,6 @@ describe('searchTrade filter-group dispatch', () => {
         value: null,
         min: null,
         max: null,
-        option: 3,
       },
       {
         id: 'implicit.stat_2563183002|4',
@@ -1055,7 +1057,6 @@ describe('searchTrade filter-group dispatch', () => {
         value: null,
         min: null,
         max: null,
-        option: 4,
       },
     ]
     const filters: StatFilter[] = [
@@ -1074,58 +1075,18 @@ describe('searchTrade filter-group dispatch', () => {
     await searchTrade('Allflame', unidMap, filters, { tradeStatus: 'any', tradePriceOption: 'chaos_divine' })
     const req = capturedRequests.find((r) => r.url.includes('/search/'))
     const body = parseCapturedBody(req)
-    const sentIds = body.query.stats[0]?.filters?.map((f) => f.id) ?? []
+    const sentFilters = body.query.stats[0]?.filters ?? []
+    const sentIds = sentFilters.map((f) => f.id)
     for (const f of mapImplicits) {
       expect(sentIds).toContain(f.id)
     }
     expect(sentIds).not.toContain('explicit.stat_999999')
-  })
-
-  it('unidentified Elder-occupied map still sends visible map implicits', async () => {
-    setPoeVersion(1)
-    const unidOccupiedMap = {
-      name: 'Map (Tier 16)',
-      baseType: 'Map (Tier 16)',
-      itemClass: 'Maps',
-      rarity: 'Normal',
+    // A flattened `|N` id already encodes the choice -- shipping value.option too
+    // returns nothing on the live API, so guard the emitted shape, not just the ids.
+    for (const f of sentFilters) {
+      if (f.id.includes('|')) expect(f.value?.option).toBeUndefined()
     }
-    const filters: StatFilter[] = [
-      { id: 'misc.identified', text: 'Unidentified', type: 'misc', enabled: true, value: null, min: null, max: null },
-      {
-        id: 'implicit.stat_1792283443|2',
-        text: 'Area is influenced by The Elder',
-        type: 'implicit',
-        enabled: true,
-        value: null,
-        min: null,
-        max: null,
-      },
-      {
-        id: 'implicit.stat_3624393862|3',
-        text: 'Map is occupied by The Constrictor',
-        type: 'implicit',
-        enabled: true,
-        value: null,
-        min: null,
-        max: null,
-      },
-      {
-        id: 'explicit.stat_999999',
-        text: 'Hidden rolled map mod',
-        type: 'explicit',
-        enabled: true,
-        value: null,
-        min: null,
-        max: null,
-      },
-    ]
-    await searchTrade('Allflame', unidOccupiedMap, filters, { tradeStatus: 'any', tradePriceOption: 'chaos_divine' })
-    const req = capturedRequests.find((r) => r.url.includes('/search/'))
-    const body = parseCapturedBody(req)
-    const sentIds = body.query.stats[0]?.filters?.map((f) => f.id) ?? []
-    expect(sentIds).toContain('implicit.stat_1792283443|2')
-    expect(sentIds).toContain('implicit.stat_3624393862|3')
-    expect(sentIds).not.toContain('explicit.stat_999999')
+    // The rest of the unid map query is untouched by the stat-filter gate.
     expect(body.query.filters.map_filters?.filters.map_tier).toEqual({ min: 16, max: 16 })
     expect(body.query.filters.misc_filters?.filters.identified).toEqual({ option: 'false' })
   })
