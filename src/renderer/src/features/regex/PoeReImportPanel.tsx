@@ -55,8 +55,8 @@ export function PoeReImportPanel({ onImport }: PoeReImportPanelProps): JSX.Eleme
         Import from poe.re
       </span>
       <p className="text-[10px] text-text-dim m-0 mb-2 leading-relaxed">
-        On poe.re → Maps → profile → Export, copy the string, paste here. Avoid/want mods and
-        qualifiers load into Scalpel; trade-only toggles are skipped.
+        On poe.re → Maps → profile → Export, copy the string, paste here. Avoid/want mods and qualifiers load into
+        Scalpel; trade-only toggles are skipped.
       </p>
       <textarea
         value={raw}
@@ -73,16 +73,11 @@ export function PoeReImportPanel({ onImport }: PoeReImportPanelProps): JSX.Eleme
       {preview?.ok && (
         <div className="mt-1.5 text-[10px] text-text-dim leading-relaxed">
           Preview:{' '}
-          <span className="text-text">
-            {(preview.result.profileName ?? preview.result.preset.name) || 'unnamed'}
-          </span>
+          <span className="text-text">{(preview.result.profileName ?? preview.result.preset.name) || 'unnamed'}</span>
           {' · '}
           {preview.result.preset.avoid.length} avoid / {preview.result.preset.want.length} want
           {preview.result.unknownModIds.length > 0 && (
-            <span className="text-[#ff9800]">
-              {' '}
-              · {preview.result.unknownModIds.length} unknown id(s)
-            </span>
+            <span className="text-[#ff9800]"> · {preview.result.unknownModIds.length} unknown id(s)</span>
           )}
         </div>
       )}

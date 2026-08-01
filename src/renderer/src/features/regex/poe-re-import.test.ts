@@ -1,9 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  decodePoeReExport,
-  extractPoeReMapSettings,
-  poeReExportToMapsPreset,
-} from './poe-re-import'
+import { decodePoeReExport, extractPoeReMapSettings, poeReExportToMapsPreset } from './poe-re-import'
 
 /** Encode the way poe.re does (UTF-8-safe Base64). */
 function encodePoeRe(obj: unknown): string {

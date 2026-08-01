@@ -126,10 +126,7 @@ export function extractPoeReMapSettings(decoded: unknown): {
   if (root.profiles && typeof root.profiles === 'object') {
     const profiles = root.profiles as Record<string, Record<string, unknown>>
     const active = typeof root.active === 'string' ? root.active : null
-    const name =
-      (active && profiles[active] ? active : null) ??
-      Object.keys(profiles)[0] ??
-      null
+    const name = (active && profiles[active] ? active : null) ?? Object.keys(profiles)[0] ?? null
     if (!name || !profiles[name]) throw new Error('Export has no profiles to import.')
     const profile = profiles[name]
     if (!profile.map || typeof profile.map !== 'object') {
@@ -204,9 +201,7 @@ export function mapPoeReToMapsPreset(
   const profileName = opts?.profileName ?? null
 
   const name =
-    profileName?.trim() && profileName.trim().toLowerCase() !== 'default'
-      ? profileName.trim()
-      : 'Imported from poe.re'
+    profileName?.trim() && profileName.trim().toLowerCase() !== 'default' ? profileName.trim() : 'Imported from poe.re'
 
   const preset: RegexPreset = {
     id: opts?.id ?? `poe-re-${Date.now()}`,
