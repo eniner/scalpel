@@ -49,9 +49,7 @@ export function GeneralTab({
   // async IPC, and a stale settings snapshot still holding "Runes of Aldur"
   // would immediately flip privateMode back off (flicker).
   const [privateMode, setPrivateMode] = useState(() => !isListedLeague(activeLeague))
-  const [draftLeague, setDraftLeague] = useState(() =>
-    isListedLeague(activeLeague) ? '' : activeLeague,
-  )
+  const [draftLeague, setDraftLeague] = useState(() => (isListedLeague(activeLeague) ? '' : activeLeague))
   const leaguePersistTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {

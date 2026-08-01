@@ -227,10 +227,7 @@ export function writeLastUsedProfileSettingByGameVariant<K extends ProfileSettin
   // return no activeProfile change — settings UI then snaps back after an
   // optimistic Private League clear.
   const active = getActiveProfile(store)
-  let profile =
-    active && active.gameVariant === variant
-      ? active
-      : findLastUsedProfileByGameVariant(store, variant)
+  let profile = active && active.gameVariant === variant ? active : findLastUsedProfileByGameVariant(store, variant)
   if (!profile) {
     profile = profileStore().createProfile({ name: `Path of Exile ${variant}`, gameVariant: variant })
     store.set(lastProfileIdKey(variant), profile.id)
