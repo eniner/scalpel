@@ -151,6 +151,27 @@ describe('profile-settings', () => {
     expect(profiles.getProfile(poe1.id)?.league).toBe('Standard')
   })
 
+  it('prefers the active profile over a stale last-used id for the same variant', () => {
+    const profiles = setupProfiles()
+    const activePoe2 = { ...profiles.createDefault(2), league: 'Runes of Aldur' }
+    const staleLast = { ...profiles.createDefault(2), league: 'Other' }
+    profiles.saveProfile(activePoe2)
+    profiles.saveProfile(staleLast)
+
+    const store = makeStore({
+      [PROFILE_VERSION_KEY]: 1,
+      [ACTIVE_PROFILE_ID_KEY]: activePoe2.id,
+      [LAST_PROFILE_ID_POE2_KEY]: staleLast.id,
+    })
+
+    const changes = writeLastUsedProfileSettingByGameVariant(store, 2, 'league', '')
+
+    expect(changes).toHaveLength(1)
+    expect(profiles.getProfile(activePoe2.id)?.league).toBe('')
+    expect(profiles.getProfile(staleLast.id)?.league).toBe('Other')
+    expect(store.get(LAST_PROFILE_ID_POE2_KEY)).toBe(activePoe2.id)
+  })
+
   it('switches game variant with activation reason from target profile', () => {
     const profiles = setupProfiles()
     const poe1 = profiles.createDefault(1)

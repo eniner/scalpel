@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Github, Refresh } from '@icon-park/react'
 import type { AppSettings, ProfileSettingValue, RuntimeSettings } from '@shared/types'
 import { GITHUB_REPO_URL, KOFI_URL } from '@shared/endpoints'
@@ -9,6 +9,8 @@ import kofiIcon from '@renderer/assets/other/kofi-logo.svg'
 import { SettingToggleBox } from '@renderer/components/primitives/SettingToggleBox'
 import { LOCALE_LABELS, setAppLocale, SUPPORTED_LOCALES, useCurrentLocale } from '@renderer/shared/locale'
 import { m } from '@shared/paraglide/messages.js'
+
+const LEAGUE_PERSIST_MS = 250
 
 interface Props {
   settings: RuntimeSettings
@@ -40,6 +42,79 @@ export function GeneralTab({
   const [refreshingLeagues, setRefreshingLeagues] = useState(false)
   const leagueOptions = resolveLeagueOptions(settings, settings.poeVersion)
   const activeLeague = settings.activeProfile?.league ?? ''
+  const isListedLeague = (league: string): boolean => leagueOptions.includes(league)
+
+  // Private-league UI is intentional local state. Do NOT derive privateMode from
+  // settings on every activeLeague change: selecting Private League writes '' via
+  // async IPC, and a stale settings snapshot still holding "Runes of Aldur"
+  // would immediately flip privateMode back off (flicker).
+  const [privateMode, setPrivateMode] = useState(() => !isListedLeague(activeLeague))
+  const [draftLeague, setDraftLeague] = useState(() =>
+    isListedLeague(activeLeague) ? '' : activeLeague,
+  )
+  const leaguePersistTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    if (privateMode) {
+      // Stay in private mode until the user picks a listed league. Only sync the
+      // draft when settings already carry a custom (non-listed) name.
+      if (activeLeague && !isListedLeague(activeLeague)) {
+        setDraftLeague(activeLeague)
+      }
+      return
+    }
+    if (!isListedLeague(activeLeague)) {
+      setPrivateMode(true)
+      setDraftLeague(activeLeague)
+    }
+  }, [activeLeague, leagueOptions, privateMode])
+
+  useEffect(() => {
+    return () => {
+      if (leaguePersistTimer.current) clearTimeout(leaguePersistTimer.current)
+    }
+  }, [])
+
+  const persistLeague = (value: string, immediate = false): void => {
+    if (leaguePersistTimer.current) {
+      clearTimeout(leaguePersistTimer.current)
+      leaguePersistTimer.current = null
+    }
+    const write = (): void => {
+      void updateProfile('league', value)
+    }
+    if (immediate) {
+      write()
+      return
+    }
+    leaguePersistTimer.current = setTimeout(write, LEAGUE_PERSIST_MS)
+  }
+
+  const selectPrivateLeague = (): void => {
+    setPrivateMode(true)
+    setDraftLeague('')
+    // Optimistic local update so parent settings don't briefly re-show the old
+    // challenge league while IPC is in flight.
+    if (settings.activeProfile) {
+      onSettingsChange({
+        ...settings,
+        activeProfile: { ...settings.activeProfile, league: '' },
+      })
+    }
+    void updateProfile('league', '')
+  }
+
+  const selectListedLeague = (league: string): void => {
+    setPrivateMode(false)
+    setDraftLeague('')
+    if (settings.activeProfile) {
+      onSettingsChange({
+        ...settings,
+        activeProfile: { ...settings.activeProfile, league },
+      })
+    }
+    void updateProfile('league', league)
+  }
 
   // Forced so it ignores the hourly cooldown. The main process broadcasts
   // setting updates to every window except the sender, so this window has to
@@ -118,7 +193,7 @@ export function GeneralTab({
       {/* League */}
       {(() => {
         const PRIVATE_LEAGUE_LABEL = m.settings_private_league()
-        const isPrivate = !leagueOptions.includes(activeLeague)
+        const shownLeague = privateMode ? draftLeague || PRIVATE_LEAGUE_LABEL : activeLeague
         return (
           <section>
             <label>{m.settings_league_label()}</label>
@@ -126,7 +201,7 @@ export function GeneralTab({
               {/* flex-1 so the value eats the free space and both buttons sit
                   together on the right; without it justify-between strands
                   Change in the middle of the row. */}
-              <span className="value flex-1 min-w-0">{activeLeague || PRIVATE_LEAGUE_LABEL}</span>
+              <span className="value flex-1 min-w-0">{shownLeague}</span>
               <button
                 className="primary"
                 onClick={() => {
@@ -150,12 +225,12 @@ export function GeneralTab({
               </button>
               <select
                 id="league-select-unified"
-                value={isPrivate ? PRIVATE_LEAGUE_LABEL : activeLeague}
+                value={privateMode ? PRIVATE_LEAGUE_LABEL : activeLeague}
                 onChange={(e) => {
                   if (e.target.value === PRIVATE_LEAGUE_LABEL) {
-                    if (!isPrivate) updateProfile('league', '')
+                    selectPrivateLeague()
                   } else {
-                    updateProfile('league', e.target.value)
+                    selectListedLeague(e.target.value)
                   }
                 }}
                 className="absolute inset-0 opacity-0 cursor-pointer"
@@ -168,13 +243,25 @@ export function GeneralTab({
                 <option value={PRIVATE_LEAGUE_LABEL}>{PRIVATE_LEAGUE_LABEL}</option>
               </select>
             </div>
-            {isPrivate && (
+            {privateMode && (
               <input
                 type="text"
-                value={activeLeague}
-                onChange={(e) => updateProfile('league', e.target.value)}
+                value={draftLeague}
+                onChange={(e) => {
+                  setDraftLeague(e.target.value)
+                  persistLeague(e.target.value)
+                }}
+                onBlur={() => {
+                  if (leaguePersistTimer.current) {
+                    clearTimeout(leaguePersistTimer.current)
+                    leaguePersistTimer.current = null
+                  }
+                  void updateProfile('league', draftLeague)
+                }}
                 placeholder={m.settings_private_league_placeholder()}
                 className="mt-[6px] w-full text-[11px] bg-black/30 rounded px-2 py-[5px] border-none"
+                autoComplete="off"
+                spellCheck={false}
               />
             )}
           </section>

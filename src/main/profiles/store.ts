@@ -47,7 +47,10 @@ export class ProfileStore {
       updatedAt: typeof raw.updatedAt === 'string' && raw.updatedAt ? raw.updatedAt : now,
       filterDir: typeof raw.filterDir === 'string' ? raw.filterDir : '',
       filterPath: typeof raw.filterPath === 'string' ? raw.filterPath : '',
-      league: typeof raw.league === 'string' && raw.league ? raw.league : fallback.league,
+      // Empty string is valid: Private League mode clears the name until the
+      // user types a custom league. Treating '' as missing snapped settings
+      // back to the challenge-league default on every save.
+      league: typeof raw.league === 'string' ? raw.league : fallback.league,
       tradePriceOption: raw.tradePriceOption ?? fallback.tradePriceOption,
       cheatSheets: raw.cheatSheets ?? fallback.cheatSheets,
       regexPresets: Array.isArray(raw.regexPresets) ? raw.regexPresets : [],

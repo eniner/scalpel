@@ -222,7 +222,15 @@ export function writeLastUsedProfileSettingByGameVariant<K extends ProfileSettin
   key: K,
   value: ProfileSettingValue<K>,
 ): ProfileChangedSetting[] {
-  let profile = findLastUsedProfileByGameVariant(store, variant)
+  // Prefer the active profile when it already matches the target game. Otherwise
+  // a stale last-used id for the same variant can write a different profile and
+  // return no activeProfile change — settings UI then snaps back after an
+  // optimistic Private League clear.
+  const active = getActiveProfile(store)
+  let profile =
+    active && active.gameVariant === variant
+      ? active
+      : findLastUsedProfileByGameVariant(store, variant)
   if (!profile) {
     profile = profileStore().createProfile({ name: `Path of Exile ${variant}`, gameVariant: variant })
     store.set(lastProfileIdKey(variant), profile.id)
@@ -232,6 +240,7 @@ export function writeLastUsedProfileSettingByGameVariant<K extends ProfileSettin
     profile[key] = value
     profile.updatedAt = new Date().toISOString()
     profileStore().saveProfile(profile)
+    store.set(lastProfileIdKey(variant), profile.id)
   }
 
   const activeId = store.get(ACTIVE_PROFILE_ID_KEY)
