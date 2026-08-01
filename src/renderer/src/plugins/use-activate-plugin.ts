@@ -1,8 +1,27 @@
 import { useEffect, useState } from 'react'
 import type { PluginActivate, RegisterOverlayOptions, ScalpelPluginContext } from '../../../plugin-sdk/src/types'
 import type { PoeItem, Zone } from '@shared/types'
+import { divCardArtMap, iconMap, initIconMap, initPoeVersion, mergeIconCache } from '../shared/constants'
 import { importPluginModule } from './import-plugin-module'
 import { resolveLeagueOptions } from '@renderer/shared/league-options'
+
+/** Publish the same __scalpel icon maps the main overlay exposes so plugin
+ *  pop-out windows can resolve getItemIcon / ItemChip (Economy, etc.). */
+function publishPluginOverlayIconMaps(poeVersion: 1 | 2): () => void {
+  initPoeVersion(poeVersion)
+  initIconMap(poeVersion)
+  ;(
+    globalThis as unknown as { __scalpel?: { iconMap: typeof iconMap; divCardArtMap: typeof divCardArtMap } }
+  ).__scalpel = {
+    iconMap,
+    divCardArtMap,
+  }
+  void window.api
+    .getIconCache()
+    .then(mergeIconCache)
+    .catch(() => {})
+  return window.api.onIconCacheUpdated(mergeIconCache)
+}
 
 export interface ActivatedPlugin {
   captured: { opts: RegisterOverlayOptions; render: (container: HTMLElement) => (() => void) | void } | null
@@ -18,6 +37,7 @@ export function useActivatePlugin(pluginId: string): ActivatedPlugin {
     let cancelled = false
     let latestItem: PoeItem | null = null
     let latestZone: Zone | null = null
+    let unsubIconCache: (() => void) | undefined
     const unsubItem = window.api.onOverlayData((d) => {
       latestItem = d.item
     })
@@ -29,6 +49,7 @@ export function useActivatePlugin(pluginId: string): ActivatedPlugin {
       if (cancelled || !entry) return
       const state = await window.api.getOverlayState().catch(() => null)
       const poeVersion: 1 | 2 = (state?.poeVersion as 1 | 2) ?? 1
+      unsubIconCache = publishPluginOverlayIconMaps(poeVersion)
       const settings = await window.api.getSettings().catch(() => null)
       let league = settings?.activeProfile?.league ?? ''
       const mod = (await importPluginModule(entry.entryUrl)) as { default?: PluginActivate }
@@ -79,9 +100,8 @@ export function useActivatePlugin(pluginId: string): ActivatedPlugin {
           }
         },
         openTab: () => {},
-        copyAndEvaluateItem: (opts) => window.api.pluginTriggerMainHotkey(opts),
+        copyAndEvaluateItem: () => window.api.pluginTriggerMainHotkey(),
         captureGameWindow: (region) => window.api.pluginCaptureGameWindow(region),
-        getCursorPosition: () => window.api.pluginGetCursorPosition(),
         fetch: window.fetch.bind(window),
         storage: {
           get: <T = unknown>(key: string): Promise<T | null> =>
@@ -126,6 +146,7 @@ export function useActivatePlugin(pluginId: string): ActivatedPlugin {
       cancelled = true
       unsubItem()
       unsubZone()
+      unsubIconCache?.()
     }
   }, [pluginId])
 

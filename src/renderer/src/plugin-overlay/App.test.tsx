@@ -23,6 +23,8 @@ function installApi(): void {
     pluginTriggerMainHotkey: vi.fn(async () => null),
     pluginCloseOverlay: vi.fn(async () => {}),
     openExternal: vi.fn(),
+    getIconCache: vi.fn(async () => ({})),
+    onIconCacheUpdated: vi.fn(() => () => {}),
   }
 }
 
