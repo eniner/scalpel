@@ -377,7 +377,7 @@ export function RegexGenerator({ settings, update, tryHotkey }: Props): JSX.Elem
     <FilterChip
       label={
         <>
-          <FSevenKey size={12} theme="outline" fill="currentColor" /> Save &amp; Bind Macro
+          <FSevenKey size={12} theme="outline" fill="currentColor" /> Save &amp; Bind
         </>
       }
       active={saveOpen}
@@ -405,7 +405,7 @@ export function RegexGenerator({ settings, update, tryHotkey }: Props): JSX.Elem
     <FilterChip
       label={
         <>
-          <Plus size={12} theme="outline" fill="currentColor" /> Start New Regex
+          <Plus size={12} theme="outline" fill="currentColor" /> Start New
         </>
       }
       solidInactive
