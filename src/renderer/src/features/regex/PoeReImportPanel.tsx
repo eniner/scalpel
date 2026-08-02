@@ -8,11 +8,13 @@ import {
 } from './poe-re-import'
 
 interface PoeReImportPanelProps {
+  /** Drawer visibility, driven by the Maps chip row's one-open-at-a-time panel state. */
+  open: boolean
   onImport: (preset: RegexPreset) => void
 }
 
-/** Paste UI for poe.re Maps profile export strings (Load panel, Maps tab only). */
-export function PoeReImportPanel({ onImport }: PoeReImportPanelProps): JSX.Element {
+/** Paste drawer for poe.re Maps profile export strings, opened from the Maps chip row. */
+export function PoeReImportPanel({ open, onImport }: PoeReImportPanelProps): JSX.Element {
   const [raw, setRaw] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [importedNote, setImportedNote] = useState<string | null>(null)
@@ -50,10 +52,17 @@ export function PoeReImportPanel({ onImport }: PoeReImportPanelProps): JSX.Eleme
   }
 
   return (
-    <div className="border-b border-border bg-bg-card px-3 py-2">
-      <span className="text-[9px] text-text-dim font-semibold uppercase tracking-wider mb-1 block">
-        Import from poe.re
-      </span>
+    <div
+      className="overflow-hidden transition-all duration-150"
+      style={{
+        maxHeight: open ? 240 : 0,
+        opacity: open ? 1 : 0,
+        margin: open ? '8px -12px 0' : '0',
+        padding: open ? '0 12px' : '0',
+        borderTop: '1px solid var(--border)',
+        paddingTop: open ? 8 : 0,
+      }}
+    >
       <p className="text-[10px] text-text-dim m-0 mb-2 leading-relaxed">
         On poe.re → Maps → profile → Export, copy the string, paste here. Avoid/want mods and qualifiers load into
         Scalpel; trade-only toggles are skipped.
@@ -68,7 +77,7 @@ export function PoeReImportPanel({ onImport }: PoeReImportPanelProps): JSX.Eleme
         rows={3}
         spellCheck={false}
         placeholder="Paste poe.re export string…"
-        className="w-full box-border text-[11px] font-mono bg-black/30 rounded px-2 py-1.5 text-text outline-none resize-y border border-white/10"
+        className="w-full box-border text-[11px] font-mono bg-black/30 rounded px-2 py-1.5 text-text outline-none resize-none border border-white/10"
       />
       {preview?.ok && (
         <div className="mt-1.5 text-[10px] text-text-dim leading-relaxed">

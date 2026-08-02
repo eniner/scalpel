@@ -17,6 +17,8 @@ import {
 } from '@icon-park/react'
 import { TAB_COLORS, loadSet, loadStorage, useRegexKey } from './mapmods-helpers'
 import { FilterChip } from '../../components/primitives/FilterChip'
+import { PoeReImportPanel } from './PoeReImportPanel'
+import poereIconTight from '../../assets/other/poere-logo-tight.svg'
 import { TradeResults } from './TradeResults'
 import { MAP_TIER_ICONS, ORIGINATOR_TIER_ICONS, TierPicker } from './TierPicker'
 import { ModList } from './ModList'
@@ -34,7 +36,7 @@ type WantMode = 'any' | 'all'
 
 /** Maps-scoped panel state -- mutually exclusive with the container's save/load panels
  *  via the shared-panel plumbing. */
-type MapsPanel = 'search' | 'tier' | 'trade' | null
+type MapsPanel = 'search' | 'tier' | 'trade' | 'import' | null
 
 export const MapsGenerator = forwardRef<GeneratorHandle, GeneratorProps>(function MapsGenerator(
   {
@@ -85,6 +87,7 @@ export const MapsGenerator = forwardRef<GeneratorHandle, GeneratorProps>(functio
   const searchOpen = panel === 'search'
   const showTierPicker = panel === 'tier'
   const showTradeResults = panel === 'trade'
+  const showImport = panel === 'import'
   // Tell the container to collapse Save/Load whenever one of this generator's own
   // panels opens, so only one chip is open at a time across the row. Ref keeps the
   // callback identity out of the effect deps.
@@ -208,6 +211,16 @@ export const MapsGenerator = forwardRef<GeneratorHandle, GeneratorProps>(functio
     setPanel('trade')
   }
 
+  // Hydrate every piece of Maps state a preset carries. Shared by the container's
+  // load-a-saved-preset path and the poe.re import, which builds the same shape.
+  const hydrate = (preset: RegexPreset): void => {
+    setAvoid(new Set(preset.avoid))
+    setWant(new Set(preset.want))
+    setWantMode(preset.wantMode)
+    setQualifiers(preset.qualifiers)
+    setShowNightmare(preset.nightmare)
+  }
+
   // ---- Imperative handle ---------------------------------------------------
   useImperativeHandle(
     ref,
@@ -223,13 +236,7 @@ export const MapsGenerator = forwardRef<GeneratorHandle, GeneratorProps>(functio
         >,
         nightmare: showNightmare,
       }),
-      applyPreset: (preset: RegexPreset) => {
-        setAvoid(new Set(preset.avoid))
-        setWant(new Set(preset.want))
-        setWantMode(preset.wantMode)
-        setQualifiers(preset.qualifiers)
-        setShowNightmare(preset.nightmare)
-      },
+      applyPreset: hydrate,
       // Maps presets match on sorted auto-tag text set (ignoring user custom tags).
       matchesPreset: (preset: RegexPreset) => {
         if ((preset.generator ?? 'maps') !== 'maps') return false
@@ -294,6 +301,13 @@ export const MapsGenerator = forwardRef<GeneratorHandle, GeneratorProps>(functio
           {sharedSaveChip}
           {sharedLoadChip}
           <FilterChip
+            label="Import"
+            icon={poereIconTight}
+            active={showImport}
+            solidInactive
+            onClick={() => openPanel('import')}
+          />
+          <FilterChip
             label={
               <>
                 <Buy size={12} theme="outline" fill="currentColor" /> {trade.searching ? 'Searching...' : 'Trade'}
@@ -336,6 +350,11 @@ export const MapsGenerator = forwardRef<GeneratorHandle, GeneratorProps>(functio
             )}
           </div>
         </div>
+
+        {/* poe.re profile import drawer. Applies straight to Maps state rather than
+            going through the container's loadPreset, so pasting an export does not
+            open an editing session against a preset id that was never saved. */}
+        <PoeReImportPanel open={showImport} onImport={hydrate} />
 
         {/* Shared save panel (collapsible). */}
         {sharedSavePanel}

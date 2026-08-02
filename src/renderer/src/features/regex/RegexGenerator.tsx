@@ -13,7 +13,6 @@ import poereIconTight from '../../assets/other/poere-logo-tight.svg'
 import { POE_RE_URL, POE2_RE_URL } from '@shared/endpoints'
 import { FilterChip } from '../../components/primitives/FilterChip'
 import { SavedPresetsGrid } from './SavedPresetsGrid'
-import { PoeReImportPanel } from './PoeReImportPanel'
 import { InfoChip } from '../../shared/InfoChip'
 import { MapsGenerator } from './MapsGenerator'
 import { CustomGenerator } from './CustomGenerator'
@@ -338,8 +337,8 @@ export function RegexGenerator({ settings, update, tryHotkey }: Props): JSX.Elem
     pendingIdRef.current = null
   }
 
-  // Load is available when this generator has presets, or on Maps (poe.re import).
-  const loadable = generator === 'maps' || presets.some((p) => (p.generator ?? 'maps') === generator)
+  // Load is disabled when the active generator has no saved presets to show.
+  const loadable = presets.some((p) => (p.generator ?? 'maps') === generator)
 
   // One-open-at-a-time across the chip row. Opening Save/Load closes the other and
   // tells the active generator to collapse its own panels (search/tier/trade).
@@ -461,24 +460,15 @@ export function RegexGenerator({ settings, update, tryHotkey }: Props): JSX.Elem
     </div>
   )
   const sharedSavedPresets = loadOpen ? (
-    <>
-      {generator === 'maps' && (
-        <PoeReImportPanel
-          onImport={(preset) => {
-            loadPreset(preset)
-          }}
-        />
-      )}
-      <SavedPresetsGrid
-        presets={presets}
-        generator={generator}
-        loadPreset={loadPreset}
-        deletePreset={deletePreset}
-        boundHotkeyFor={(preset) =>
-          (settings.appMacros ?? []).find((m) => m.action === 'useSavedRegex' && m.presetId === preset.id)?.hotkey
-        }
-      />
-    </>
+    <SavedPresetsGrid
+      presets={presets}
+      generator={generator}
+      loadPreset={loadPreset}
+      deletePreset={deletePreset}
+      boundHotkeyFor={(preset) =>
+        (settings.appMacros ?? []).find((m) => m.action === 'useSavedRegex' && m.presetId === preset.id)?.hotkey
+      }
+    />
   ) : null
 
   const sharedProps = {
