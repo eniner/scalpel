@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
+import { MAP_MODS } from '@shared/data/regex/map-mods'
 import { decodePoeReExport, extractPoeReMapSettings, poeReExportToMapsPreset } from './poe-re-import'
+
+const NIGHTMARE_ID = MAP_MODS.find((m) => m.nightmare)!.id
+const REGULAR_ID = MAP_MODS.find((m) => !m.nightmare)!.id
 
 /** Encode the way poe.re does (UTF-8-safe Base64). */
 function encodePoeRe(obj: unknown): string {
@@ -88,5 +92,42 @@ describe('poeReExportToMapsPreset', () => {
     expect(result.preset.wantMode).toBe('all')
     expect(result.preset.nightmare).toBe(true)
     expect(result.preset.name).toBe('Imported from poe.re')
+  })
+
+  // poe.re's getSelectedIds strips nightmare mods out of the generated regex when the
+  // toggle is off, so keeping them would import a stricter filter than the profile.
+  it('drops nightmare ids when the profile had displayNightmareMods off', () => {
+    const encoded = encodePoeRe({
+      map: { badIds: [REGULAR_ID, NIGHTMARE_ID], goodIds: [NIGHTMARE_ID], displayNightmareMods: false },
+    })
+    const result = poeReExportToMapsPreset(encoded)
+    expect(result.preset.avoid).toEqual([REGULAR_ID])
+    expect(result.preset.want).toEqual([])
+    expect(result.nightmareSkipped).toBe(2)
+  })
+
+  it('keeps nightmare ids when the toggle is on (the poe.re default)', () => {
+    const encoded = encodePoeRe({ map: { badIds: [REGULAR_ID, NIGHTMARE_ID] } })
+    const result = poeReExportToMapsPreset(encoded)
+    expect(result.preset.avoid).toEqual([REGULAR_ID, NIGHTMARE_ID])
+    expect(result.nightmareSkipped).toBe(0)
+  })
+
+  // anyQuality defaults on and so never appears in a delta export; the divergence has
+  // to be inferred from the number of quality values instead of read off a key.
+  it('flags quality match-any once more than one quality value is set', () => {
+    const encoded = encodePoeRe({ map: { quality: { regular: '20', scarab: '12' } } })
+    const result = poeReExportToMapsPreset(encoded)
+    expect(result.unsupported).toContain('quality match-any (Scalpel requires all of them)')
+  })
+
+  it('does not flag quality match-any for a single value, or when anyQuality is off', () => {
+    const single = poeReExportToMapsPreset(encodePoeRe({ map: { quality: { regular: '20' } } }))
+    expect(single.unsupported).toEqual([])
+
+    const allOf = poeReExportToMapsPreset(
+      encodePoeRe({ map: { quality: { regular: '20', scarab: '12' }, anyQuality: false } }),
+    )
+    expect(allOf.unsupported).toEqual([])
   })
 })

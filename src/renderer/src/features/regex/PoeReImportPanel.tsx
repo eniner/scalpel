@@ -43,7 +43,8 @@ export function PoeReImportPanel({ open, onImport }: PoeReImportPanelProps): JSX
       const q = Object.keys(result.preset.qualifiers).length
       if (q) bits.push(`${q} qualifier${q === 1 ? '' : 's'}`)
       if (result.unknownModIds.length) bits.push(`${result.unknownModIds.length} unknown mod(s) skipped`)
-      if (result.unsupported.length) bits.push(`${result.unsupported.length} trade-only option(s) not applied`)
+      if (result.nightmareSkipped) bits.push(`${result.nightmareSkipped} nightmare mod(s) skipped`)
+      if (result.unsupported.length) bits.push(`${result.unsupported.length} option(s) not applied`)
       setImportedNote(`Loaded ${result.preset.name}: ${bits.join(' · ')}`)
       setRaw('')
     } catch (e) {
@@ -87,6 +88,14 @@ export function PoeReImportPanel({ open, onImport }: PoeReImportPanelProps): JSX
           {preview.result.preset.avoid.length} avoid / {preview.result.preset.want.length} want
           {preview.result.unknownModIds.length > 0 && (
             <span className="text-[#ff9800]"> · {preview.result.unknownModIds.length} unknown id(s)</span>
+          )}
+          {preview.result.nightmareSkipped > 0 && (
+            <span className="text-[#ff9800]"> · {preview.result.nightmareSkipped} nightmare skipped</span>
+          )}
+          {/* Named rather than counted: "quality match-any" changes what the regex
+              matches, so it needs to be readable before the user commits to it. */}
+          {preview.result.unsupported.length > 0 && (
+            <div className="text-text-dim opacity-70">Not applied: {preview.result.unsupported.join(', ')}</div>
           )}
         </div>
       )}

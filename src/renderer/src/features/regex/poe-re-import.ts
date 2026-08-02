@@ -19,6 +19,11 @@ const KNOWN_QUALIFIERS = new Set([
 
 const KNOWN_MOD_IDS = new Set(MAP_MODS.map((m) => m.id))
 
+/** Mods poe.re flags `nm`. Matches its own `isNightmareId` (a raw `options.nm` test),
+ *  so this is the same set upstream filters on -- Scalpel's NIGHTMARE_REGROUPED is a
+ *  display-grouping concern only and deliberately plays no part here. */
+const NIGHTMARE_MOD_IDS = new Set(MAP_MODS.filter((m) => m.nightmare).map((m) => m.id))
+
 /** Subset of poe.re `SavedSettings.map` we understand. */
 export interface PoeReMapSettings {
   badIds?: number[]
@@ -37,6 +42,7 @@ export interface PoeReMapSettings {
     packSize?: string
     scarab?: string
   }
+  anyQuality?: boolean
   rarity?: unknown
   corrupted?: unknown
   unidentified?: unknown
@@ -54,6 +60,8 @@ export interface PoeReImportResult {
   preset: RegexPreset
   /** Mod IDs from the export that aren't in Scalpel's vendored map-mod list. */
   unknownModIds: number[]
+  /** Nightmare mods dropped because the profile had poe.re's Nightmare toggle off. */
+  nightmareSkipped: number
   /** poe.re fields we saw but don't map into Scalpel Maps yet. */
   unsupported: string[]
   /** Profile name from the export, if present. */
@@ -144,6 +152,12 @@ export function extractPoeReMapSettings(decoded: unknown): {
 
 function collectUnsupported(map: PoeReMapSettings): string[] {
   const out: string[] = []
+  // poe.re's anyQuality (on by default) ORs every quality qualifier into one term;
+  // Scalpel's buildQualifierRegex always ANDs them. Only diverges past one value.
+  // The default never shows up in a delta export, so this cannot be read off a key.
+  if (map.anyQuality !== false && countQualityValues(map) > 1) {
+    out.push('quality match-any (Scalpel requires all of them)')
+  }
   if (map.rarity != null) out.push('map rarity include/exclude')
   if (map.corrupted != null) out.push('corrupted filter')
   if (map.unidentified != null) out.push('unidentified filter')
@@ -155,6 +169,12 @@ function collectUnsupported(map: PoeReMapSettings): string[] {
     out.push('optimize number scrubbing')
   }
   return out
+}
+
+function countQualityValues(map: PoeReMapSettings): number {
+  const q = map.quality
+  if (!q) return 0
+  return [q.regular, q.currency, q.divination, q.rarity, q.packSize, q.scarab].filter((v) => parseMin(v) != null).length
 }
 
 function filterKnownIds(ids: unknown): { kept: number[]; unknown: number[] } {
@@ -182,6 +202,16 @@ export function mapPoeReToMapsPreset(
   const good = filterKnownIds(map.goodIds)
   const unknownModIds = [...new Set([...bad.unknown, ...good.unknown])]
 
+  // With the Nightmare toggle off, poe.re strips nightmare mods out of the regex it
+  // generates (getSelectedIds in OptimizedMapOutput.ts) even though they stay selected
+  // in the profile. Scalpel's own nightmare flag only hides them from the picker, so
+  // carrying the ids over verbatim would import a stricter filter than the source.
+  const dropNightmare = map.displayNightmareMods === false
+  const playable = (ids: number[]): number[] => (dropNightmare ? ids.filter((id) => !NIGHTMARE_MOD_IDS.has(id)) : ids)
+  const avoid = playable(bad.kept)
+  const want = playable(good.kept)
+  const nightmareSkipped = bad.kept.length - avoid.length + (good.kept.length - want.length)
+
   const qualifiers: Record<string, number> = {}
   setQualifier(qualifiers, 'quantity', map.quantity)
   setQualifier(qualifiers, 'packsize', map.packsize)
@@ -207,8 +237,8 @@ export function mapPoeReToMapsPreset(
     id: opts?.id ?? `poe-re-${Date.now()}`,
     name,
     generator: 'maps',
-    avoid: bad.kept,
-    want: good.kept,
+    avoid,
+    want,
     wantMode,
     qualifiers,
     nightmare,
@@ -217,6 +247,7 @@ export function mapPoeReToMapsPreset(
   return {
     preset,
     unknownModIds,
+    nightmareSkipped,
     unsupported: collectUnsupported(map),
     profileName,
   }
