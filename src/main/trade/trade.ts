@@ -21,9 +21,7 @@ import { normalizeTabletModKey, stripTabletMapScoping } from './stat-matcher/pro
 
 /** Trade pseudo id for "# Enchant Modifiers" — used to NOT-filter enchanted BPs. */
 export function resolveEnchantModsPseudoId(): string | null {
-  const hit = getStatEntries().find(
-    (e) => e.id.startsWith('pseudo.') && /Enchant Modifiers/i.test(e.text),
-  )
+  const hit = getStatEntries().find((e) => e.id.startsWith('pseudo.') && /Enchant Modifiers/i.test(e.text))
   return hit?.id ?? null
 }
 
@@ -1293,9 +1291,7 @@ export async function searchTrade(
         filters: [{ id: enchantModsPseudoId, value: {} }],
       })
     } else {
-      recordMainBreadcrumb(
-        'trade: Exclude Enchanted enabled but Enchant Modifiers pseudo id not in stats catalog',
-      )
+      recordMainBreadcrumb('trade: Exclude Enchanted enabled but Enchant Modifiers pseudo id not in stats catalog')
     }
   }
 

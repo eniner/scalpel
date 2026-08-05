@@ -3092,9 +3092,7 @@ describe('searchTrade unenchanted Blueprint NOT Enchant Modifiers', () => {
     const body = parseCapturedBody(req)
     const notGroup = body.query.stats.find((g) => g.type === 'not')
     expect(notGroup).toBeDefined()
-    expect(notGroup?.filters).toEqual([
-      { id: 'pseudo.pseudo_number_of_enchant_mods', value: {} },
-    ])
+    expect(notGroup?.filters).toEqual([{ id: 'pseudo.pseudo_number_of_enchant_mods', value: {} }])
     // Chip must not leak into heist_filters or misc_filters
     const heist = (body.query.filters as { heist_filters?: CapturedTradeFilterGroup }).heist_filters
     expect(heist?.filters.heist_wings).toEqual({ min: 3 })
