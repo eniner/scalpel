@@ -1,12 +1,22 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-const { focusHolder } = vi.hoisted(() => ({ focusHolder: { current: null as unknown } }))
+const { focusHolder, snapGhostCalls } = vi.hoisted(() => ({
+  focusHolder: { current: null as unknown },
+  snapGhostCalls: [] as unknown[],
+}))
 vi.mock('electron', () => ({
   BrowserWindow: { getFocusedWindow: () => focusHolder.current },
   screen: { getDisplayNearestPoint: () => ({ scaleFactor: 1 }) },
 }))
+vi.mock('./snap-canvas', () => ({
+  getSnapCanvasWindow: () => null,
+  setSnapGhost: (rect: unknown) => {
+    snapGhostCalls.push(rect)
+  },
+}))
 import {
   aroundNativeDialog,
   closeAllOverlaysOnPoeExit,
+  hideAllOnPoeBlur,
   hideFocusedOrAnyVisibleSecondaryOverlay,
   isAnyScalpelBrowserWindowFocused,
   isAnyScalpelWindowFocused,
@@ -40,6 +50,7 @@ function fakeState(opts: {
   persist?: boolean
   gateShow?: () => boolean
   userPinned?: boolean
+  snapGhostActive?: boolean
 }): OverlayState {
   return {
     spec: { gateShow: opts.gateShow } as unknown as OverlayState['spec'],
@@ -50,7 +61,7 @@ function fakeState(opts: {
       show: vi.fn(),
       moveTop: vi.fn(),
     } as unknown as OverlayState['win'],
-    snapGhostActive: false,
+    snapGhostActive: opts.snapGhostActive ?? false,
     inProgrammaticMove: false,
     programmaticSettleTimer: null,
     isResizing: false,
@@ -59,6 +70,54 @@ function fakeState(opts: {
     userPinned: opts.userPinned ?? false,
   }
 }
+
+// A snap-dock ghost is painted by a shared always-shown canvas window that is
+// never hidden - only its rect is cleared. Every path that takes overlays off
+// screen therefore has to clear the ghost too, or a dashed box is left painted
+// over the game (or the bare desktop) with nothing alive to remove it.
+describe('snap-ghost teardown', () => {
+  beforeEach(() => {
+    overlays.clear()
+    snapGhostCalls.length = 0
+    focusHolder.current = null
+  })
+
+  it('hideAllOnPoeBlur clears the ghost flag on every overlay and the canvas', () => {
+    const dragging = fakeState({ visible: true, snapGhostActive: true })
+    const other = fakeState({ visible: true })
+    overlays.set('dragging', dragging)
+    overlays.set('other', other)
+
+    hideAllOnPoeBlur()
+
+    expect(dragging.snapGhostActive).toBe(false)
+    expect(other.snapGhostActive).toBe(false)
+    expect(snapGhostCalls).toEqual([null])
+  })
+
+  it('hideAllOnPoeBlur leaves the ghost alone when focus stayed inside Scalpel', () => {
+    const dragging = fakeState({ visible: true, snapGhostActive: true })
+    focusHolder.current = dragging.win
+    overlays.set('dragging', dragging)
+
+    hideAllOnPoeBlur()
+
+    // Focus moving PoE -> our own window is not "leaving the app", so the drag
+    // is still live and its pending snap must survive.
+    expect(dragging.snapGhostActive).toBe(true)
+    expect(snapGhostCalls).toEqual([])
+  })
+
+  it('closeAllOverlaysOnPoeExit clears the ghost flag and the canvas', () => {
+    const dragging = fakeState({ visible: true, snapGhostActive: true })
+    overlays.set('dragging', dragging)
+
+    closeAllOverlaysOnPoeExit()
+
+    expect(dragging.snapGhostActive).toBe(false)
+    expect(snapGhostCalls).toEqual([null])
+  })
+})
 
 describe('closeAllOverlaysOnPoeExit', () => {
   beforeEach(() => {

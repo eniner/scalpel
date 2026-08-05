@@ -672,13 +672,19 @@ export default function App(): JSX.Element {
           skipAnimRef.current = true
         }
         const onEnd = (ev: TransitionEvent): void => {
-          // Ignore child transitions (sisters); only the wrapper transform settles the snap.
+          // Only the wrapper's own transform settles the snap. transitionend
+          // bubbles, so any transition-* inside the panel (hover colors flip as
+          // the panel slides under a stationary cursor) would otherwise settle
+          // us mid-slide and cut the animation short.
           if (ev.target !== el || ev.propertyName !== 'transform') return
           settle()
         }
         el.addEventListener('transitionend', onEnd)
         // Fallback if transitionend never fires (0-distance snap, remount, etc.).
-        const settleTimer = window.setTimeout(settle, 250)
+        // Comfortably longer than the 200ms transition: firing this early would
+        // clear the transition mid-slide and visibly jump the panel, and being
+        // late costs nothing since it only runs when the event was already lost.
+        const settleTimer = window.setTimeout(settle, 400)
       } else {
         panelRef.current?.classList.remove('panel-unmounted')
         setDragOffset({ ...dragOffsetRef.current })
