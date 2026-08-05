@@ -385,6 +385,13 @@ export function parseItemText(text: string): PoeItem | null {
   const wingsParts = wingsLine?.split(':')[1]?.trim().split('/')
   const wingsRevealed = wingsParts ? parseInt(wingsParts[0], 10) : undefined
   const wingsTotal = wingsParts?.[1] ? parseInt(wingsParts[1], 10) : undefined
+  // Heist target: property line "Heist Target: Currency" or enchant/implicit
+  // "Heist Targets are always Enchanted Armaments".
+  const heistTargetProp = extractStr(allLines, 'Heist Target:')
+  const heistTargetsAlways = allLines
+    .map((l) => l.match(/^Heist Targets are always (.+)$/i)?.[1]?.trim())
+    .find((v): v is string => !!v)
+  const heistTarget = heistTargetProp ?? heistTargetsAlways
   // Facetor's Lens: "Stored Experience: 999,627,082" (or "750 000 000" on a
   // space-grouping client -- see parseGroupedInt)
   const storedExpLine = allLines.find((l) => l.startsWith('Stored Experience:'))
@@ -768,6 +775,7 @@ export function parseItemText(text: string): PoeItem | null {
     ...(critChance != null ? { critChance } : {}),
     ...(itemSize ? { width: itemSize[0], height: itemSize[1] } : {}),
     ...(heistJob ? { heistJob } : {}),
+    ...(heistTarget ? { heistTarget } : {}),
     ...(monsterLevel != null ? { monsterLevel } : {}),
     ...(wingsRevealed != null ? { wingsRevealed, wingsTotal } : {}),
     ...(storedExperience != null ? { storedExperience } : {}),

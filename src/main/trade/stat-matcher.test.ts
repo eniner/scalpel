@@ -1674,6 +1674,52 @@ describe('matchItemMods', () => {
       )
       expect(jobFilter).toBeUndefined()
     })
+
+    it('adds Exclude Enchanted misc chip enabled by default for unenchanted blueprints', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({ itemClass: 'Blueprints', wingsRevealed: 3, wingsTotal: 3, heistTarget: 'Currency' }),
+      )
+      const chip = filters.find((f) => f.id === 'misc.exclude_enchanted')
+      expect(chip).toBeDefined()
+      expect(chip?.type).toBe('misc')
+      expect(chip?.enabled).toBe(true)
+      expect(chip?.text).toBe('Exclude Enchanted')
+    })
+
+    it('defaults Exclude Enchanted off for Enchanted Armaments blueprints', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({
+          itemClass: 'Blueprints',
+          wingsRevealed: 1,
+          wingsTotal: 3,
+          heistTarget: 'Enchanted Armaments',
+        }),
+      )
+      const chip = filters.find((f) => f.id === 'misc.exclude_enchanted')
+      expect(chip?.enabled).toBe(false)
+    })
+
+    it('defaults Exclude Enchanted off when blueprint has enchants', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({
+          itemClass: 'Blueprints',
+          wingsRevealed: 1,
+          wingsTotal: 3,
+          enchants: ['Heist Targets are always Enchanted Armaments'],
+        }),
+      )
+      const chip = filters.find((f) => f.id === 'misc.exclude_enchanted')
+      expect(chip?.enabled).toBe(false)
+    })
   })
 
   describe('trial key area level pinning', () => {

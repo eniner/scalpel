@@ -2135,6 +2135,39 @@ describe('parseItemText', () => {
       expect(item.wingsRevealed).toBe(1)
       expect(item.wingsTotal).toBe(3)
     })
+
+    it('parses Heist Target property from a blueprint', () => {
+      const text = [
+        'Item Class: Blueprints',
+        'Rarity: Normal',
+        'Blueprint: Bunker',
+        '--------',
+        'Heist Target: Currency',
+        'Area Level: 83',
+        'Wings Revealed: 3/3',
+        '--------',
+        'Item Level: 83',
+      ].join('\n')
+      const item = parseItemText(text)!
+      expect(item.heistTarget).toBe('Currency')
+    })
+
+    it('parses Heist Targets are always line as heistTarget', () => {
+      const text = [
+        'Item Class: Blueprints',
+        'Rarity: Normal',
+        'Blueprint: Bunker',
+        '--------',
+        'Area Level: 83',
+        'Wings Revealed: 1/3',
+        '--------',
+        'Heist Targets are always Enchanted Armaments',
+        '--------',
+        'Item Level: 83',
+      ].join('\n')
+      const item = parseItemText(text)!
+      expect(item.heistTarget).toBe('Enchanted Armaments')
+    })
   })
 
   // ---------------------------------------------------------------------------

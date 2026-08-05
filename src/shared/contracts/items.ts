@@ -139,6 +139,8 @@ export interface PoeItem {
   width?: number
   height?: number
   heistJob?: { skill: string; level: number }
+  /** Heist blueprint target, e.g. "Currency" or "Enchanted Armaments". */
+  heistTarget?: string
   monsterLevel?: number
   wingsRevealed?: number
   wingsTotal?: number

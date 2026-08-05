@@ -42,6 +42,7 @@ export interface ItemInfo {
   attacksPerSecond?: number
   critChance?: number
   heistJob?: { skill: string; level: number }
+  heistTarget?: string
   monsterLevel?: number
   wingsRevealed?: number
   wingsTotal?: number

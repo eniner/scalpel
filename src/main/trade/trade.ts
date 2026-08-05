@@ -16,7 +16,16 @@ import { getOverlayWindow } from '../overlay'
 import { harvestIcons } from './icon-cache'
 import { getUniquesByBase } from './prices'
 import { adjustRateLimits, RateLimiter } from './rate-limiter'
+import { getStatEntries } from './stat-matcher/stats-cache'
 import { normalizeTabletModKey, stripTabletMapScoping } from './stat-matcher/producers/tablets'
+
+/** Trade pseudo id for "# Enchant Modifiers" — used to NOT-filter enchanted BPs. */
+export function resolveEnchantModsPseudoId(): string | null {
+  const hit = getStatEntries().find(
+    (e) => e.id.startsWith('pseudo.') && /Enchant Modifiers/i.test(e.text),
+  )
+  return hit?.id ?? null
+}
 
 /** Forward any newly-harvested name->icon pairs to the overlay so it can merge
  *  them into the in-session iconMap. Without this the renderer would only pick
@@ -905,7 +914,7 @@ export async function searchTrade(
     }
   }
 
-  // Add heist filters (wings revealed)
+  // Add heist filters (wings revealed / job levels)
   const heistFilters = statFilters.filter((f) => f.type === 'heist' && f.enabled)
   if (heistFilters.length > 0) {
     const heistQuery: Record<string, { min?: number; max?: number }> = {}
@@ -1270,6 +1279,23 @@ export async function searchTrade(
         ...((query.filters as Record<string, unknown>) ?? {}),
         ultimatum_filters: { disabled: false, filters: ultimatumFilters },
       }
+    }
+  }
+
+  // Unenchanted Heist Blueprints: NOT `# Enchant Modifiers` so comps exclude
+  // Enchanted Armaments / other enchanted listings. Honors the Exclude Enchanted chip.
+  const excludeEnchantChip = statFilters.find((f) => f.id === 'misc.exclude_enchanted')
+  if (excludeEnchantChip?.enabled) {
+    const enchantModsPseudoId = resolveEnchantModsPseudoId()
+    if (enchantModsPseudoId) {
+      statGroups.push({
+        type: 'not',
+        filters: [{ id: enchantModsPseudoId, value: {} }],
+      })
+    } else {
+      recordMainBreadcrumb(
+        'trade: Exclude Enchanted enabled but Enchant Modifiers pseudo id not in stats catalog',
+      )
     }
   }
 

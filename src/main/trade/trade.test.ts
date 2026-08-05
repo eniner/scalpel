@@ -3032,3 +3032,94 @@ describe('searchTrade mercenary warrant handling', () => {
     expect(isBulkExchangeItem('Map Fragments', 'Mercenary Warrant', 'Mercenary Warrant', 'Normal')).toBe(false)
   })
 })
+
+describe('searchTrade unenchanted Blueprint NOT Enchant Modifiers', () => {
+  const blueprintItem = {
+    name: 'Blueprint: Bunker',
+    baseType: 'Blueprint: Bunker',
+    itemClass: 'Blueprints',
+    rarity: 'Normal',
+  }
+
+  const wingsChips: StatFilter[] = [
+    {
+      id: 'heist.heist_wings',
+      text: 'Wings Revealed: 3',
+      value: 3,
+      min: 3,
+      max: null,
+      enabled: true,
+      type: 'heist',
+    },
+    {
+      id: 'heist.heist_max_wings',
+      text: 'Total Wings: 3',
+      value: 3,
+      min: 3,
+      max: null,
+      enabled: true,
+      type: 'heist',
+    },
+  ]
+
+  const excludeOn: StatFilter = {
+    id: 'misc.exclude_enchanted',
+    text: 'Exclude Enchanted',
+    value: null,
+    min: null,
+    max: null,
+    enabled: true,
+    type: 'misc',
+  }
+
+  const excludeOff: StatFilter = { ...excludeOn, enabled: false }
+
+  beforeEach(() => {
+    capturedRequests.length = 0
+    _resetRateLimitsForTests()
+    setPoeVersion(1)
+    _setStatEntriesForTests([
+      { id: 'pseudo.pseudo_number_of_enchant_mods', text: '# Enchant Modifiers', type: 'pseudo' },
+    ])
+  })
+
+  it('injects a not group with Enchant Modifiers when Exclude Enchanted is on', async () => {
+    await searchTrade('Mirage', blueprintItem, [...wingsChips, excludeOn], {
+      tradeStatus: 'any',
+      tradePriceOption: 'chaos_divine',
+    })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    const notGroup = body.query.stats.find((g) => g.type === 'not')
+    expect(notGroup).toBeDefined()
+    expect(notGroup?.filters).toEqual([
+      { id: 'pseudo.pseudo_number_of_enchant_mods', value: {} },
+    ])
+    // Chip must not leak into heist_filters or misc_filters
+    const heist = (body.query.filters as { heist_filters?: CapturedTradeFilterGroup }).heist_filters
+    expect(heist?.filters.heist_wings).toEqual({ min: 3 })
+    expect(heist?.filters.exclude_enchanted).toBeUndefined()
+    const misc = (body.query.filters as { misc_filters?: CapturedTradeFilterGroup }).misc_filters
+    expect(misc?.filters.exclude_enchanted).toBeUndefined()
+  })
+
+  it('omits the not group when Exclude Enchanted is off', async () => {
+    await searchTrade('Mirage', blueprintItem, [...wingsChips, excludeOff], {
+      tradeStatus: 'any',
+      tradePriceOption: 'chaos_divine',
+    })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    expect(body.query.stats.find((g) => g.type === 'not')).toBeUndefined()
+  })
+
+  it('omits the not group when the chip is absent (enchanted default)', async () => {
+    await searchTrade('Mirage', blueprintItem, wingsChips, {
+      tradeStatus: 'any',
+      tradePriceOption: 'chaos_divine',
+    })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    expect(body.query.stats.find((g) => g.type === 'not')).toBeUndefined()
+  })
+})

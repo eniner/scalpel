@@ -3,16 +3,32 @@ import type { StatFilter } from '../../trade'
 
 type HeistItemInfo = {
   heistJob?: { skill: string; level: number }
+  heistTarget?: string
   monsterLevel?: number
   wingsRevealed?: number
   wingsTotal?: number
   itemClass?: string
   baseType?: string
+  enchants?: string[]
+  implicits?: string[]
+}
+
+const ENCHANTED_ARMAMENTS = /Enchanted Armaments/i
+const HEIST_TARGETS_ALWAYS = /Heist Targets are always Enchanted Armaments/i
+
+/** True when a Blueprint looks enchanted (has enchant mods or Enchanted Armaments target). */
+export function isEnchantedBlueprint(itemInfo: HeistItemInfo | undefined): boolean {
+  if (!itemInfo || itemInfo.itemClass !== 'Blueprints') return false
+  if ((itemInfo.enchants?.length ?? 0) > 0) return true
+  if (itemInfo.heistTarget && ENCHANTED_ARMAMENTS.test(itemInfo.heistTarget)) return true
+  const lines = [...(itemInfo.implicits ?? []), ...(itemInfo.enchants ?? [])]
+  return lines.some((l) => HEIST_TARGETS_ALWAYS.test(l))
 }
 
 // Heist job skill requirement (contracts only; blueprints have multiple jobs that don't filter search)
 // Area level chip (for heist contracts/blueprints)
 // Heist blueprint wings revealed
+// Exclude Enchanted chip (blueprints only)
 export function buildHeistFilters(itemInfo: HeistItemInfo | undefined): StatFilter[] {
   const out: StatFilter[] = []
 
@@ -71,6 +87,23 @@ export function buildHeistFilters(itemInfo: HeistItemInfo | undefined): StatFilt
         type: 'heist',
       })
     }
+  }
+
+  // Unenchanted blueprints: exclude listings that have enchant modifiers (e.g.
+  // Enchanted Armaments). Emitted as a misc chip (above the filter rows) so it
+  // toggles like Unidentified / influence — not a heist numeric row.
+  // Defaults off when the clipboard BP itself is enchanted.
+  if (itemInfo?.itemClass === 'Blueprints') {
+    const enchanted = isEnchantedBlueprint(itemInfo)
+    out.push({
+      id: 'misc.exclude_enchanted',
+      text: 'Exclude Enchanted',
+      value: null,
+      min: null,
+      max: null,
+      enabled: !enchanted,
+      type: 'misc',
+    })
   }
 
   return out

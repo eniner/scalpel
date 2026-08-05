@@ -283,6 +283,7 @@ export async function preloadPriceCheck(item: PoeItem, store: Store<AppSettings>
       attacksPerSecond: item.attacksPerSecond,
       critChance: item.critChance,
       heistJob: item.heistJob,
+      heistTarget: item.heistTarget,
       monsterLevel: item.monsterLevel,
       wingsRevealed: item.wingsRevealed,
       wingsTotal: item.wingsTotal,
