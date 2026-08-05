@@ -517,6 +517,9 @@ export default function App(): JSX.Element {
   useEffect(() => {
     if (isHidden) {
       window.api.reportPanelRect([])
+      // Dock ghost is a sibling of the panel, so it survives panel hide. Clear it
+      // so a stuck snapTarget can't leave a faded dashed box over the game.
+      setSnapTarget(null)
       return
     }
     const tick = (): void => {
@@ -645,8 +648,12 @@ export default function App(): JSX.Element {
           sEl.style.transition = 'transform 0.2s ease-out'
           setTranslate(sEl, targetDx, 0)
         }
-        const onEnd = (): void => {
+        let settled = false
+        const settle = (): void => {
+          if (settled) return
+          settled = true
           el.removeEventListener('transitionend', onEnd)
+          window.clearTimeout(settleTimer)
           // Set final position directly on the DOM - React may skip the
           // transform update if the value matches what it last rendered
           el.style.left = `${targetMountX}px`
@@ -658,13 +665,26 @@ export default function App(): JSX.Element {
           if (snap !== cursorSide) {
             setCursorSide(snap)
           }
+          // Always clear the dock ghost — transitionend can miss when the view
+          // remounts mid-snap (e.g. price-check opening), which left a faded
+          // dashed box stuck over the game.
           setSnapTarget(null)
           skipAnimRef.current = true
         }
+        const onEnd = (ev: TransitionEvent): void => {
+          // Ignore child transitions (sisters); only the wrapper transform settles the snap.
+          if (ev.target !== el || ev.propertyName !== 'transform') return
+          settle()
+        }
         el.addEventListener('transitionend', onEnd)
+        // Fallback if transitionend never fires (0-distance snap, remount, etc.).
+        const settleTimer = window.setTimeout(settle, 250)
       } else {
         panelRef.current?.classList.remove('panel-unmounted')
         setDragOffset({ ...dragOffsetRef.current })
+        // Clear even when not snapping / wrapper missing — otherwise a prior
+        // in-range hover leaves the ghost visible after mouseup.
+        setSnapTarget(null)
       }
     }
     window.addEventListener('mousemove', onMove)
@@ -807,8 +827,8 @@ export default function App(): JSX.Element {
           rightMountX={rightMountX}
           panelTop={PANEL_TOP}
           panelWidth={PANEL_WIDTH}
-          panelHeight={panelRef.current?.offsetHeight ?? 0}
-          snapTarget={snapTarget}
+          panelHeight={isHidden ? 0 : (panelRef.current?.offsetHeight ?? 0)}
+          snapTarget={isHidden ? null : snapTarget}
           overlayScale={settings?.overlayScale}
         />
         <div

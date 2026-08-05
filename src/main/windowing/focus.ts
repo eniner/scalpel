@@ -119,6 +119,7 @@ export function hideAllOnPoeBlur(): void {
     if (!state.win || state.win.isDestroyed()) continue
     state.wasVisibleBeforeFocusLoss = state.win.isVisible()
     if (state.wasVisibleBeforeFocusLoss) state.win.hide()
+    state.snapGhostActive = false
   }
   setSnapGhost(null)
   // Let auxiliary windows (cheat-sheet hover preview) clear themselves so
