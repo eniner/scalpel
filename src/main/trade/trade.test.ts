@@ -1383,6 +1383,63 @@ describe('searchTrade filter-group dispatch', () => {
     expect(body.query.filters.type_filters.filters.category).toEqual({ option: 'jewel' })
   })
 
+  it('Abyss Jewels route to jewel.abyss category', async () => {
+    setPoeVersion(1)
+    const eye = {
+      name: '',
+      baseType: 'Murderous Eye Jewel',
+      itemClass: 'Abyss Jewels',
+      rarity: 'Rare',
+    }
+    await searchTrade('Mirage', eye, [], { tradeStatus: 'any', tradePriceOption: 'chaos_divine' })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    expect(body.query.filters.type_filters.filters.category).toEqual({ option: 'jewel.abyss' })
+    expect(body.query.type).toBeUndefined()
+  })
+
+  it('Flasks route to flask category', async () => {
+    setPoeVersion(1)
+    const flask = {
+      name: '',
+      baseType: 'Divine Life Flask',
+      itemClass: 'Flasks',
+      rarity: 'Magic',
+    }
+    await searchTrade('Mirage', flask, [], { tradeStatus: 'any', tradePriceOption: 'chaos_divine' })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    expect(body.query.filters.type_filters.filters.category).toEqual({ option: 'flask' })
+  })
+
+  it('Tinctures route to tincture category', async () => {
+    setPoeVersion(1)
+    const tincture = {
+      name: '',
+      baseType: 'Ashbark Tincture',
+      itemClass: 'Tinctures',
+      rarity: 'Magic',
+    }
+    await searchTrade('Mirage', tincture, [], { tradeStatus: 'any', tradePriceOption: 'chaos_divine' })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    expect(body.query.filters.type_filters.filters.category).toEqual({ option: 'tincture' })
+  })
+
+  it('PoE2 Life Flasks route to flask category', async () => {
+    setPoeVersion(2)
+    const flask = {
+      name: '',
+      baseType: 'Transcendent Life Flask',
+      itemClass: 'Life Flasks',
+      rarity: 'Magic',
+    }
+    await searchTrade('Fate of the Vaal', flask, [], { tradeStatus: 'any', tradePriceOption: 'exalted_divine' })
+    const req = capturedRequests.find((r) => r.url.includes('/search/'))
+    const body = parseCapturedBody(req)
+    expect(body.query.filters.type_filters.filters.category).toEqual({ option: 'flask' })
+  })
+
   it('PoE2 rune_sockets filter lands under equipment_filters alongside defence stats', async () => {
     setPoeVersion(2)
     const withRunes: StatFilter[] = [

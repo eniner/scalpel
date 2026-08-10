@@ -27,7 +27,27 @@ export const ITEM_CLASS_TO_CATEGORY: Record<string, string> = {
   Warstaves: 'weapon.warstaff',
   'Rune Daggers': 'weapon.runedagger',
   Jewels: 'jewel',
+  // PoE1 abyss jewels (Murderous/Hypnotic/etc. Eye) — separate clipboard class
+  // from regular Jewels. Without this entry they aren't treated as equipment, so
+  // misc chips like Corrupted never appear on uncorrupted eyes.
+  'Abyss Jewels': 'jewel.abyss',
   Flasks: 'flask',
+  // PoE2 splits flasks by recover type; same trade category as PoE1 Flasks.
+  'Life Flasks': 'flask',
+  'Mana Flasks': 'flask',
+  Charms: 'azmeri.charm',
+  // PoE1 craftables that share the Abyss-Jewel failure mode if omitted: no
+  // Corrupted/Mirrored ternary chips and trade falls back to bare base-type.
+  Tinctures: 'tincture',
+  Trinkets: 'accessory.trinket',
+  'Heist Brooches': 'heistequipment.heistreward',
+  'Heist Cloaks': 'heistequipment.heistutility',
+  'Heist Tools': 'heistequipment.heisttool',
+  // Clipboard emits both "Contracts"/"Blueprints" and the Heist-prefixed forms.
+  Contracts: 'heistmission.contract',
+  Blueprints: 'heistmission.blueprint',
+  'Heist Contracts': 'heistmission.contract',
+  'Heist Blueprints': 'heistmission.blueprint',
   // PoE2-only classes that have live listings. Keeping them in the same map
   // is safe -- no key collides with PoE1, and stat-matcher / trade.ts both
   // look up by the exact class name the clipboard reports. Without these

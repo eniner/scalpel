@@ -45,7 +45,15 @@ describe('ITEM_CLASS_TO_CATEGORY', () => {
     expect(ITEM_CLASS_TO_CATEGORY['Body Armours']).toBe('armour.chest')
     expect(ITEM_CLASS_TO_CATEGORY.Wands).toBe('weapon.wand')
     expect(ITEM_CLASS_TO_CATEGORY.Jewels).toBe('jewel')
+    expect(ITEM_CLASS_TO_CATEGORY['Abyss Jewels']).toBe('jewel.abyss')
     expect(ITEM_CLASS_TO_CATEGORY.Flasks).toBe('flask')
+    expect(ITEM_CLASS_TO_CATEGORY['Life Flasks']).toBe('flask')
+    expect(ITEM_CLASS_TO_CATEGORY['Mana Flasks']).toBe('flask')
+    expect(ITEM_CLASS_TO_CATEGORY.Charms).toBe('azmeri.charm')
+    expect(ITEM_CLASS_TO_CATEGORY.Tinctures).toBe('tincture')
+    expect(ITEM_CLASS_TO_CATEGORY.Trinkets).toBe('accessory.trinket')
+    expect(ITEM_CLASS_TO_CATEGORY['Heist Brooches']).toBe('heistequipment.heistreward')
+    expect(ITEM_CLASS_TO_CATEGORY.Contracts).toBe('heistmission.contract')
     // PoE2-specific classes that have live listings -- without these the
     // trade router falls back to searching a single base type instead of the
     // whole class.
@@ -448,6 +456,66 @@ describe('matchItemMods', () => {
         [],
         undefined,
         makeItemInfo({ corrupted: false, itemClass: 'Rings', sockets: '' }),
+      )
+      const corruptedChip = filters.find((f) => f.id === 'misc.corrupted')
+      expect(corruptedChip).toBeDefined()
+      expect(corruptedChip?.chipState).toBe('no')
+    })
+
+    it('generates corrupted chip for uncorrupted Abyss Jewels (Murderous Eye etc.)', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({
+          corrupted: false,
+          itemClass: 'Abyss Jewels',
+          baseType: 'Murderous Eye Jewel',
+          rarity: 'Rare',
+          sockets: '',
+        }),
+      )
+      const corruptedChip = filters.find((f) => f.id === 'misc.corrupted')
+      expect(corruptedChip).toBeDefined()
+      expect(corruptedChip?.chipState).toBe('no')
+      expect(corruptedChip?.text).toBe('Corrupted')
+    })
+
+    it('generates corrupted chip for uncorrupted Flasks', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({ corrupted: false, itemClass: 'Flasks', baseType: 'Divine Life Flask', rarity: 'Magic' }),
+      )
+      const corruptedChip = filters.find((f) => f.id === 'misc.corrupted')
+      expect(corruptedChip).toBeDefined()
+      expect(corruptedChip?.chipState).toBe('no')
+    })
+
+    it('generates corrupted chip for uncorrupted Tinctures', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({ corrupted: false, itemClass: 'Tinctures', baseType: 'Ashbark Tincture', rarity: 'Magic' }),
+      )
+      const corruptedChip = filters.find((f) => f.id === 'misc.corrupted')
+      expect(corruptedChip).toBeDefined()
+      expect(corruptedChip?.chipState).toBe('no')
+    })
+
+    it('generates corrupted chip for PoE2 Life Flasks', () => {
+      const filters = matchItemMods(
+        [],
+        [],
+        undefined,
+        makeItemInfo({
+          corrupted: false,
+          itemClass: 'Life Flasks',
+          baseType: 'Transcendent Life Flask',
+          rarity: 'Magic',
+        }),
       )
       const corruptedChip = filters.find((f) => f.id === 'misc.corrupted')
       expect(corruptedChip).toBeDefined()
