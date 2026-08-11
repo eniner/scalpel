@@ -139,6 +139,20 @@ export function PluginHost(props: PluginHostProps): JSX.Element | null {
             return u
           },
         },
+        trade: {
+          openSearch: (item) => window.api.tradeOpenSearch(item),
+          priceCheck: (item) => window.api.tradePriceCheck(item),
+          scanWarrants: (opts) =>
+            window.api.warrantsScan(opts) as Promise<import('../../../plugin-sdk/src/types').WarrantScanResult>,
+          warrantsCatalog: () => window.api.warrantsCatalog(),
+          whisperSeller: (queryId, listingId, league) => window.api.whisperSeller(queryId, listingId, league),
+          visitHideout: (queryId, listingId, league) => window.api.visitHideout(queryId, listingId, league),
+          getAuth: async () => {
+            const auth = await window.api.poeCheckAuth()
+            return { loggedIn: Boolean(auth?.loggedIn) }
+          },
+          login: () => window.api.poeLogin(),
+        },
         prices: {
           getPrices: (opts) => window.api.pricesGet(opts),
           refresh: () => window.api.pricesRefresh(),

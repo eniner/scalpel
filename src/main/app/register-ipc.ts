@@ -31,6 +31,7 @@ import { registerGameConfigHandlers } from '../handlers/game-config'
 import { registerPluginPriceHandlers } from '../handlers/plugin-prices'
 import { registerPluginCaptureHandlers } from '../handlers/plugin-capture'
 import { registerPluginCursorHandlers } from '../handlers/plugin-cursor'
+import { registerPluginTradeHandlers } from '../handlers/plugin-trade'
 
 export interface IpcRegistrationDeps {
   store: Store<AppSettings>
@@ -65,6 +66,7 @@ export function registerAllIpc(deps: IpcRegistrationDeps): void {
   registerPluginPriceHandlers(store)
   registerPluginCaptureHandlers()
   registerPluginCursorHandlers()
+  registerPluginTradeHandlers(store)
   registerDiagnostics({ store, getAppWindow, showAppWindow })
 
   // ── Simple inline handlers ────────────────────────────────────────────────

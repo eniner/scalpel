@@ -237,6 +237,7 @@ export const IPC_CHANNELS = {
     GAME_CONFIG_WATCH: 'plugins:game-config-watch',
     GAME_CONFIG_UNWATCH: 'plugins:game-config-unwatch',
     GAME_CONFIG_CHANGED_EVENT: 'plugins:game-config-changed',
+    TRADE_OPEN_SEARCH: 'plugins:trade-open-search',
     PRICES_GET: 'plugins:prices-get',
     PRICES_REFRESH: 'plugins:prices-refresh',
     PRICES_WATCH: 'plugins:prices-watch',

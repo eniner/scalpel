@@ -405,6 +405,48 @@ export const api = {
       ipcRenderer.send('plugins:game-config-unwatch')
     }
   },
+  tradeOpenSearch: (
+    item: {
+      name: string
+      baseType: string
+      itemClass?: string
+      rarity: string
+      notes?: string
+      statPriority?: string[]
+      similarItems?: boolean
+      upgradeSearch?: boolean
+      statKinds?: string[]
+    },
+  ): Promise<{
+    url: string
+    queryId: string
+    total: number
+    matchedStats?: number
+    unmatchedMods?: string[]
+  }> => ipcRenderer.invoke('plugins:trade-open-search', item),
+  tradePriceCheck: (
+    item: {
+      name: string
+      baseType: string
+      itemClass?: string
+      rarity: string
+      notes?: string
+      statPriority?: string[]
+      similarItems?: boolean
+      upgradeSearch?: boolean
+      statKinds?: string[]
+    },
+  ): Promise<{
+    url: string
+    queryId: string
+    total: number
+    matchedStats?: number
+    unmatchedMods?: string[]
+    pricesDivine: number[]
+    cheapestDivine: number | null
+    estimateDivine: number | null
+    pricedCount: number
+  }> => ipcRenderer.invoke('plugins:trade-price-check', item),
   pricesGet: (opts?: {
     category?: string
   }): Promise<{ prices: import('@shared/types').PriceEntry[]; updatedAt: number | null }> =>
@@ -685,6 +727,24 @@ export const api = {
     }>
     remainingIds: string[]
   }> => ipcRenderer.invoke('fetch-more-listings', queryId, ids),
+  warrantsScan: (opts?: {
+    limit?: number
+    onlineOnly?: boolean
+    pricedOnly?: boolean
+    sort?: 'asc' | 'desc'
+    maxAskDivine?: number | null
+    excludeJokeCurrencies?: boolean
+    wantSkills?: string[]
+    skillMatchMode?: 'all' | 'any'
+    wantSupports?: import('@shared/warrants').WantSupportFilter[]
+    supportPresenceMode?: import('@shared/warrants').SupportPresenceMode
+    supportLinkOrder?: import('@shared/warrants').SupportLinkOrder
+    linkSkill?: string | null
+  }): Promise<import('@shared/warrants').WarrantScanResult> => ipcRenderer.invoke('warrants-scan', opts),
+  warrantsCatalog: (): Promise<{
+    skills: string[]
+    supports: import('@shared/warrants').WantSupportFilter[]
+  }> => ipcRenderer.invoke('warrants-catalog'),
   visitHideout: (queryId: string, listingId: string, league: string): Promise<void> =>
     ipcRenderer.invoke('visit-hideout', queryId, listingId, league),
   whisperSeller: (queryId: string, listingId: string, league: string): Promise<void> =>

@@ -18,6 +18,8 @@ import {
   searchWaystonesByRegex,
   setTradeAuthCookie,
 } from '../trade/trade'
+import { scanMercenaryWarrants, getMercenaryWarrantCatalog } from '../trade/warrants'
+import type { WarrantScanResult } from '@shared/warrants'
 
 async function clickTradeButton(
   queryId: string,
@@ -476,4 +478,30 @@ export function register(store: Store<AppSettings>): void {
   ipcMain.handle('fetch-more-listings', async (_event, queryId: string, ids: string[]) => {
     return fetchMoreListings(queryId, ids)
   })
+
+  ipcMain.handle(
+    'warrants-scan',
+    async (
+      _event,
+      opts?: {
+        limit?: number
+        onlineOnly?: boolean
+        pricedOnly?: boolean
+        sort?: 'asc' | 'desc'
+        maxAskDivine?: number | null
+        excludeJokeCurrencies?: boolean
+        wantSkills?: string[]
+        skillMatchMode?: 'all' | 'any'
+        wantSupports?: import('@shared/warrants').WantSupportFilter[]
+        supportPresenceMode?: import('@shared/warrants').SupportPresenceMode
+        supportLinkOrder?: import('@shared/warrants').SupportLinkOrder
+        linkSkill?: string | null
+      },
+    ): Promise<WarrantScanResult> => {
+      const league = getProfileBackedSetting(store, 'league')
+      return scanMercenaryWarrants(league, opts)
+    },
+  )
+
+  ipcMain.handle('warrants-catalog', async () => getMercenaryWarrantCatalog())
 }

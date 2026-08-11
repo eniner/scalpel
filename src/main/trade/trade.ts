@@ -502,7 +502,11 @@ function setTradeHeaders(request: Electron.ClientRequest): void {
 // user sees a short "timed out" after two misses instead of an endless spinner.
 const REQUEST_TIMEOUT_MS = 15000
 
-async function fetchJson(url: string, options?: { method?: string; body?: string }, retries = 2): Promise<unknown> {
+export async function fetchJson(
+  url: string,
+  options?: { method?: string; body?: string },
+  retries = 2,
+): Promise<unknown> {
   const category = categoryFor(url)
   // Proactive wait: block until every bucket the server has advertised for
   // this endpoint category has a free slot. This is what keeps 429s from
@@ -712,6 +716,8 @@ export interface SearchTradeOptions {
   listedTime?: string
   collapseListings?: boolean
   loggedIn?: boolean
+  /** When `any`, priority stats match via a count group (min 1) instead of AND. */
+  statMatchMode?: 'and' | 'any'
 }
 
 export async function searchTrade(
@@ -731,7 +737,14 @@ export async function searchTrade(
   statFilters: StatFilter[],
   options: SearchTradeOptions = {},
 ): Promise<TradeResult> {
-  const { tradeStatus = 'available', tradePriceOption, listedTime, collapseListings = true, loggedIn = true } = options
+  const {
+    tradeStatus = 'available',
+    tradePriceOption,
+    listedTime,
+    collapseListings = true,
+    loggedIn = true,
+    statMatchMode = 'and',
+  } = options
   await _ensureStatsLoaded()
   const dialect = TRADE_DIALECTS[getPoeVersion()]
   const priceOption = tradePriceOption ?? dialect.priceDivinePair
@@ -1232,13 +1245,22 @@ export async function searchTrade(
   }> = []
 
   if (andFilters.length > 0) {
-    statGroups.push({
-      type: 'and',
-      filters: andFilters.map((f) => ({
-        id: f.id,
-        value: f.option ? { option: f.option } : minMaxValue(f),
-      })),
-    })
+    const filterEntries = andFilters.map((f) => ({
+      id: f.id,
+      value: f.option ? { option: f.option } : minMaxValue(f),
+    }))
+    if (statMatchMode === 'any') {
+      statGroups.push({
+        type: 'count',
+        filters: filterEntries,
+        value: { min: 1 },
+      })
+    } else {
+      statGroups.push({
+        type: 'and',
+        filters: filterEntries,
+      })
+    }
   }
 
   // One `mercenary` group per Mercenary Warrant skill carrying an enabled support

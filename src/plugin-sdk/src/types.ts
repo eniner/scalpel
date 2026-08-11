@@ -133,6 +133,109 @@ export interface GameCapture {
   scale: number
 }
 
+export interface PluginTradeSearchItem {
+  name: string
+  baseType: string
+  itemClass?: string
+  rarity: string
+  /** Raw guide notes with numbered stat priority lines. */
+  notes?: string
+  statPriority?: string[]
+  /** When true, search by slot + stats instead of the guide's exact base type. */
+  similarItems?: boolean
+  /**
+   * Upgrade finder: AND stats, apply rolled minimums, never fall back to a
+   * slot-only search. Pass real rolled mod text in `statPriority`.
+   */
+  upgradeSearch?: boolean
+  /** Parallel kinds for `statPriority` (explicit / crafted / rune / …). */
+  statKinds?: string[]
+}
+
+/** Support gem filter for Mercenary Warrant scans. */
+export type WantSupportFilter = {
+  name: string
+  tier?: number | null
+}
+
+export type SupportPresenceMode = 'all' | 'any'
+export type SupportLinkOrder = 'ignore' | 'ordered' | 'exact'
+
+export type WarrantScanOptions = {
+  limit?: number
+  onlineOnly?: boolean
+  pricedOnly?: boolean
+  sort?: 'asc' | 'desc'
+  maxAskDivine?: number | null
+  excludeJokeCurrencies?: boolean
+  wantSkills?: string[]
+  skillMatchMode?: 'all' | 'any'
+  wantSupports?: WantSupportFilter[]
+  supportPresenceMode?: SupportPresenceMode
+  supportLinkOrder?: SupportLinkOrder
+  linkSkill?: string | null
+}
+
+/** Opaque scan payload from the host Mercenary Warrant scanner. */
+export type WarrantScanResult = Record<string, unknown> & {
+  total: number
+  fetched: number
+  queryId: string
+  league: string
+  groups: unknown[]
+  listings: unknown[]
+  webSearchUrl: string
+}
+
+export type WarrantCatalog = {
+  skills: string[]
+  supports: WantSupportFilter[]
+}
+
+export interface TradeApi {
+  /**
+   * Run Scalpel's trade search for a synthetic item. When `notes` or
+   * `statPriority` are provided, numbered guide mods are matched and included.
+   */
+  openSearch(item: PluginTradeSearchItem): Promise<{
+    url: string
+    queryId: string
+    total: number
+    matchedStats?: number
+    unmatchedMods?: string[]
+  }>
+  /**
+   * Same query as `openSearch`, but returns a rough divine estimate from live
+   * listing buyouts (does not open the trade browser).
+   */
+  priceCheck(item: PluginTradeSearchItem): Promise<{
+    url: string
+    queryId: string
+    total: number
+    matchedStats?: number
+    unmatchedMods?: string[]
+    pricesDivine: number[]
+    cheapestDivine: number | null
+    estimateDivine: number | null
+    pricedCount: number
+  }>
+  /**
+   * Scan Mercenary Warrants on the official trade site (PoE1). Uses the host's
+   * authenticated trade path + rate limits; plugins cannot call trade themselves.
+   */
+  scanWarrants(opts?: WarrantScanOptions): Promise<WarrantScanResult>
+  /** Full mercenary.skill_* / support_* catalog from trade stats. */
+  warrantsCatalog(): Promise<WarrantCatalog>
+  /** Send a whisper via the official trade site (requires PoE login in Scalpel). */
+  whisperSeller(queryId: string, listingId: string, league: string): Promise<void>
+  /** Travel to hideout via the official trade site (requires login + instant buyout). */
+  visitHideout(queryId: string, listingId: string, league: string): Promise<void>
+  /** Whether Scalpel has a valid pathofexile.com trade session. */
+  getAuth(): Promise<{ loggedIn: boolean }>
+  /** Open Scalpel's PoE login flow, then refresh auth. */
+  login(): Promise<void>
+}
+
 export interface PricesApi {
   /**
    * Read the current poe.ninja price snapshot for the detected game + league.
@@ -281,6 +384,11 @@ export interface ScalpelPluginContext {
    * only file a plugin can touch on disk.
    */
   readonly gameConfig: GameConfigApi
+  /**
+   * Trade search helpers. Uses the same main-process search as Price Check;
+   * plugins cannot call the trade API directly from the renderer.
+   */
+  readonly trade: TradeApi
   /**
    * Read the poe.ninja price data Scalpel already maintains (the same source
    * powering Price Check). Read-only; the host owns fetching, so plugins never

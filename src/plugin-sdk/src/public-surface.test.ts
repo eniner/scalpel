@@ -113,6 +113,7 @@ const EXPECTED_CONTEXT_KEYS = [
   'registerTab',
   'setInteractiveRegion',
   'storage',
+  'trade',
 ].sort()
 
 function stubDeps(): PluginContextFactoryDeps {
@@ -141,6 +142,32 @@ function stubDeps(): PluginContextFactoryDeps {
       read: async () => ({ content: '', path: '' }),
       write: async () => ({ backupPath: null }),
       onChange: () => () => {},
+    },
+    trade: {
+      openSearch: async () => ({ url: '', queryId: '', total: 0 }),
+      priceCheck: async () => ({
+        url: '',
+        queryId: '',
+        total: 0,
+        pricesDivine: [],
+        cheapestDivine: null,
+        estimateDivine: null,
+        pricedCount: 0,
+      }),
+      scanWarrants: async () => ({
+        total: 0,
+        fetched: 0,
+        queryId: '',
+        league: '',
+        groups: [],
+        listings: [],
+        webSearchUrl: '',
+      }),
+      warrantsCatalog: async () => ({ skills: [], supports: [] }),
+      whisperSeller: async () => {},
+      visitHideout: async () => {},
+      getAuth: async () => ({ loggedIn: false }),
+      login: async () => {},
     },
     prices: {
       getPrices: async () => ({ prices: [], updatedAt: null }),

@@ -25,6 +25,54 @@ export type PluginContextFactoryDeps = {
     write: (content: string) => Promise<{ backupPath: string | null }>
     onChange: (handler: () => void) => () => void
   }
+  trade: {
+    openSearch: (item: {
+      name: string
+      baseType: string
+      itemClass?: string
+      rarity: string
+      notes?: string
+      statPriority?: string[]
+      similarItems?: boolean
+      upgradeSearch?: boolean
+      statKinds?: string[]
+    }) => Promise<{
+      url: string
+      queryId: string
+      total: number
+      matchedStats?: number
+      unmatchedMods?: string[]
+    }>
+    priceCheck: (item: {
+      name: string
+      baseType: string
+      itemClass?: string
+      rarity: string
+      notes?: string
+      statPriority?: string[]
+      similarItems?: boolean
+      upgradeSearch?: boolean
+      statKinds?: string[]
+    }) => Promise<{
+      url: string
+      queryId: string
+      total: number
+      matchedStats?: number
+      unmatchedMods?: string[]
+      pricesDivine: number[]
+      cheapestDivine: number | null
+      estimateDivine: number | null
+      pricedCount: number
+    }>
+    scanWarrants: (opts?: import('../../../plugin-sdk/src/types').WarrantScanOptions) => Promise<
+      import('../../../plugin-sdk/src/types').WarrantScanResult
+    >
+    warrantsCatalog: () => Promise<import('../../../plugin-sdk/src/types').WarrantCatalog>
+    whisperSeller: (queryId: string, listingId: string, league: string) => Promise<void>
+    visitHideout: (queryId: string, listingId: string, league: string) => Promise<void>
+    getAuth: () => Promise<{ loggedIn: boolean }>
+    login: () => Promise<void>
+  }
   prices: {
     getPrices: (opts?: {
       category?: string
