@@ -1,4 +1,4 @@
-import { app, clipboard, crashReporter, ipcMain, screen } from 'electron'
+import { app, crashReporter, ipcMain, screen } from 'electron'
 import { installEarlyDiagnostics, recordMainBreadcrumb, recordMainDiagnostic } from './diagnostics'
 
 // Prevent unhandled JS exceptions from crashing the native overlay thread
@@ -30,7 +30,6 @@ installEarlyDiagnostics()
 crashReporter.start({ uploadToServer: false })
 
 import { execSync } from 'node:child_process'
-import { uIOhook, UiohookKey } from 'uiohook-napi'
 import Store from 'electron-store'
 import { OverlayController } from 'electron-overlay-window'
 import { hideOverlay, showOverlay, getOverlayWindow, setCloseOnClickOutside, setWindowInputFocused } from './overlay'
@@ -49,6 +48,7 @@ import {
   resumeHotkeys,
   setStashScrollEnabled,
   setStashScrollModifier,
+  pasteRegexToPoESearch,
 } from './hotkeys'
 import { refreshLeagues } from './trade/leagues'
 import { resolvePresetRegex } from './trade/beast-preset'
@@ -66,7 +66,6 @@ import {
 } from './evaluation'
 import { initLearning } from './learning'
 import { initMainLocale } from './locale'
-import { snapshotClipboard } from './clipboard-preserve'
 import { flushAll as flushPluginStorage } from './plugins/storage'
 import { registerCheatSheetProtocol } from './cheat-sheet-protocol'
 import { registerScalpelInternalProtocol, registerScalpelInternalSchemePrivileges } from './plugins/protocol'
@@ -337,23 +336,6 @@ app.whenReady().then(() => {
     openDivCards: 'divcards',
     openRegex: 'regex',
   }
-  const pasteRegexToSearch = (regex: string): void => {
-    const restoreClip = snapshotClipboard()
-    try {
-      clipboard.writeText(regex)
-      uIOhook.keyToggle(UiohookKey.Ctrl, 'down')
-      uIOhook.keyTap(UiohookKey.F)
-      uIOhook.keyToggle(UiohookKey.Ctrl, 'up')
-      uIOhook.keyToggle(UiohookKey.Ctrl, 'down')
-      uIOhook.keyTap(UiohookKey.V)
-      uIOhook.keyToggle(UiohookKey.Ctrl, 'up')
-    } catch (e) {
-      // A leaked borrow holds the user's clipboard until the watchdog fires.
-      restoreClip()
-      throw e
-    }
-    setTimeout(restoreClip, 100)
-  }
 
   // Beasts presets re-derive against cached poe.ninja prices so a hotkey bound
   // weeks ago still pastes today's valuable beasts. A cold cache pastes the
@@ -388,7 +370,9 @@ app.whenReady().then(() => {
           OverlayController.focusTarget()
         } catch {}
       },
-      paste: pasteRegexToSearch,
+      paste: (regex) => {
+        void pasteRegexToPoESearch(regex)
+      },
       defer: (fn) => setTimeout(fn, 50),
       resolveRegex: presetRegex,
     })
@@ -402,7 +386,7 @@ app.whenReady().then(() => {
 
   setAppMacroHandler((action, tag, presetId) => {
     if (action === 'pasteRegex') {
-      if (currentRegex) pasteRegexToSearch(currentRegex)
+      if (currentRegex) void pasteRegexToPoESearch(currentRegex)
       return
     }
     if (action === 'useSavedRegex') {
@@ -413,7 +397,7 @@ app.whenReady().then(() => {
         ? presets.find((p) => p.id === presetId)
         : presets.find((p) => p.tags?.some((t) => t.text === tag && (!t.source || t.source === 'custom')))
       const regex = preset ? presetRegex(preset) : undefined
-      if (regex) pasteRegexToSearch(regex)
+      if (regex) void pasteRegexToPoESearch(regex)
       return
     }
     if (action === 'closeOverlay') {

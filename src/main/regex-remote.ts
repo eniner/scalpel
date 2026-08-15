@@ -8,7 +8,7 @@ export interface RegexRemoteApplyDeps {
   getPresets: () => RegexPreset[]
   /** Hand OS focus back to the PoE window before keystrokes are synthesized. */
   focusGame: () => void
-  /** Paste the regex into PoE's search (the existing pasteRegexToSearch flow). */
+  /** Paste the regex into PoE's search (hardened Ctrl+F / Ctrl+V injector). */
   paste: (regex: string) => void
   /** Defer the paste until after focus settles. Real wiring uses setTimeout;
    *  tests pass a synchronous implementation. */

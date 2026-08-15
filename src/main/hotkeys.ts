@@ -748,6 +748,56 @@ export function sendChatCommand(command: string, autoSubmit = true): Promise<voi
   return pasteToPoEChat(command, autoSubmit).finally(() => restoreModifiers(held))
 }
 
+/**
+ * Paste a regex into PoE's stash/inventory search (Ctrl+F, Ctrl+V).
+ * Same hardening as chat paste: release held modifiers, await game focus,
+ * verify the clipboard write, mark injecting so the hook ignores synthetic
+ * keys, and settle briefly so a bare F-key hotkey (flask conflict) finishes
+ * releasing before Ctrl+F is synthesized.
+ */
+let regexPasteLocked = false
+export async function pasteRegexToPoESearch(regex: string): Promise<void> {
+  if (!regex || regexPasteLocked || injecting) return
+  regexPasteLocked = true
+
+  const held: ModSnapshot = { ...heldModifiers }
+  const prevInjecting = injecting
+  injecting = true
+  if (held.ctrl) uIOhook.keyToggle(held.ctrl, 'up')
+  if (held.shift) uIOhook.keyToggle(held.shift, 'up')
+  if (held.alt) uIOhook.keyToggle(held.alt, 'up')
+  injecting = prevInjecting
+
+  const restoreClip = snapshotClipboard()
+  try {
+    // Let the triggering hotkey keyup (and any flask F1–F5 collision) settle.
+    await wait(50)
+    await awaitGameFocus()
+    await writeChatText(regex)
+
+    injecting = true
+    uIOhook.keyToggle(UiohookKey.Ctrl, 'down')
+    uIOhook.keyTap(UiohookKey.F)
+    uIOhook.keyToggle(UiohookKey.Ctrl, 'up')
+    uIOhook.keyToggle(UiohookKey.Ctrl, 'down')
+    uIOhook.keyTap(UiohookKey.V)
+    uIOhook.keyToggle(UiohookKey.Ctrl, 'up')
+  } catch (e) {
+    restoreClip()
+    regexPasteLocked = false
+    injecting = false
+    restoreModifiers(held)
+    recordMainDiagnostic('regex-paste', e)
+    throw e
+  }
+
+  setTimeout(restoreClip, CLIPBOARD_HOLD_MS).unref?.()
+  await wait(PASTE_SETTLE_MS)
+  regexPasteLocked = false
+  injecting = false
+  restoreModifiers(held)
+}
+
 /** Track physically held modifier keys via uiohook (ignores synthetic key events during injection) */
 const heldModifiers = { ctrl: 0 as number, shift: 0 as number, alt: 0 as number }
 
