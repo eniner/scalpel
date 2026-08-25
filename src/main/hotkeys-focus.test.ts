@@ -141,6 +141,7 @@ vi.mock('./windowing', () => ({
 
 import {
   resumeHotkeys,
+  resumeHotkeysForFocusReturn,
   setAppMacroHandler,
   setAppMacros,
   setChatCommands,
@@ -150,6 +151,7 @@ import {
   setSecondaryOverlayHotkeys,
   startHotkeyListener,
   suspendHotkeys,
+  suspendHotkeysForFocusAway,
 } from './hotkeys'
 
 function emitKeydown(event: { keycode: number; ctrlKey: boolean; shiftKey: boolean; altKey: boolean }): void {
@@ -163,6 +165,9 @@ afterEach(() => {
 })
 
 beforeEach(() => {
+  // Module state persists across tests in this file - drain leftover suspends.
+  resumeHotkeysForFocusReturn()
+  for (let i = 0; i < 8; i++) resumeHotkeys()
   mock.state.scalpelFocused = false
   mock.state.typingInOverlay = false
   mock.state.targetHasFocus = false
@@ -322,5 +327,57 @@ describe('contextual hotkey handlers', () => {
     expect(mock.trigger).not.toHaveBeenCalled()
 
     resumeHotkeys()
+  })
+})
+
+describe('focus-away suspend (PoE blur + leave-Scalpel)', () => {
+  it('double focus-away + single focus-return re-arms tool hotkeys', () => {
+    // Reproduces screenshot/tab-out from a focused tool overlay: PoE-blur and
+    // leave-Scalpel both fire suspend in the same moment; only one PoE-focus
+    // resume follows. The old refcount stacked those and left macros dead.
+    const handler = vi.fn()
+    mock.state.targetHasFocus = true
+    setAppMacroHandler(handler)
+    setAppMacros([{ action: 'plugin-overlay:demo', hotkey: 'F8' }])
+    expect(mock.registered.has('F8')).toBe(true)
+
+    suspendHotkeysForFocusAway()
+    suspendHotkeysForFocusAway()
+    expect(mock.registered.has('F8')).toBe(false)
+
+    mock.registered.get('F8')?.()
+    expect(handler).not.toHaveBeenCalled()
+
+    resumeHotkeysForFocusReturn()
+    expect(mock.registered.has('F8')).toBe(true)
+
+    mock.state.targetHasFocus = true
+    mock.registered.get('F8')?.()
+    expect(handler).toHaveBeenCalledWith('plugin-overlay:demo', undefined, undefined)
+  })
+
+  it('focus-return does not clear an active recorder/typing suspend', () => {
+    const handler = vi.fn()
+    mock.state.targetHasFocus = true
+    setAppMacroHandler(handler)
+    setAppMacros([{ action: 'closeOverlay', hotkey: 'F7' }])
+
+    suspendHotkeys()
+    suspendHotkeysForFocusAway()
+    resumeHotkeysForFocusReturn()
+    expect(mock.registered.has('F7')).toBe(false)
+
+    resumeHotkeys()
+    expect(mock.registered.has('F7')).toBe(true)
+  })
+
+  it('extra focus-return while already armed is a no-op', () => {
+    mock.state.targetHasFocus = true
+    setHotkey('Ctrl+D')
+    const registeredBefore = mock.registered.size
+
+    resumeHotkeysForFocusReturn()
+    resumeHotkeysForFocusReturn()
+    expect(mock.registered.size).toBe(registeredBefore)
   })
 })

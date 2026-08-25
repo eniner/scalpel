@@ -129,7 +129,8 @@ function fireEscape(): void {
  *  Safe to call from anywhere - it's a no-op when the desired state already
  *  matches the registered state. */
 function syncEscapeShortcut(): void {
-  const desired = !!onEscape && overlayVisibleForEscape && OverlayController.targetHasFocus && suspendDepth === 0
+  const desired =
+    !!onEscape && overlayVisibleForEscape && OverlayController.targetHasFocus && !hotkeysAreSuspended()
   if (desired === escapeShortcutRegistered) return
   if (desired) {
     try {
@@ -340,54 +341,98 @@ export function startHotkeyListener(handler: () => void): void {
   }
 }
 
-// Refcounted so multiple independent reasons to suspend (hotkey recorder open
-// AND user typing in an overlay input, etc.) compose without one popping the
-// other's suspension. Each suspend pairs with one resume.
+// Two independent suspend reasons, composed so one can't strand the other:
 //
-// All set*() mutators below MUST treat `suspendDepth > 0` as "store-only, skip
-// OS-side globalShortcut.register/unregister". Boot starts with all shortcuts
-// suspended until PoE actually gains focus (see index.ts), and the user can
-// edit a hotkey via settings while PoE is unfocused. Without the gate, those
-// set*() calls hijack the accelerator system-wide (e.g. F5 stops refreshing
-// browsers) even though we're nominally suspended. See issues #18, #21.
+// 1. `focusAway` — idempotent. PoE blur AND secondary-overlay "left Scalpel"
+//    both mean the same thing ("gameplay context lost"). Screenshot tools and
+//    alt-tab from a focused tool overlay used to call suspendHotkeys() twice
+//    against a single PoE-focus resume, leaving suspendDepth stuck > 0 and
+//    tool/plugin hotkeys dead until something forced an unpaired resume.
+//
+// 2. `suspendDepth` — refcounted. Hotkey recorder open AND user typing in an
+//    overlay input compose without one popping the other's suspension.
+//
+// All set*() mutators below MUST treat `hotkeysAreSuspended()` as "store-only,
+// skip OS-side globalShortcut.register/unregister". Boot starts focusAway until
+// PoE gains focus (see lifecycle.ts), and the user can edit a hotkey via
+// settings while PoE is unfocused. Without the gate, those set*() calls hijack
+// the accelerator system-wide (e.g. F5 stops refreshing browsers) even though
+// we're nominally suspended. See issues #18, #21.
+let focusAway = false
 let suspendDepth = 0
+
+function hotkeysAreSuspended(): boolean {
+  return focusAway || suspendDepth > 0
+}
+
+function disarmHotkeys(): void {
+  globalShortcut.unregisterAll()
+  // globalShortcut.unregisterAll() above already wiped Escape's OS-side
+  // registration - just reflect that in our own flag. No sync needed: the
+  // desired state is false while suspended either way.
+  escapeShortcutRegistered = false
+  // The uiohook action bindings fire kernel-side regardless of globalShortcut,
+  // so clear them too or an international-key hotkey would still fire while the
+  // recorder is open / the user is typing in an overlay input. rearmHotkeys
+  // rebuilds them via the set*() calls.
+  clearActionBindings()
+  registeredChatAccelerators = []
+  appMacroAccelerators = []
+}
+
+function rearmHotkeys(reason: string): void {
+  if (currentAccelerator) setHotkey(currentAccelerator)
+  if (priceCheckAccelerator) setPriceCheckHotkey(priceCheckAccelerator)
+  refreshScopedHotkeys(reason)
+  setSecondaryOverlayHotkeys(secondaryOverlayHotkeys)
+  syncEscapeShortcut()
+}
+
+/** Apply a suspend-state transition: disarm on the edge into suspended, rearm
+ *  on the edge out. No-op when the effective state did not change. */
+function applySuspendTransition(wasSuspended: boolean, rearmReason: string): void {
+  const nowSuspended = hotkeysAreSuspended()
+  if (nowSuspended === wasSuspended) return
+  if (nowSuspended) disarmHotkeys()
+  else rearmHotkeys(rearmReason)
+}
 
 /** Authorize gameplay hotkeys only while focus remains within the attached game
  *  or one of Scalpel's gameplay overlays. Registration follows the same focus
  *  lifecycle, and this dispatch-time check closes uIOhook and transition races. */
 function hotkeyContextIsActive(): boolean {
-  return suspendDepth === 0 && (OverlayController.targetHasFocus || isAnyScalpelBrowserWindowFocused())
+  return !hotkeysAreSuspended() && (OverlayController.targetHasFocus || isAnyScalpelBrowserWindowFocused())
+}
+
+/** Idempotent: gameplay focus left PoE/Scalpel (PoE blur, overlay leave, boot).
+ *  Safe to call from every leave path in the same alt-tab/screenshot moment. */
+export function suspendHotkeysForFocusAway(): void {
+  const was = hotkeysAreSuspended()
+  focusAway = true
+  applySuspendTransition(was, 'focus-return')
+}
+
+/** Idempotent: gameplay focus returned to PoE. Clears focusAway even if several
+ *  leave paths had marked it; does not touch the recorder/typing refcount. */
+export function resumeHotkeysForFocusReturn(): void {
+  const was = hotkeysAreSuspended()
+  focusAway = false
+  applySuspendTransition(was, 'focus-return')
 }
 
 /** Temporarily unregister all global shortcuts (recorder, input typing, etc.). */
 export function suspendHotkeys(): void {
+  const was = hotkeysAreSuspended()
   suspendDepth++
-  if (suspendDepth === 1) {
-    globalShortcut.unregisterAll()
-    // globalShortcut.unregisterAll() above already wiped Escape's OS-side
-    // registration - just reflect that in our own flag. No sync needed: the
-    // desired state is false while suspended either way.
-    escapeShortcutRegistered = false
-    // The uiohook action bindings fire kernel-side regardless of globalShortcut,
-    // so clear them too or an international-key hotkey would still fire while the
-    // recorder is open / the user is typing in an overlay input. resumeHotkeys
-    // rebuilds them via the set*() calls.
-    clearActionBindings()
-    registeredChatAccelerators = []
-    appMacroAccelerators = []
-  }
+  applySuspendTransition(was, 'resume')
 }
 
 /** Re-register all global shortcuts when the last suspender resumes. */
 export function resumeHotkeys(): void {
   if (suspendDepth === 0) return
+  const was = hotkeysAreSuspended()
   suspendDepth--
-  if (suspendDepth > 0) return
-  if (currentAccelerator) setHotkey(currentAccelerator)
-  if (priceCheckAccelerator) setPriceCheckHotkey(priceCheckAccelerator)
-  refreshScopedHotkeys('resume')
-  setSecondaryOverlayHotkeys(secondaryOverlayHotkeys)
-  syncEscapeShortcut()
+  applySuspendTransition(was, 'resume')
 }
 
 /** Update the active hotkey. Registered with both globalShortcut (swallows the key
@@ -395,7 +440,7 @@ export function resumeHotkeys(): void {
  *  that still fires when PoE blocks globalShortcut from the non-attached game).
  *  fireTrigger dedupes the two paths. */
 export function setHotkey(accelerator: string): void {
-  if (currentAccelerator && suspendDepth === 0 && isElectronRegisterable(currentAccelerator)) {
+  if (currentAccelerator && !hotkeysAreSuspended() && isElectronRegisterable(currentAccelerator)) {
     try {
       globalShortcut.unregister(currentAccelerator)
     } catch {}
@@ -404,7 +449,7 @@ export function setHotkey(accelerator: string): void {
   // Combo is consumed by the uIOhook fallback regardless of globalShortcut
   // state, so update it even when suspended.
   triggerCombo = parseAccelerator(accelerator)
-  if (suspendDepth > 0) return
+  if (hotkeysAreSuspended()) return
   // International/OEM keys can't be bound with globalShortcut; the uIOhook combo
   // above fires them. Skip the register so it doesn't log a spurious failure.
   if (!isElectronRegisterable(accelerator)) return
@@ -416,14 +461,14 @@ export function setHotkey(accelerator: string): void {
 }
 
 export function setPriceCheckHotkey(accelerator: string): void {
-  if (priceCheckAccelerator && suspendDepth === 0 && isElectronRegisterable(priceCheckAccelerator)) {
+  if (priceCheckAccelerator && !hotkeysAreSuspended() && isElectronRegisterable(priceCheckAccelerator)) {
     try {
       globalShortcut.unregister(priceCheckAccelerator)
     } catch {}
   }
   priceCheckAccelerator = accelerator
   priceCheckCombo = parseAccelerator(accelerator)
-  if (suspendDepth > 0) return
+  if (hotkeysAreSuspended()) return
   if (!isElectronRegisterable(accelerator)) return
   try {
     globalShortcut.register(accelerator, () => firePriceCheck())
@@ -450,7 +495,7 @@ function recordScopedRegistrationFailure(category: ScopedHotkeyCategory, acceler
 }
 
 function clearScopedHotkeyRegistrations(): void {
-  if (suspendDepth === 0) {
+  if (!hotkeysAreSuspended()) {
     for (const accelerator of [...registeredChatAccelerators, ...appMacroAccelerators]) {
       try {
         globalShortcut.unregister(accelerator)
@@ -473,12 +518,13 @@ export function refreshScopedHotkeys(reason?: string): void {
   const version = getPoeVersion()
   applicableChatCommandCount = 0
   applicableAppMacroCount = 0
+  const suspended = hotkeysAreSuspended()
 
   for (const c of configuredChatCommands) {
     if (!c.hotkey || !c.command) continue
     if (!scopeAppliesTo(chatCommandEffectiveScope(c), version)) continue
     applicableChatCommandCount++
-    if (suspendDepth > 0) continue
+    if (suspended) continue
     const autoSubmit = c.autoSubmit !== false
     const combo = parseAccelerator(c.hotkey)
     // International/OEM keys can't go through globalShortcut; match them via uiohook.
@@ -503,7 +549,7 @@ export function refreshScopedHotkeys(reason?: string): void {
     if (!m.hotkey || !m.action) continue
     if (!scopeAppliesTo(appMacroEffectiveScope(m), version)) continue
     applicableAppMacroCount++
-    if (suspendDepth > 0) continue
+    if (suspended) continue
     const combo = parseAccelerator(m.hotkey)
     // International/OEM keys can't go through globalShortcut; match them via uiohook.
     if (!isElectronRegisterable(m.hotkey)) {
@@ -525,7 +571,7 @@ export function refreshScopedHotkeys(reason?: string): void {
 
   if (reason) {
     recordMainBreadcrumb(
-      `scoped hotkeys refreshed reason=${reason} game=poe${version} suspended=${suspendDepth > 0} ` +
+      `scoped hotkeys refreshed reason=${reason} game=poe${version} suspended=${suspended} ` +
         `chat=${configuredChatCommands.length}/${applicableChatCommandCount}/${registeredChatAccelerators.length}/${chatActionBindings.length} ` +
         `app=${configuredAppMacros.length}/${applicableAppMacroCount}/${appMacroAccelerators.length}/${macroActionBindings.length} ` +
         `failed=${failedScopedRegistrations.length}`,
@@ -548,7 +594,7 @@ export function setAppMacroHandler(handler: (action: string, tag?: string, prese
  *  belongs to. Re-applied automatically by resumeHotkeys. */
 export function setSecondaryOverlayHotkeys(hotkeys: OverlayHotkey[]): void {
   secondaryOverlayHotkeys = hotkeys
-  if (suspendDepth === 0) {
+  if (!hotkeysAreSuspended()) {
     for (const acc of registeredOverlayAccelerators) {
       try {
         globalShortcut.unregister(acc)
@@ -557,7 +603,7 @@ export function setSecondaryOverlayHotkeys(hotkeys: OverlayHotkey[]): void {
   }
   registeredOverlayAccelerators = []
   overlayActionBindings = []
-  if (suspendDepth > 0) return
+  if (hotkeysAreSuspended()) return
   for (const { accelerator, handler } of hotkeys) {
     if (!accelerator) continue
     const combo = parseAccelerator(accelerator)
@@ -915,7 +961,7 @@ function acceleratorTapsC(accelerator: string): boolean {
  * restored through each slot's canonical (re)registration path.
  */
 function releaseCKeyedRegistrationsForInjection(): (() => void) | null {
-  if (suspendDepth > 0) return null // nothing is OS-registered while suspended
+  if (hotkeysAreSuspended()) return null // nothing is OS-registered while suspended
   const restores: Array<() => void> = []
 
   // Restores re-read the live slot state rather than the released accelerator,
@@ -1034,7 +1080,9 @@ function getHotkeyDiagnostics(): Record<string, unknown> {
     game: getPoeVersion(),
     hookStarted,
     hookSuspended,
+    focusAway,
     suspendDepth,
+    hotkeysSuspended: hotkeysAreSuspended(),
     triggerHotkeyConfigured: currentAccelerator !== null,
     priceCheckHotkeyConfigured: priceCheckAccelerator !== null,
     chatCommandConfiguredCount: configuredChatCommands.length,

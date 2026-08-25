@@ -16,7 +16,7 @@ import { startOnlineSync } from '../online-sync'
 import { initUpdater } from '../update/updater'
 import { getOverlayWindow, showOverlay, setGameFocusHandlers } from '../overlay'
 import { getAppWindow } from '../app-window'
-import { resumeHotkeys, suspendHotkeys } from '../hotkeys'
+import { resumeHotkeysForFocusReturn, suspendHotkeysForFocusAway } from '../hotkeys'
 import { hideAllOnPoeBlur, restoreAllOnPoeFocus, isAnyScalpelWindowFocused } from '../windowing'
 import { refreshManifest } from '../manifest'
 import { getProfileBackedSetting } from '../profiles/profile-settings'
@@ -31,17 +31,19 @@ export function startLiveServices(deps: LiveServicesDeps): void {
 
   setGameFocusHandlers(
     () => {
-      resumeHotkeys()
+      resumeHotkeysForFocusReturn()
       restoreAllOnPoeFocus()
     },
     () => {
       if (isAnyScalpelWindowFocused()) return
-      suspendHotkeys()
+      suspendHotkeysForFocusAway()
       hideAllOnPoeBlur()
     },
   )
 
-  suspendHotkeys()
+  // Boot disarmed until PoE actually gains focus. Uses the idempotent focus
+  // gate (not the recorder refcount) so it pairs with resumeHotkeysForFocusReturn.
+  suspendHotkeysForFocusAway()
 
   refreshManifest().catch(() => {})
 

@@ -46,6 +46,7 @@ import {
   setAppMacroHandler,
   suspendHotkeys,
   resumeHotkeys,
+  suspendHotkeysForFocusAway,
   setStashScrollEnabled,
   setStashScrollModifier,
   pasteRegexToPoESearch,
@@ -299,7 +300,7 @@ app.whenReady().then(() => {
   if (!IS_E2E)
     getOverlayAttachStrategy(store).createInitialOverlay((store.get(PROFILE_VERSION_KEY) as GameVariant) ?? 1)
   setMainOverlayGetter(getOverlayWindow)
-  if (!IS_E2E) setOnLeaveScalpel(() => suspendHotkeys())
+  if (!IS_E2E) setOnLeaveScalpel(() => suspendHotkeysForFocusAway())
   createAppWindow(store)
   if (!IS_E2E) createTray({ store, showAppWindow })
 

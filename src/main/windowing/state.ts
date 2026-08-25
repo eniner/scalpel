@@ -57,7 +57,9 @@ export function getMainOverlay(): BrowserWindow | null {
 
 // Fired when our secondary-overlay blur handler detects focus has left every
 // Scalpel surface (PoE -> overlay -> other-app). main/index.ts wires this to
-// suspendHotkeys so global hotkeys don't keep firing in the destination app.
+// suspendHotkeysForFocusAway so global hotkeys don't keep firing in the
+// destination app. Idempotent with the PoE-blur path: both mean the same
+// "left gameplay context" and must not stack against a single PoE-focus resume.
 let onLeaveScalpelCb: (() => void) | null = null
 
 export function setOnLeaveScalpel(cb: (() => void) | null): void {
