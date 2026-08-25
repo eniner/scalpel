@@ -129,8 +129,7 @@ function fireEscape(): void {
  *  Safe to call from anywhere - it's a no-op when the desired state already
  *  matches the registered state. */
 function syncEscapeShortcut(): void {
-  const desired =
-    !!onEscape && overlayVisibleForEscape && OverlayController.targetHasFocus && !hotkeysAreSuspended()
+  const desired = !!onEscape && overlayVisibleForEscape && OverlayController.targetHasFocus && !hotkeysAreSuspended()
   if (desired === escapeShortcutRegistered) return
   if (desired) {
     try {
