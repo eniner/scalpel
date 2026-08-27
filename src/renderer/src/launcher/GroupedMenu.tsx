@@ -1,12 +1,7 @@
 import { useId, useState } from 'react'
 import type { LauncherItem, LauncherSliceMode } from '@shared/launcher'
 import appIcon from '../../../../resources/icon.png'
-import {
-  CATEGORY_COLORS,
-  clusterArcPath,
-  groupedRingLayout,
-  polarPoint,
-} from './category-layout'
+import { CATEGORY_COLORS, clusterArcPath, groupedRingLayout, polarPoint } from './category-layout'
 import {
   LauncherIcon,
   chipLauncherLabel,

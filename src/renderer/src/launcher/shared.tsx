@@ -33,12 +33,7 @@ export function resolveChipDisplay(
   return 'label'
 }
 
-export function orbitPoint(
-  index: number,
-  total: number,
-  center: number,
-  radius: number,
-): { x: number; y: number } {
+export function orbitPoint(index: number, total: number, center: number, radius: number): { x: number; y: number } {
   const mid = ((index + 0.5) / Math.max(total, 1)) * Math.PI * 2 - Math.PI / 2
   return {
     x: center + Math.cos(mid) * radius,

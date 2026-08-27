@@ -35,11 +35,7 @@ function sliceMidAngle(index: number, total: number): number {
   return ((index + 0.5) / total) * Math.PI * 2 - Math.PI / 2
 }
 
-function contentPosition(
-  index: number,
-  total: number,
-  radius: number,
-): { x: number; y: number; rotate: number } {
+function contentPosition(index: number, total: number, radius: number): { x: number; y: number; rotate: number } {
   const mid = sliceMidAngle(index, total)
   const deg = (mid * 180) / Math.PI
   const flip = deg > 90 || deg < -90
@@ -143,13 +139,7 @@ export function RadialMenu({
           </filter>
         </defs>
 
-        <circle
-          cx={CENTER}
-          cy={CENTER}
-          r={OUTER + 10}
-          fill={`url(#${gradId}-glow)`}
-          className="pointer-events-none"
-        />
+        <circle cx={CENTER} cy={CENTER} r={OUTER + 10} fill={`url(#${gradId}-glow)`} className="pointer-events-none" />
 
         <g filter={`url(#${gradId}-shadow)`}>
           <circle
@@ -161,7 +151,14 @@ export function RadialMenu({
             strokeWidth={1.5}
             opacity={0.55}
           />
-          <circle cx={CENTER} cy={CENTER} r={OUTER} fill={`url(#${gradId}-disc)`} stroke="rgba(200,169,110,0.35)" strokeWidth={1} />
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={OUTER}
+            fill={`url(#${gradId}-disc)`}
+            stroke="rgba(200,169,110,0.35)"
+            strokeWidth={1}
+          />
 
           {count > 0 &&
             items.map((item, i) => {
@@ -180,7 +177,13 @@ export function RadialMenu({
                         ? 'rgba(255,255,255,0.045)'
                         : 'rgba(255,255,255,0.025)'
                   }
-                  stroke={hot ? (plugin ? 'rgba(167, 139, 250, 0.65)' : 'rgba(224, 189, 123, 0.75)') : 'rgba(200,169,110,0.12)'}
+                  stroke={
+                    hot
+                      ? plugin
+                        ? 'rgba(167, 139, 250, 0.65)'
+                        : 'rgba(224, 189, 123, 0.75)'
+                      : 'rgba(200,169,110,0.12)'
+                  }
                   strokeWidth={hot ? 1.25 : 0.75}
                   className="cursor-pointer transition-[fill,stroke,stroke-width] duration-100"
                   onMouseEnter={() => setHovered(i)}
@@ -211,7 +214,14 @@ export function RadialMenu({
               )
             })}
 
-          <circle cx={CENTER} cy={CENTER} r={INNER - 2} fill="rgba(8, 9, 14, 0.92)" stroke="rgba(200,169,110,0.45)" strokeWidth={1.25} />
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={INNER - 2}
+            fill="rgba(8, 9, 14, 0.92)"
+            stroke="rgba(200,169,110,0.45)"
+            strokeWidth={1.25}
+          />
           <circle cx={CENTER} cy={CENTER} r={INNER - 8} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={1} />
         </g>
       </svg>
@@ -261,7 +271,12 @@ export function RadialMenu({
           </>
         ) : (
           <>
-            <img src={appIcon} alt="" className="w-7 h-7 rounded-[6px] shadow-[0_2px_8px_rgba(0,0,0,0.45)]" draggable={false} />
+            <img
+              src={appIcon}
+              alt=""
+              className="w-7 h-7 rounded-[6px] shadow-[0_2px_8px_rgba(0,0,0,0.45)]"
+              draggable={false}
+            />
             <span className="font-[var(--font-poe)] text-[11px] text-[var(--accent)] tracking-wide">Scalpel</span>
             <span className="text-[9px] uppercase tracking-[0.16em] text-[var(--text-dim)]">Esc · close</span>
           </>

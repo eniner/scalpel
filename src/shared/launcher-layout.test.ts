@@ -23,12 +23,7 @@ describe('evenRingAngles', () => {
 
 describe('groupedRingLayout', () => {
   it('tiles wedges without gaps between adjacent categories', () => {
-    const all = [
-      item('a', 'reference'),
-      item('b', 'reference'),
-      item('c', 'devtools'),
-      item('d', 'app'),
-    ]
+    const all = [item('a', 'reference'), item('b', 'reference'), item('c', 'devtools'), item('d', 'app')]
     const { wedges } = groupedRingLayout(all)
     expect(wedges[0].end).toBeCloseTo(wedges[1].start, 5)
     expect(wedges[1].end).toBeCloseTo(wedges[2].start, 5)

@@ -1,12 +1,6 @@
 import { useState } from 'react'
 import type { LauncherItem, LauncherSliceMode } from '@shared/launcher'
-import {
-  LauncherIcon,
-  chipLauncherLabel,
-  orbitPoint,
-  useLauncherActions,
-  useLauncherEscape,
-} from './shared'
+import { LauncherIcon, chipLauncherLabel, orbitPoint, useLauncherActions, useLauncherEscape } from './shared'
 
 const VIEW = 400
 const CENTER = VIEW / 2
@@ -66,11 +60,7 @@ export function MinimalMenu({
               {showNames && preferIcon ? (
                 <span className="launcher-minimal-caption">{chipLauncherLabel(item.label)}</span>
               ) : null}
-              <span
-                className="launcher-minimal-dot"
-                style={{ opacity: hot ? 1 : 0, background: CORAL }}
-                aria-hidden
-              />
+              <span className="launcher-minimal-dot" style={{ opacity: hot ? 1 : 0, background: CORAL }} aria-hidden />
             </button>
           )
         })}

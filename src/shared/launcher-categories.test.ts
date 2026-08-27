@@ -1,9 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  groupLauncherItems,
-  launcherCategoryForItem,
-  layoutCategoryClusters,
-} from './launcher-categories'
+import { groupLauncherItems, launcherCategoryForItem, layoutCategoryClusters } from './launcher-categories'
 import type { LauncherItem } from './launcher'
 
 function item(action: string, label: string): LauncherItem {

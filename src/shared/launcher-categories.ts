@@ -3,12 +3,7 @@ import type { LauncherItem } from './launcher'
 /** Tool groupings for clustered launcher layouts. */
 export type LauncherCategory = 'reference' | 'devtools' | 'app' | 'toggles'
 
-export const LAUNCHER_CATEGORIES: ReadonlyArray<LauncherCategory> = [
-  'reference',
-  'devtools',
-  'app',
-  'toggles',
-]
+export const LAUNCHER_CATEGORIES: ReadonlyArray<LauncherCategory> = ['reference', 'devtools', 'app', 'toggles']
 
 export function isLauncherCategory(value: unknown): value is LauncherCategory {
   return value === 'reference' || value === 'devtools' || value === 'app' || value === 'toggles'

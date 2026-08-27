@@ -1,9 +1,6 @@
 import type { LauncherItem } from '@shared/launcher'
 import type { LauncherCategory } from '@shared/launcher-categories'
-import {
-  LAUNCHER_CATEGORY_LABELS,
-  groupLauncherItems,
-} from '@shared/launcher-categories'
+import { LAUNCHER_CATEGORY_LABELS, groupLauncherItems } from '@shared/launcher-categories'
 
 export {
   categoryHubAngle,

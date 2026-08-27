@@ -1,13 +1,7 @@
 import { useEffect, useId, useState } from 'react'
 import type { LauncherItem, LauncherSliceMode } from '@shared/launcher'
 import appIcon from '../../../../resources/icon.png'
-import {
-  LauncherIcon,
-  chipLauncherLabel,
-  isPluginItem,
-  shortLauncherLabel,
-  useLauncherActions,
-} from './shared'
+import { LauncherIcon, chipLauncherLabel, isPluginItem, shortLauncherLabel, useLauncherActions } from './shared'
 
 const VIEW = 400
 const CENTER = VIEW / 2
@@ -85,7 +79,14 @@ export function HubMenu({
         <g filter={`url(#${gradId}-soft)`} className="pointer-events-none">
           <circle cx={CENTER} cy={CENTER} r={HUB_R + 10} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={1} />
           <circle cx={CENTER} cy={CENTER} r={HUB_R + 4} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={1} />
-          <circle cx={CENTER} cy={CENTER} r={HUB_R} fill="rgba(18, 19, 26, 0.96)" stroke="rgba(255,255,255,0.12)" strokeWidth={1} />
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={HUB_R}
+            fill="rgba(18, 19, 26, 0.96)"
+            stroke="rgba(255,255,255,0.12)"
+            strokeWidth={1}
+          />
         </g>
       </svg>
 

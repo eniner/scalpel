@@ -147,9 +147,7 @@ export function ReticleMenu({
           {active ? (
             <>
               <span className="launcher-reticle-readout-name">{shortLauncherLabel(active.label)}</span>
-              <span className="launcher-reticle-readout-kind">
-                {isPluginItem(active.action) ? 'plugin' : 'tool'}
-              </span>
+              <span className="launcher-reticle-readout-kind">{isPluginItem(active.action) ? 'plugin' : 'tool'}</span>
             </>
           ) : (
             <span className="launcher-reticle-readout-idle">
