@@ -119,7 +119,7 @@ export function buildLauncherItems(): LauncherItem[] {
 
   const tabs = getRegisteredPluginTabs()
 
-  for (const [pluginId, { label, icon }] of getRegisteredOverlayHotkeys()) {
+  for (const [pluginId, { label }] of getRegisteredOverlayHotkeys()) {
     const name = names.get(pluginId) ?? pluginId
 
     const suffix = label?.trim() ? ` — ${label}` : ''
@@ -129,7 +129,7 @@ export function buildLauncherItems(): LauncherItem[] {
 
       label: `${name}${suffix}`,
 
-      icon: icon || tabs.get(pluginId)?.icon || LAUNCHER_FALLBACK_ICON,
+      icon: tabs.get(pluginId)?.icon || LAUNCHER_FALLBACK_ICON,
 
       category: launcherCategoryForItem(`plugin-overlay:${pluginId}`, `${name}${suffix}`),
     })

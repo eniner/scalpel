@@ -12,7 +12,7 @@ vi.mock('./plugins/hotkey-registry', () => ({
   getRegisteredOverlayHotkeys: vi.fn(
     () =>
       new Map([
-        ['demo.tool', { label: 'Overlay', icon: '<svg data-testid="demo-icon"/>' }],
+        ['demo.tool', { label: 'Overlay' }],
         ['other', { label: '' }],
       ]),
   ),
@@ -20,7 +20,11 @@ vi.mock('./plugins/hotkey-registry', () => ({
 
 vi.mock('./plugins/tab-registry', () => ({
   getRegisteredPluginTabs: vi.fn(
-    () => new Map([['other', { label: 'Other Tab', icon: '<svg data-testid="tab-icon"/>' }]]),
+    () =>
+      new Map([
+        ['demo.tool', { label: 'Demo Tab', icon: '<svg data-testid="demo-icon"/>' }],
+        ['other', { label: 'Other Tab', icon: '<svg data-testid="tab-icon"/>' }],
+      ]),
   ),
 }))
 
@@ -62,7 +66,7 @@ describe('buildLauncherItems', () => {
     expect(labels).toContain('other')
   })
 
-  it('attaches icons for built-ins and plugins (overlay icon, else tab icon)', () => {
+  it('attaches icons for built-ins and plugins (tab icon when registered, else fallback)', () => {
     const byAction = new Map(buildLauncherItems().map((i) => [i.action, i]))
     expect(byAction.get('openSettings')?.icon).toContain('<svg')
     expect(byAction.get('plugin-overlay:demo.tool')?.icon).toContain('demo-icon')

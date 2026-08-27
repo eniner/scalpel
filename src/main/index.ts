@@ -219,7 +219,7 @@ if (store.get('radialMenu') === undefined) store.set('radialMenu', { slices: [] 
 if (store.get('launcherHotkey') === undefined) store.set('launcherHotkey', 'Grave')
 if (store.get('launcherSliceMode') === undefined) store.set('launcherSliceMode', 'names')
 if (store.get('launcherStyle') === undefined) store.set('launcherStyle', 'classic')
-if (store.get('launcherStyle') === 'fan') store.set('launcherStyle', 'hub')
+if ((store.get('launcherStyle') as string | undefined) === 'fan') store.set('launcherStyle', 'hub')
 {
   const macros = store.get('appMacros') ?? []
   const launcherMacro = macros.find((m) => m.action === 'openLauncher')
